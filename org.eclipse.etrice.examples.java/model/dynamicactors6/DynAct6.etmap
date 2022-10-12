@@ -1,0 +1,11 @@
+MappingModel DynAct6 {
+	import DynAct6.LS
+	import DynAct6.PhysSys1
+
+	Mapping LS -> PhysSys1 {
+		SubSystemMapping main -> nodeRef1 {
+			ThreadMapping dflt_thread -> PhysicalThread1
+		}
+	}
+
+}

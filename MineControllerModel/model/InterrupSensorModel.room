@@ -1,0 +1,37 @@
+RoomModel InterrupSensorModel {
+
+	import etrice.api.types.*
+
+	eventdriven ActorClass InterruptSensor {
+
+		Interface {
+			Port outputEvent: EventHappened
+			conjugated Port inputEvent: EventHappened
+		}
+
+		Structure {
+			external Port inputEvent
+			external Port outputEvent
+		}
+		Behavior {
+			StateMachine {
+				State waitForEvent
+				Transition init1: initial -> waitForEvent
+				Transition eventHappened: waitForEvent -> waitForEvent {
+					triggers {
+						<eventHappened: inputEvent>
+					}
+					action '''
+						outputEvent.eventHappened();
+					'''
+				}
+			}
+		}
+	}
+
+	eventdriven ProtocolClass EventHappened {
+		outgoing {
+			Message eventHappened()
+		}
+	}
+}

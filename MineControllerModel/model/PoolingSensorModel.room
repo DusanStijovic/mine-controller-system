@@ -1,0 +1,138 @@
+RoomModel PoolingSensorModel {
+
+	import etrice.api.types.*
+	import etrice.api.timer.*
+	
+	
+	ActorClass PoolingSensor {
+
+		Interface {
+			conjugated Port poolingSensorCommands: PoolingSensorCommands
+			Port poolingSensorSample: PoolingSensorSample
+		}
+
+		Structure {
+			usercode2 '''
+				private static final int SLEEP_IF_CONVERSION_NOT_DONE_MS = 10;
+				private static final int MAX_TIME_FOR_CONVERSION_MS = 50;
+				private static final int MIN_TIME_FOR_CONVERSION_MS = 20;
+				private int neededTimeMsForConversion;
+				private boolean conversionInProgress;
+				private PoolingSensorCommands.Status status;
+				private double value = 0;
+				private String error = "Some error";
+				
+				private int getTimeForConversion(){
+					return (int)(MIN_TIME_FOR_CONVERSION_MS +
+							 Math.random() * (MAX_TIME_FOR_CONVERSION_MS - MIN_TIME_FOR_CONVERSION_MS));
+				}
+				
+				private boolean shouldBeError(){
+					return Math.random()>= 0.2;
+				}
+			'''
+			external Port poolingSensorCommands
+			external Port poolingSensorSample
+			SAP timingService: PTimer
+		}
+
+		Behavior {
+			StateMachine {
+				State conversion
+				Transition init0: initial -> conversion
+				Transition tr0: conversion -> conversion {
+					triggers {
+						<startADConverstion: poolingSensorCommands>
+					}
+					action '''
+						if (conversionInProgress == false){
+							conversionInProgress = true;
+							value = 0;
+							neededTimeMsForConversion =  getTimeForConversion();
+							status = PoolingSensorCommands.Status.NOT_READY;
+							timingService.kill();
+							timingService.startTimeout(neededTimeMsForConversion);
+						} else {
+							System.out.println("Konverzija vec u toku");
+						}
+					'''
+				}
+				Transition tr1: conversion -> conversion {
+					triggers {
+						<timeout: timingService>
+					}
+					action '''
+						conversionInProgress = false;
+						if (shouldBeError()){
+							error = "Greska pri konverziji";
+							status = PoolingSensorCommands.Status.ERROR;
+						} else {
+							status = PoolingSensorCommands.Status.READY;
+						}
+					'''
+				}
+				Transition tr2: conversion -> conversion {
+					triggers {
+						<readStatus: poolingSensorCommands>
+					}
+					action '''
+						poolingSensorCommands.sendStatus((byte)status.ordinal());
+					'''
+				}
+				Transition tr3: conversion -> conversion {
+					triggers {
+						<readValueRegister: poolingSensorCommands>
+					}
+					action '''
+						poolingSensorCommands.sendValueRegister(value);
+					'''
+				}
+				Transition tr4: conversion -> conversion {
+					triggers {
+						<readErrorRegister: poolingSensorCommands>
+					}
+					action '''
+						poolingSensorCommands.sendErrorRegister(error);
+					'''
+				}
+				Transition tr5: conversion -> conversion {
+					triggers {
+						<sendSample: poolingSensorSample>
+					}
+					action '''
+						value = transitionData;
+					'''
+				}
+			}
+		}
+	}
+	
+	ProtocolClass PoolingSensorSample {
+		incoming {
+			Message sendSample(float64)
+		}
+	}
+
+	ProtocolClass PoolingSensorCommands {
+
+		usercode2 '''
+			public enum Status {
+				NOT_READY, READY, ERROR
+			}
+			public static final int MAX_SENSOR_FINISH_TIME_MS = 50;
+			
+		'''
+		incoming {
+			Message sendStatus(int8)
+			Message sendValueRegister(float64)
+			Message sendErrorRegister(string)
+		}
+
+		outgoing {
+			Message startADConverstion()
+			Message readStatus()
+			Message readValueRegister()
+			Message readErrorRegister()
+		}
+	}
+}

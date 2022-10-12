@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: eTrice Java ModelLib
+Bundle-SymbolicName: org.eclipse.etrice.modellib.java
+Bundle-Version: 3.2.2.qualifier
+Bundle-Vendor: Eclipse eTrice
+Bundle-RequiredExecutionEnvironment: JavaSE-11
+Automatic-Module-Name: org.eclipse.etrice.modellib.java
