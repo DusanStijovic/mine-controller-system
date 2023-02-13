@@ -1,0 +1,111 @@
+RoomModel AlarmModel {
+
+	ActorClass Alarm {
+		Interface {
+			Port alarmReceiver [*]: AlarmSender
+		}
+		Structure {
+			usercode2 '''
+				
+				private void printMessage(String message){
+				System.out.println("#################ALARM#########################");
+				System.out.println(message);
+				System.out.println("###############################################");
+				}
+			'''
+			external Port alarmReceiver
+		}
+		Behavior {
+			StateMachine {
+				State initialState
+				Transition init0: initial -> initialState
+				Transition hghMethane: initialState -> initialState {
+					triggers {
+						<alarmHighMethaneLevel: alarmReceiver>
+					}
+					action '''
+						printMessage("Visok nivo CH4");
+					'''
+				}
+				Transition lowAirFlow: initialState -> initialState {
+					triggers {
+						<alarmLowAirFlow: alarmReceiver>
+					}
+					action '''
+						printMessage("Nizak protok vazduhas");
+					'''
+				}
+				Transition highCarbonMonoxyde: initialState -> initialState {
+					triggers {
+						<alarmHighCarbonMonoxydeLevel: alarmReceiver>
+					}
+					action '''
+						printMessage("Visok nivo CO");
+					'''
+				}
+				Transition errorReadingMethane: initialState -> initialState {
+					triggers {
+						<alarmErrorReadingMethane: alarmReceiver>
+					}
+					action '''
+						printMessage("Dve greske prilikom citanja nivoa CH4");
+					'''
+				}
+				Transition errorReadingAirFlow: initialState -> initialState {
+					triggers {
+						<alarmErrorReadingAirFlow: alarmReceiver>
+					}
+					action '''
+						printMessage("Dve greske prilikom citanja protoka vazduha");
+					'''
+				}
+				Transition errorReadingCarbonMonoxyde: initialState -> initialState {
+					triggers {
+						<alarmErrorReadingCarbonMonoxyde: alarmReceiver>
+					}
+					action '''
+						printMessage("Dve greske prilikom citanja nivoa CO");
+					'''
+				}
+				Transition errorStartingPump: initialState -> initialState {
+					triggers {
+						<alarmErrorStartingPump: alarmReceiver>
+					}
+					action '''
+						printMessage("Greska prilikom startovanje pumpe");
+					'''
+				}
+				Transition errorStoppingPump: initialState -> initialState {
+					triggers {
+						<alarmErrorStoppingPump: alarmReceiver>
+					}
+					action '''
+						printMessage("Greska prilikom gasenja pumpe");
+					'''
+				}
+				Transition errorReadingWaterFlow: initialState -> initialState {
+					triggers {
+						<alarmErrorReadingWaterFlow: alarmReceiver>
+					}
+					action '''
+						printMessage("Dve greske prilikom citanja protoka vode");
+					'''
+				}
+			}
+		}
+	}
+
+	ProtocolClass AlarmSender {
+		incoming {
+			Message alarmHighMethaneLevel()
+			Message alarmLowAirFlow()
+			Message alarmHighCarbonMonoxydeLevel()
+			Message alarmErrorReadingMethane()
+			Message alarmErrorReadingAirFlow()
+			Message alarmErrorReadingCarbonMonoxyde()
+			Message alarmErrorStartingPump()
+			Message alarmErrorStoppingPump()
+			Message alarmErrorReadingWaterFlow()
+		}
+	}
+}

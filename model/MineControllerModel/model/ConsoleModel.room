@@ -1,0 +1,38 @@
+RoomModel ConsoleModel {
+
+	import etrice.api.types.*
+
+	ActorClass Conole {
+		Interface {
+			Port receiveMessage [*]: MessagingProtocol
+		}
+		Structure {
+			usercode2 '''
+				private void printMessage(String message){
+					System.out.println(message);
+				}
+			'''
+			external Port receiveMessage
+		}
+		Behavior {
+			StateMachine {
+				State InitialState
+				Transition init0: initial -> InitialState
+				Transition tr0: InitialState -> InitialState {
+					triggers {
+						<sendMessageToConsole: receiveMessage>
+					}
+					action '''
+						printMessage(transitionData);
+					'''
+				}
+			}
+		}
+	}
+
+	ProtocolClass MessagingProtocol {
+		incoming {
+			Message sendMessageToConsole(string)
+		}
+	}
+}

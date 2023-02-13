@@ -1,0 +1,141 @@
+RoomModel WaterTankModel {
+
+	import etrice.api.types.*
+	import etrice.api.timer.*
+	import PoolingSensorModel.*
+	import InterrupSensorModel.*
+
+	ActorClass WaterTank {
+
+		Interface {
+			Port highWaterLevel: EventHappened
+			Port lowWaterLevel: EventHappened
+			conjugated Port drainWater: DrainWater
+		}
+		Structure {
+			usercode2 '''
+				private static final double WATER_LEVEL_INCREASE_ML_PER_MS = 5;
+				private static final int SLEEP_TIME_IN_MS = 2;
+				private static final double WATER_TANK_CAPACITY_IN_ML = 5000;
+				private static final double HIGH_WATER_LIMIT_PERCENTAGE = 80;
+				private static final double LOW_WATER_LIMIT_PERCENTAGE = 20;
+				private double waterLevel;
+				private boolean  isWaterLevelHigh(){
+					return waterLevel >= HIGH_WATER_LIMIT_PERCENTAGE * WATER_TANK_CAPACITY_IN_ML / 100.0;
+				}
+				
+				private boolean  isWaterLevelLow(){
+					return waterLevel <= LOW_WATER_LIMIT_PERCENTAGE * WATER_TANK_CAPACITY_IN_ML / 100.0;
+				}
+			'''
+			SAP timingService: PTimer
+			external Port highWaterLevel
+			external Port lowWaterLevel
+			external Port drainWater
+		}
+		Behavior {
+
+			StateMachine {
+				State SimulacijaVode {
+					entry '''
+																		if (isWaterLevelHigh()){
+												//								System.out.println("HIGH");
+												//								System.out.println("Water Level: " + waterLevel);
+																				highWaterLevel.eventHappened();
+																		}
+																		if (isWaterLevelLow()){
+						//														System.out.println("LOW");
+												//								System.out.println("Water Level: " + waterLevel);
+																				lowWaterLevel.eventHappened();
+																		}
+					'''
+				}
+				Transition init0: initial -> SimulacijaVode {
+					action '''
+						timingService.kill();
+						timingService.startTimeout(SLEEP_TIME_IN_MS);
+					'''
+				}
+				Transition napuniVodu: SimulacijaVode -> SimulacijaVode {
+					triggers {
+						<timeout: timingService>
+					}
+					action '''
+												double increaseValue = WATER_LEVEL_INCREASE_ML_PER_MS * SLEEP_TIME_IN_MS;
+						//						System.out.println("Puni se za: " + increaseValue);
+												waterLevel += increaseValue;
+												timingService.kill();
+												timingService.startTimeout(SLEEP_TIME_IN_MS);
+					'''
+				}
+				Transition tr0: SimulacijaVode -> SimulacijaVode {
+					triggers {
+						<drainWater: drainWater>
+					}
+					action '''
+						//						System.out.println("Umanjenje za: " + transitionData);
+												waterLevel -= transitionData;
+												if (waterLevel < 0){
+													waterLevel = 0;
+												}
+					'''
+				}
+			}
+		}
+	}
+
+	ActorClass waterPumpTunnel {
+		Interface {
+			Port waterTenk: DrainWater
+			conjugated Port waterTenkPump: DrainWater
+			conjugated Port wateflowSensor: PoolingSensorSample
+		}
+		Structure {
+			usercode2 '''
+				private static final int PUMP_FLOW_VALID_TIME = 15;
+				private double waterFlow = 0;
+				private boolean resetWaterFlow = false;
+			'''
+			external Port waterTenkPump
+			external Port waterTenk
+			external Port wateflowSensor
+			SAP timingService: PTimer
+		}
+		Behavior {
+			StateMachine {
+				State ^initial
+				Transition init0: initial -> ^initial
+				Transition tr0: ^initial -> ^initial {
+					triggers {
+						<drainWater: waterTenkPump>
+					}
+					action '''
+//						System.out.println("WaterPumpTunnelFlow:" + transitionData);
+						waterTenk.drainWater(transitionData);
+						waterFlow = transitionData;
+						timingService.kill();
+						resetWaterFlow = true;
+						timingService.startTimeout(PUMP_FLOW_VALID_TIME);
+						wateflowSensor.sendSample(waterFlow);
+					'''
+				}
+				Transition tr2: ^initial -> ^initial {
+					triggers {
+						<timeout: timingService guard '''resetWaterFlow'''>
+					}
+					action '''
+						waterFlow = 0;				
+						resetWaterFlow = false;
+						wateflowSensor.sendSample(waterFlow);
+					'''
+				}
+			}
+		}
+	}
+
+	ProtocolClass DrainWater {
+		outgoing {
+			Message drainWater(float64)
+		}
+	}
+}

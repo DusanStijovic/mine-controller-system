@@ -1,0 +1,69 @@
+/* 
+ * Shortkeys:
+ *	Ctrl+Space	- content assist
+ * 	F3			- open declaration of selected element
+ *	Alt+S 		- open structure diagram
+ *  Alt+B 		- open behavior diagram
+ *  Alt+M 		- open textual editor (in diagrams)
+ */
+RoomModel MineControllerModel {
+
+	import etrice.api.types.*
+	import etrice.api.timer.*
+	import EnvironmentModel.*
+	import PoolingSensorModel.*
+	import WaterTankModel.*
+	import InterrupSensorModel.*
+	import PumpModel.PumpMotor
+	import PumpModel.PumpMotorControll
+	import PumpModel.PumpControlStation
+	
+  
+	LogicalSystem LogSys {
+		SubSystemRef subSystemRef: SubSysClass
+	}
+
+	SubSystemClass SubSysClass {
+		ActorRef topActor: TopActor
+
+		ActorRef timingService: ATimerService
+		LayerConnection ref topActor satisfied_by timingService.timer
+		LogicalThread defaultThread
+	}
+
+	ActorClass TopActor {
+		Structure {
+			ActorRef highWaterSensor: HighWaterSensor
+			ActorRef lowWaterSensor: LowWaterSensor
+			ActorRef waterFlowSensor: WaterFlowSensor
+
+			ActorRef pumpMotor: PumpMotor
+
+			ActorRef environmentMonitoringStation: EnvironmentMonitoringStation
+			ActorRef pumpControlStation: PumpControlStation
+			ActorRef waterTank: WaterTank
+
+			Binding lowWaterSensor.outputEvent and pumpControlStation.lowWaterSensor
+			Binding waterTank.lowWaterLevel and lowWaterSensor.inputEvent
+			Binding waterTank.highWaterLevel and highWaterSensor.inputEvent
+			Binding highWaterSensor.outputEvent and pumpControlStation.highWaterSensor
+
+			Binding pumpControlStation.controlMotor and pumpMotor.controlMotor
+
+			ActorRef waterPumpTunnel: waterPumpTunnel
+
+			Binding pumpControlStation.waterFlowSensor and waterFlowSensor.poolingSensorCommands
+			Binding waterPumpTunnel.waterTenkPump and pumpMotor.drainWater
+			Binding waterPumpTunnel.waterTenk and waterTank.drainWater
+			Binding waterPumpTunnel.wateflowSensor and waterFlowSensor.poolingSensorSample
+
+			Binding Alarm.alarmReceiver and pumpControlStation.alarmSender
+			Binding environmentMonitoringStation.sendAlarm and Alarm.alarmReceiver
+			ActorRef Alarm: AlarmModel.Alarm
+			ActorRef console: ConsoleModel.Conole
+			Binding pumpControlStation.messageSender and console.receiveMessage
+			Binding environmentMonitoringStation.sendToConsole and console.receiveMessage
+			Binding environmentMonitoringStation.supstanceLevel and pumpControlStation.methaneLevel
+		}
+	}
+}

@@ -1,0 +1,295 @@
+RoomModel EnvironmentModel {
+
+	import etrice.api.types.*
+	import etrice.api.timer.PTimer
+	import PoolingSensorModel.PoolingSensorSample
+	import PoolingSensorModel.AirFlowSensor
+	import PoolingSensorModel.CarboniteMonoxideSensor
+	import PoolingSensorModel.MethaneSensor
+
+	ActorClass EnvironmentMonitoringStation {
+		Interface {
+			Port supstanceLevel: supstanceLevelEvent
+			conjugated Port sendAlarm: AlarmModel.AlarmSender
+			conjugated Port sendToConsole: ConsoleModel.MessagingProtocol
+		}
+		Structure {
+			Binding environmentPooling.poolingAirFlow and airFlowSensor.poolingSensorCommands
+
+			Binding environmentPooling.poolingCarbonMonohyde and carboniteMonoxideSensor.poolingSensorCommands
+
+			Binding methaneSensor.poolingSensorCommands and environmentPooling.poolingMethane
+
+			ActorRef carboniteMonoxideSensor: CarboniteMonoxideSensor
+			ActorRef airFlowSensor: AirFlowSensor
+
+			ActorRef environmentPooling: EnvironmentPooling
+			ActorRef methaneSensor: MethaneSensor
+			Binding airSimulator.airflowSample and airFlowSensor.poolingSensorSample
+			Binding airSimulator.methaneSample and methaneSensor.poolingSensorSample
+			Binding airSimulator.caarbonMonoxydeSample and carboniteMonoxideSensor.poolingSensorSample
+			ActorRef airSimulator: AirSimulator
+			Binding environmentPooling.methaneLevel and supstanceLevel
+			Binding environmentPooling.sendAlarm and sendAlarm
+			external Port sendToConsole
+		}
+
+		Behavior {
+			StateMachine {
+				State InitialState
+				Transition init0: initial -> InitialState
+			}
+		}
+	}
+
+	ActorClass AirSimulator {
+
+		Interface {
+			conjugated Port methaneSample: PoolingSensorSample
+			conjugated Port caarbonMonoxydeSample: PoolingSensorSample
+			conjugated Port airflowSample: PoolingSensorSample
+		}
+		Structure {
+			usercode2 '''
+				private static final int CALCULATION_PERIOD_IN_MS =  5 * 1000;
+				private static final double MAX_SAMPLE_LEVEL = 10;
+				private double airFlowLevel = 0;
+				private double methaneLevel = 0;
+				private double carbonMonoxydeLevel = 0;
+				
+				
+				private void calculateAirFlow(){
+					airFlowLevel = Math.random() * MAX_SAMPLE_LEVEL;
+				}
+				private void calculateMethane(){
+					methaneLevel = Math.random() * MAX_SAMPLE_LEVEL;
+				}
+				
+				private void calculateCarbonMonoxyde(){
+					carbonMonoxydeLevel = Math.random() * MAX_SAMPLE_LEVEL;
+				}
+				
+			'''
+			external Port methaneSample
+			external Port caarbonMonoxydeSample
+			external Port airflowSample
+			SAP timingService: PTimer
+		}
+		Behavior {
+			StateMachine {
+				State initialState {
+					entry '''
+						calculateAirFlow();
+						calculateMethane();
+						calculateCarbonMonoxyde();
+						methaneSample.sendSample(airFlowLevel);
+						airflowSample.sendSample(methaneLevel);
+						caarbonMonoxydeSample.sendSample(carbonMonoxydeLevel);
+						System.out.println("Racunanje i slanje novih uzoraka: air: " + airFlowLevel + ", methane:" + methaneLevel + ", carbonMonoxydeLeve: " + carbonMonoxydeLevel);
+						timingService.startTimeout(CALCULATION_PERIOD_IN_MS);			
+					'''
+				}
+				Transition init0: initial -> initialState {
+				}
+				Transition tr0: initialState -> initialState {
+					triggers {
+						<timeout: timingService>
+					}
+				}
+			}
+		}
+	}
+
+	ActorClass EnvironmentPooling {
+		Interface {
+			Port poolingAirFlow: PoolingSensorModel.PoolingSensorCommands
+			Port poolingMethane: PoolingSensorModel.PoolingSensorCommands
+			Port poolingCarbonMonohyde: PoolingSensorModel.PoolingSensorCommands
+
+			Port methaneLevel: supstanceLevelEvent
+			conjugated Port sendAlarm: AlarmModel.AlarmSender
+		}
+		Structure {
+			usercode2 '''
+				private static final int PERIOD_OF_CHECKING_DEVICE = 5 * 1000;
+				private static final int MAX_ERROR_COUNT = 2;
+				
+				private int currentCarbonMonoxydeErrorCount = 0;
+				private int currentMethaneErrorCount = 0;
+				private int currentAirFlowErrorCount = 0;
+				
+				private static final double METHANE_HIGH_LEVEL = 7;
+				private static final double AIRFLOW_LOW_LEVEL = 2;
+				private static final double CARBON_MONOXYDE_HIGH_LEVEL = 7;
+				
+			'''
+			external Port poolingAirFlow
+			external Port poolingMethane
+			external Port poolingCarbonMonohyde
+
+			SAP timingService: PTimer
+			external Port methaneLevel
+			external Port sendAlarm
+		}
+		Behavior {
+			StateMachine {
+				State processChecking
+				Transition init0: initial -> processChecking {
+					action '''
+						poolingMethane.startADConverstion();
+						poolingAirFlow.startADConverstion();
+						poolingCarbonMonohyde.startADConverstion();
+						timingService.startTimeout(PERIOD_OF_CHECKING_DEVICE);
+					'''
+				}
+				Transition tr0: processChecking -> processChecking {
+					triggers {
+						<timeout: timingService>
+					}
+					action '''
+						poolingAirFlow.readStatus();
+						poolingMethane.readStatus();
+						poolingCarbonMonohyde.readStatus();'''
+				}
+
+				Transition tr2: processChecking -> processChecking {
+					triggers {
+						<sendStatus: poolingMethane>
+					}
+					action '''
+						int status = transitionData;               
+						if (status == PoolingSensorCommands.Status.NOT_READY.ordinal()){
+						       	timingService.kill();
+						        timingService.startTimeout(PERIOD_OF_CHECKING_DEVICE);            
+						}
+						if (status == PoolingSensorCommands.Status.ERROR.ordinal()){
+						    System.out.println("Error while geting methane level");
+						    currentMethaneErrorCount++;
+						    if (currentMethaneErrorCount >= MAX_ERROR_COUNT){
+						        currentMethaneErrorCount = 0;
+						  		sendAlarm.alarmErrorReadingMethane();
+						        poolingMethane.startADConverstion();
+						        timingService.kill();
+						        timingService.startTimeout(PERIOD_OF_CHECKING_DEVICE);      
+						    }       
+						}
+						if (status == PoolingSensorCommands.Status.READY.ordinal()){
+						     poolingMethane.readValueRegister();
+						}
+					'''
+				}
+				Transition tr3: processChecking -> processChecking {
+					triggers {
+						<sendStatus: poolingCarbonMonohyde>
+					}
+					action '''
+						int status = transitionData;               
+						if (status == PoolingSensorCommands.Status.NOT_READY.ordinal()){
+						     	timingService.kill();
+						        timingService.startTimeout(PERIOD_OF_CHECKING_DEVICE);      
+						}
+						if (status == PoolingSensorCommands.Status.ERROR.ordinal()){
+						    System.out.println("Error while geting carbon-monohye level");
+						    currentCarbonMonoxydeErrorCount++;
+						    if (currentCarbonMonoxydeErrorCount >= MAX_ERROR_COUNT){
+						        currentCarbonMonoxydeErrorCount = 0;
+						        sendAlarm.alarmErrorReadingCarbonMonoxyde();
+						        poolingCarbonMonohyde.startADConverstion();
+						        timingService.kill();
+						        timingService.startTimeout(PERIOD_OF_CHECKING_DEVICE);      
+						    }       
+						}
+						if (status == PoolingSensorCommands.Status.READY.ordinal()){
+						     poolingCarbonMonohyde.readValueRegister();
+						}
+					'''
+				}
+				Transition tr1: processChecking -> processChecking {
+					triggers {
+						<sendStatus: poolingAirFlow>
+					}
+					action '''
+						int status = transitionData;               
+						if (status == PoolingSensorCommands.Status.NOT_READY.ordinal()){
+						     	timingService.kill();
+						        timingService.startTimeout(PERIOD_OF_CHECKING_DEVICE);      
+						}
+						if (status == PoolingSensorCommands.Status.ERROR.ordinal()){
+						    System.out.println("Error while geting airflow level");
+						    currentAirFlowErrorCount++;
+						    if (currentAirFlowErrorCount >= MAX_ERROR_COUNT){
+						        currentAirFlowErrorCount = 0;
+						        sendAlarm.alarmErrorReadingAirFlow();
+						        poolingAirFlow.startADConverstion();
+						        timingService.kill();
+						        timingService.startTimeout(PERIOD_OF_CHECKING_DEVICE);      
+						    }       
+						}
+						if (status == PoolingSensorCommands.Status.READY.ordinal()){
+						     poolingAirFlow.readValueRegister();
+						}
+					'''
+				}
+				Transition tr4: processChecking -> processChecking {
+					triggers {
+						<sendValueRegister: poolingAirFlow>
+					}
+					action '''
+						System.out.println("Izmeren airflow: " + transitionData);
+						double value = transitionData;
+						if (value <= AIRFLOW_LOW_LEVEL){
+							sendAlarm.alarmLowAirFlow();
+						}
+						 poolingAirFlow.startADConverstion();
+						 timingService.kill();
+						 timingService.startTimeout(PERIOD_OF_CHECKING_DEVICE);
+						 currentAirFlowErrorCount = 0;
+					'''
+				}
+				Transition tr5: processChecking -> processChecking {
+					triggers {
+						<sendValueRegister: poolingMethane>
+					}
+					action '''
+						System.out.println("Izmeren metan: " + transitionData);
+						double value = transitionData;
+						if (value >= METHANE_HIGH_LEVEL){
+							sendAlarm.alarmHighMethaneLevel();
+							methaneLevel.highLevel();
+						} else {
+							methaneLevel.normalLevel();
+						}
+						currentMethaneErrorCount = 0;
+						 poolingMethane.startADConverstion();
+						 timingService.kill();
+						 timingService.startTimeout(PERIOD_OF_CHECKING_DEVICE);
+					'''
+				}
+				Transition tr6: processChecking -> processChecking {
+					triggers {
+						<sendValueRegister: poolingCarbonMonohyde>
+					}
+					action '''
+						System.out.println("Izmeren carbon monohyde: " + transitionData);
+						double value = transitionData;
+						if (value >= CARBON_MONOXYDE_HIGH_LEVEL){
+							sendAlarm.alarmHighCarbonMonoxydeLevel();
+						}
+						poolingCarbonMonohyde.startADConverstion();
+						timingService.kill();
+						currentCarbonMonoxydeErrorCount = 0;
+						timingService.startTimeout(PERIOD_OF_CHECKING_DEVICE);     
+					'''
+				}
+			}
+		}
+	}
+
+	ProtocolClass supstanceLevelEvent {
+
+		outgoing {
+			Message highLevel()
+			Message normalLevel()
+		}
+	}
+}

@@ -1,0 +1,369 @@
+RoomModel PumpModel {
+
+	import etrice.api.types.*
+	import WaterTankModel.DrainWater
+	import etrice.api.timer.PTimer
+	import PoolingSensorModel.PoolingSensorCommands
+	import EnvironmentModel.supstanceLevelEvent
+	import InterrupSensorModel.EventHappened
+
+	ActorClass PumpControlStation {
+		Interface {
+			conjugated Port highWaterSensor: EventHappened
+			conjugated Port lowWaterSensor: EventHappened
+			Port controlMotor: PumpMotorControll
+			Port waterFlowSensor: PoolingSensorCommands
+			conjugated Port methaneLevel: supstanceLevelEvent
+			conjugated Port alarmSender: AlarmModel.AlarmSender
+			conjugated Port messageSender: ConsoleModel.MessagingProtocol
+		}
+		Structure {
+			usercode2 '''
+				private boolean isPumpActive = true;
+				private int MAX_ERROR_COUNT = 2;
+				private boolean shouldGetFlow;
+				private int errorCount = 0;
+				private int numberOfSameMeasure = 0;
+				private static int MAX_TIME_FOR_MOTOR_CHANGE_MS = 900;
+				private static int PERIOD_OF_ACTIVATION_MS = 20;
+				private static int NUM_OF_NEEDED_MEASURE = MAX_TIME_FOR_MOTOR_CHANGE_MS / PERIOD_OF_ACTIVATION_MS;
+				private static int PERIOD_OF_CHECKING_DEVICE = 20;
+				private boolean highDetected = false;
+				private boolean lowDetected = false;
+				private  boolean highMethaneDetected = false;
+			'''
+			external Port lowWaterSensor
+			external Port highWaterSensor
+			external Port controlMotor
+			external Port waterFlowSensor
+			SAP timingService: PTimer
+			external Port methaneLevel
+			external Port alarmSender
+			external Port messageSender
+		}
+		Behavior {
+			StateMachine {
+				State startCheckingPumpState {
+					entry '''
+												if (numberOfSameMeasure <= NUM_OF_NEEDED_MEASURE){
+													shouldGetFlow = false;
+													numberOfSameMeasure++;
+													timingService.kill();
+													timingService.startTimeout(PERIOD_OF_ACTIVATION_MS);
+						//							System.out.println("ne racunaj jos uvek");
+												} else {
+													System.out.println("Usao u proveru");
+													numberOfSameMeasure = 0;
+													waterFlowSensor.startADConverstion();
+													shouldGetFlow = true;
+													timingService.kill();
+													timingService.startTimeout(PERIOD_OF_CHECKING_DEVICE);
+													System.out.println("daj racun");
+													
+												}
+					'''
+				}
+				State lowWaterLevelHandler {
+					entry '''
+						System.out.println("Usao low pre provere");
+							if (!lowDetected){
+													System.out.println("Usao low nakon provere");
+								controlMotor.turnOffPump();
+								isPumpActive = false;
+								lowDetected = true;
+								highDetected = false;
+								numberOfSameMeasure = 0;
+								shouldGetFlow = false;
+								timingService.kill();
+								timingService.startTimeout(PERIOD_OF_ACTIVATION_MS);
+							}
+					'''
+				}
+				State highWaterHandler {
+					entry '''
+						System.out.println("Usao high pre provere");
+							if (!highDetected){
+								highDetected = true;
+								lowDetected = false;
+								System.out.println("Usao high nakon provere");
+								controlMotor.turnOnPump();
+								isPumpActive = true;
+								numberOfSameMeasure = 0;
+								shouldGetFlow = false;
+								timingService.kill();
+								timingService.startTimeout(PERIOD_OF_ACTIVATION_MS);
+							}
+					'''
+				}
+				State init
+
+				State askForStatus {
+					entry '''
+						waterFlowSensor.readStatus();
+					'''
+				}
+				State statusGet {
+				}
+
+				Transition init0: initial -> init
+
+				Transition initialTimeOut: startCheckingPumpState -> startCheckingPumpState {
+					triggers {
+						<timeout: timingService guard '''!shouldGetFlow'''>
+					}
+				}
+				Transition tr1: startCheckingPumpState -> askForStatus {
+					triggers {
+						<timeout: timingService guard '''shouldGetFlow'''>
+					}
+				}
+				Transition t: askForStatus -> statusGet {
+					triggers {
+						<sendStatus: waterFlowSensor>
+					}
+					action '''
+						int status = transitionData;
+														System.out.println("Nesto");
+						
+						if (status == PoolingSensorCommands.Status.NOT_READY.ordinal()){
+								timingService.startTimeout(PERIOD_OF_CHECKING_DEVICE);
+								System.out.println("Not ready");
+						}
+						if (status == PoolingSensorCommands.Status.ERROR.ordinal()){
+							System.out.println("Error while geting water flow");
+							errorCount++;
+							if (errorCount >= MAX_ERROR_COUNT){
+								System.out.println("Too mutch errors while getting flow");
+								errorCount = 0;
+								alarmSender.alarmErrorReadingWaterFlow();
+							}
+							waterFlowSensor.readErrorRegister();	
+						}
+						if (status == PoolingSensorCommands.Status.READY.ordinal()){
+							errorCount = 0;
+						 	waterFlowSensor.readValueRegister();
+						}
+					'''
+				}
+				Transition tr0: statusGet -> askForStatus {
+					triggers {
+						<timeout: timingService>
+					}
+				}
+				State highMethaneLevelHandler {
+					entry '''
+						System.out.println("Metan");
+						if (!highMethaneDetected){
+							if (isPumpActive){
+								controlMotor.turnOffPump();
+								isPumpActive = false;
+							}	
+							highMethaneDetected = true;
+							numberOfSameMeasure = 0;
+							shouldGetFlow = false;
+							timingService.kill();
+							timingService.startTimeout(PERIOD_OF_ACTIVATION_MS);
+							}
+					'''
+				}
+
+				Transition tr4: lowWaterLevelHandler -> startCheckingPumpState {
+					triggers {
+						<timeout: timingService>
+					}
+				}
+				Transition tr5: highWaterHandler -> startCheckingPumpState {
+					triggers {
+						<timeout: timingService>
+					}
+				}
+				Transition tr7: highMethaneLevelHandler -> startCheckingPumpState {
+					triggers {
+						<timeout: timingService>
+					}
+				}
+
+				Transition tr6: init -> lowWaterLevelHandler {
+					triggers {
+						<eventHappened: lowWaterSensor guard '''!lowDetected'''>
+					}
+				}
+
+				Transition tr8: init -> highWaterHandler {
+					triggers {
+						<eventHappened: highWaterSensor guard '''!highDetected && !highMethaneDetected'''>
+					}
+				}
+				Transition tr9: init -> highMethaneLevelHandler {
+					triggers {
+						<highLevel: methaneLevel guard '''!highMethaneDetected'''>
+					}
+				}
+
+				Transition tr11: statusGet -> init {
+					triggers {
+						<sendValueRegister: waterFlowSensor>
+					}
+					action '''
+						double waterFlow = transitionData;
+						System.out.println("WaterFlow: " + waterFlow);
+						if (isPumpActive && waterFlow == 0){
+							alarmSender.alarmErrorStartingPump();
+							highDetected = false;
+							System.out.println("Poslat zahtev za aktiviranje pumpe, a protok vode ne postoji");
+						}
+						if (!isPumpActive && waterFlow != 0){
+							alarmSender.alarmErrorStoppingPump();
+							lowDetected = false;
+							System.out.println("Poslat zahtev za gasenje pumpe, a protok vode postoji");
+						}
+						if (isPumpActive && waterFlow != 0){
+							System.out.println("Pumpa radi i protoka ima");
+						}
+						if (!isPumpActive && waterFlow == 0){
+							System.out.println("Pumpa ne radi  i nema protoka");
+						}
+					'''
+				}
+				Transition tr2: statusGet -> startCheckingPumpState {
+					triggers {
+						<sendErrorRegister: waterFlowSensor>
+					}
+				}
+				Transition tr3: init -> init {
+					triggers {
+						<normalLevel: methaneLevel>
+					}
+					action '''highMethaneDetected = false;'''
+				}
+			}
+		}
+	}
+
+	ActorClass PumpMotor {
+
+		Interface {
+			conjugated Port controlMotor: PumpMotorControll
+			Port drainWater: DrainWater
+		}
+		Structure {
+			usercode2 '''
+				private static double WATER_DRAIN_ML_PER_MS = 10;
+				private static int MOTOR_CHANGE_MODE_TIME_MS = 900;
+				private static int SLEEEP_TIME_IN_MS = 10;
+				private int timeElapsedToTurnOf = 0;
+				private boolean shouldChangeToTurnOff = false;
+				
+				
+				private boolean shouldIgnoreCommand(){
+					boolean ignore =  Math.random() > 0.4;
+					if (ignore){
+						System.out.println("Ignorisana komanda");
+					}
+					return ignore;
+				}
+			'''
+			external Port controlMotor
+			external Port drainWater
+			SAP timingService: PTimer
+		}
+		Behavior {
+			StateMachine {
+				State initState {
+					entry '''					'''
+				}
+				State motorTurnOn
+				State motorTurnOff {
+					entry '''
+						//					System.out.println("Motor se iskljucuje");
+					'''
+				}
+				Transition init0: initial -> initState
+				Transition tr0: initState -> motorTurnOn {
+					triggers {
+						<turnOnPump: controlMotor>
+					}
+					action '''
+						timingService.kill();
+						timingService.startTimeout(MOTOR_CHANGE_MODE_TIME_MS);
+					'''
+				}
+				Transition tr1: initState -> motorTurnOff {
+					triggers {
+						<turnOffPump: controlMotor>
+					}
+					action '''
+						timingService.kill();
+						timingService.startTimeout(MOTOR_CHANGE_MODE_TIME_MS);
+					'''
+				}
+				Transition tr2: motorTurnOff -> motorTurnOn {
+					triggers {
+						<turnOnPump: controlMotor guard '''!shouldIgnoreCommand()'''>
+					}
+					action '''
+						timingService.kill();
+						timingService.startTimeout(MOTOR_CHANGE_MODE_TIME_MS);
+					'''
+				}
+				Transition tr3: motorTurnOn -> changeModeFromOnToOff {
+					triggers {
+						<turnOffPump: controlMotor>
+					}
+					action '''
+						timeElapsedToTurnOf = 0;
+						shouldChangeToTurnOff = false;
+						timingService.kill();
+						timingService.startTimeout(SLEEEP_TIME_IN_MS);
+					'''
+				}
+				Transition tr4: motorTurnOn -> motorTurnOn {
+					triggers {
+						<timeout: timingService>
+					}
+					action '''
+						drainWater.drainWater(WATER_DRAIN_ML_PER_MS * SLEEEP_TIME_IN_MS);
+						timingService.kill();
+						timingService.startTimeout(SLEEEP_TIME_IN_MS);
+					'''
+				}
+				State changeModeFromOnToOff
+				Transition tr5: changeModeFromOnToOff -> changeModeFromOnToOff {
+					triggers {
+						<timeout: timingService guard '''!shouldChangeToTurnOff'''>
+					}
+					action '''
+						timingService.kill();
+						timingService.startTimeout(SLEEEP_TIME_IN_MS);
+						timeElapsedToTurnOf += SLEEEP_TIME_IN_MS;
+						drainWater.drainWater(WATER_DRAIN_ML_PER_MS * SLEEEP_TIME_IN_MS);
+						if (timeElapsedToTurnOf == MOTOR_CHANGE_MODE_TIME_MS){
+							shouldChangeToTurnOff = true;
+						}
+					'''
+				}
+				Transition tr6: changeModeFromOnToOff -> motorTurnOff {
+					triggers {
+						<timeout: timingService guard '''shouldChangeToTurnOff'''>
+					}
+				}
+				Transition tr7: changeModeFromOnToOff -> motorTurnOn {
+					triggers {
+						<turnOnPump: controlMotor>
+					}
+					action '''
+						timingService.kill();
+						timingService.startTimeout(MOTOR_CHANGE_MODE_TIME_MS);
+					'''
+				}
+			}
+		}
+	}
+
+	ProtocolClass PumpMotorControll {
+		outgoing {
+			Message turnOnPump()
+			Message turnOffPump()
+		}
+	}
+}
