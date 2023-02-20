@@ -1492,7 +1492,7 @@
     <children xsi:type="pi:ContainerShape" visible="true" active="true">
       <properties key="obj-type" value="ref"/>
       <properties key="actorref_version" value="2"/>
-      <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="240" height="140" x="935" y="40">
+      <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="240" height="140" x="913" y="36">
         <graphicsAlgorithmChildren xsi:type="al:Rectangle" background="//@colors.3" foreground="//@colors.2" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="180" height="80" x="33" y="27">
           <properties key="actorref_graphic_element" value="replborder"/>
         </graphicsAlgorithmChildren>
@@ -1751,6 +1751,11 @@
     <link>
       <businessObjects href="../MineControllerModel.room#Binding:TopActor$supstanceLevel!environmentMonitoringStation-methaneLevel!pumpControlStation"/>
     </link>
+    <bendpoints x="918" y="353"/>
+    <bendpoints x="862" y="353"/>
+    <bendpoints x="709" y="353"/>
+    <bendpoints x="709" y="314"/>
+    <bendpoints x="709" y="265"/>
   </connections>
   <colors red="227" green="238" blue="249"/>
   <colors red="255" green="255" blue="255"/>

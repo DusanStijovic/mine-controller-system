@@ -60,6 +60,8 @@ public class Node_node_subSystemRef extends SubSystemClassBase {
 		// create service brokers in optional actor interfaces
 
 		// wiring
+		InterfaceItemBase.connect(this, "timingService/timer", "topActor/highWaterSensor/timingService");
+		InterfaceItemBase.connect(this, "timingService/timer", "topActor/lowWaterSensor/timingService");
 		InterfaceItemBase.connect(this, "timingService/timer", "topActor/waterFlowSensor/timingService");
 		InterfaceItemBase.connect(this, "timingService/timer", "topActor/pumpMotor/timingService");
 		InterfaceItemBase.connect(this, "timingService/timer", "topActor/environmentMonitoringStation/carboniteMonoxideSensor/timingService");

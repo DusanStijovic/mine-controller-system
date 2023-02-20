@@ -14,21 +14,37 @@ import etrice.api.timer.PTimer.*;
 import PoolingSensorModel.PoolingSensorCommands.*;
 import EnvironmentModel.supstanceLevelEvent.*;
 
+/*--------------------- begin user code ---------------------*/
+import java.util.Date;
+import java.util.Calendar;
+
+/*--------------------- end user code ---------------------*/
 
 
 public class EnvironmentPooling extends ActorClassBase {
 
 	/*--------------------- begin user code ---------------------*/
-	private static final int PERIOD_OF_CHECKING_DEVICE = 5 * 1000;
+	private static final int PERIOD_OF_ACTIVATION = 100;
+	private static final int PERIOD_OF_CHECKING_DEVICE = 50;
 	private static final int MAX_ERROR_COUNT = 2;
 	
 	private int currentCarbonMonoxydeErrorCount = 0;
 	private int currentMethaneErrorCount = 0;
 	private int currentAirFlowErrorCount = 0;
 	
+	private long methaneNextActivationInMs = 0;
+	private long airFlowNextActivationInMs = 0;
+	private long carbonNextActivationInMs = 0;
+	
 	private static final double METHANE_HIGH_LEVEL = 7;
 	private static final double AIRFLOW_LOW_LEVEL = 2;
 	private static final double CARBON_MONOXYDE_HIGH_LEVEL = 7;
+	
+	private int calculateWaitTime(long nextActivationInMs){
+		long waitTime = nextActivationInMs - Calendar.getInstance().getTimeInMillis();
+		waitTime = Math.max(waitTime, 0);
+		return (int)waitTime;
+	}
 	
 	
 	/*--------------------- end user code ---------------------*/
@@ -170,10 +186,13 @@ public class EnvironmentPooling extends ActorClassBase {
 	
 	/* Action Codes */
 	protected void action_TRANS_INITIAL_TO__processChecking() {
+		methaneNextActivationInMs = Calendar.getInstance().getTimeInMillis() + PERIOD_OF_ACTIVATION;
+		airFlowNextActivationInMs = methaneNextActivationInMs;
+		carbonNextActivationInMs = methaneNextActivationInMs;
 		poolingMethane.startADConverstion();
 		poolingAirFlow.startADConverstion();
 		poolingCarbonMonohyde.startADConverstion();
-		timingService.startTimeout(PERIOD_OF_CHECKING_DEVICE);
+		timingService.startTimeout(calculateWaitTime(methaneNextActivationInMs));
 	}
 	protected void action_TRANS_tr0_FROM_processChecking_TO_processChecking_BY_timeouttimingService_tr0(InterfaceItemBase ifitem) {
 		poolingAirFlow.readStatus();
@@ -181,6 +200,7 @@ public class EnvironmentPooling extends ActorClassBase {
 		poolingCarbonMonohyde.readStatus();
 	}
 	protected void action_TRANS_tr2_FROM_processChecking_TO_processChecking_BY_sendStatuspoolingMethane_tr2(InterfaceItemBase ifitem, byte transitionData) {
+		methaneNextActivationInMs += PERIOD_OF_ACTIVATION;
 		int status = transitionData;               
 		if (status == PoolingSensorCommands.Status.NOT_READY.ordinal()){
 		       	timingService.kill();
@@ -194,7 +214,7 @@ public class EnvironmentPooling extends ActorClassBase {
 		  		sendAlarm.alarmErrorReadingMethane();
 		        poolingMethane.startADConverstion();
 		        timingService.kill();
-		        timingService.startTimeout(PERIOD_OF_CHECKING_DEVICE);      
+		        timingService.startTimeout(calculateWaitTime(methaneNextActivationInMs));
 		    }       
 		}
 		if (status == PoolingSensorCommands.Status.READY.ordinal()){
@@ -202,6 +222,7 @@ public class EnvironmentPooling extends ActorClassBase {
 		}
 	}
 	protected void action_TRANS_tr3_FROM_processChecking_TO_processChecking_BY_sendStatuspoolingCarbonMonohyde_tr3(InterfaceItemBase ifitem, byte transitionData) {
+		carbonNextActivationInMs += PERIOD_OF_ACTIVATION;
 		int status = transitionData;               
 		if (status == PoolingSensorCommands.Status.NOT_READY.ordinal()){
 		     	timingService.kill();
@@ -215,14 +236,14 @@ public class EnvironmentPooling extends ActorClassBase {
 		        sendAlarm.alarmErrorReadingCarbonMonoxyde();
 		        poolingCarbonMonohyde.startADConverstion();
 		        timingService.kill();
-		        timingService.startTimeout(PERIOD_OF_CHECKING_DEVICE);      
-		    }       
+		        timingService.startTimeout(calculateWaitTime(carbonNextActivationInMs));						    }       
 		}
 		if (status == PoolingSensorCommands.Status.READY.ordinal()){
 		     poolingCarbonMonohyde.readValueRegister();
 		}
 	}
 	protected void action_TRANS_tr1_FROM_processChecking_TO_processChecking_BY_sendStatuspoolingAirFlow_tr1(InterfaceItemBase ifitem, byte transitionData) {
+		airFlowNextActivationInMs += PERIOD_OF_ACTIVATION;
 		int status = transitionData;               
 		if (status == PoolingSensorCommands.Status.NOT_READY.ordinal()){
 		     	timingService.kill();
@@ -236,25 +257,26 @@ public class EnvironmentPooling extends ActorClassBase {
 		        sendAlarm.alarmErrorReadingAirFlow();
 		        poolingAirFlow.startADConverstion();
 		        timingService.kill();
-		        timingService.startTimeout(PERIOD_OF_CHECKING_DEVICE);      
-		    }       
+		        timingService.startTimeout(calculateWaitTime(airFlowNextActivationInMs));						    }       
 		}
 		if (status == PoolingSensorCommands.Status.READY.ordinal()){
 		     poolingAirFlow.readValueRegister();
 		}
 	}
 	protected void action_TRANS_tr4_FROM_processChecking_TO_processChecking_BY_sendValueRegisterpoolingAirFlow_tr4(InterfaceItemBase ifitem, double transitionData) {
+		airFlowNextActivationInMs += PERIOD_OF_ACTIVATION;
 		System.out.println("Izmeren airflow: " + transitionData);
 		double value = transitionData;
 		if (value <= AIRFLOW_LOW_LEVEL){
 			sendAlarm.alarmLowAirFlow();
 		}
-		 poolingAirFlow.startADConverstion();
-		 timingService.kill();
-		 timingService.startTimeout(PERIOD_OF_CHECKING_DEVICE);
-		 currentAirFlowErrorCount = 0;
+		poolingAirFlow.startADConverstion();
+		timingService.kill();
+		timingService.startTimeout(calculateWaitTime(airFlowNextActivationInMs));
+		currentAirFlowErrorCount = 0;
 	}
 	protected void action_TRANS_tr5_FROM_processChecking_TO_processChecking_BY_sendValueRegisterpoolingMethane_tr5(InterfaceItemBase ifitem, double transitionData) {
+		methaneNextActivationInMs += PERIOD_OF_ACTIVATION;
 		System.out.println("Izmeren metan: " + transitionData);
 		double value = transitionData;
 		if (value >= METHANE_HIGH_LEVEL){
@@ -264,11 +286,12 @@ public class EnvironmentPooling extends ActorClassBase {
 			methaneLevel.normalLevel();
 		}
 		currentMethaneErrorCount = 0;
-		 poolingMethane.startADConverstion();
-		 timingService.kill();
-		 timingService.startTimeout(PERIOD_OF_CHECKING_DEVICE);
+		timingService.startTimeout(calculateWaitTime(methaneNextActivationInMs));
+		timingService.kill();
+		 timingService.startTimeout(PERIOD_OF_ACTIVATION);
 	}
 	protected void action_TRANS_tr6_FROM_processChecking_TO_processChecking_BY_sendValueRegisterpoolingCarbonMonohyde_tr6(InterfaceItemBase ifitem, double transitionData) {
+		carbonNextActivationInMs += PERIOD_OF_ACTIVATION;
 		System.out.println("Izmeren carbon monohyde: " + transitionData);
 		double value = transitionData;
 		if (value >= CARBON_MONOXYDE_HIGH_LEVEL){
@@ -277,7 +300,7 @@ public class EnvironmentPooling extends ActorClassBase {
 		poolingCarbonMonohyde.startADConverstion();
 		timingService.kill();
 		currentCarbonMonoxydeErrorCount = 0;
-		timingService.startTimeout(PERIOD_OF_CHECKING_DEVICE);     
+		timingService.startTimeout(calculateWaitTime(carbonNextActivationInMs));
 	}
 	
 	/* State Switch Methods */

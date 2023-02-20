@@ -16,10 +16,11 @@ public class EventHappened {
 	// message IDs
 	public static final int MSG_MIN = 0;
 	public static final int OUT_eventHappened = 1;
-	public static final int MSG_MAX = 2;
+	public static final int OUT_normalLevel = 2;
+	public static final int MSG_MAX = 3;
 
 
-	private static String messageStrings[] = {"MIN", "eventHappened", "MAX"};
+	private static String messageStrings[] = {"MIN", "eventHappened","normalLevel", "MAX"};
 
 	public String getMessageString(int msg_id) {
 		if (msg_id<MSG_MIN || msg_id>MSG_MAX+1){
@@ -69,6 +70,11 @@ public class EventHappened {
 			if (getPeerAddress()!=null)
 				getPeerMsgReceiver().receive(new EventMessage(getPeerAddress(), OUT_eventHappened));
 		}
+		public void normalLevel() {
+			DebuggingService.getInstance().addMessageAsyncOut(getAddress(), getPeerAddress(), messageStrings[OUT_normalLevel]);
+			if (getPeerAddress()!=null)
+				getPeerMsgReceiver().receive(new EventMessage(getPeerAddress(), OUT_normalLevel));
+		}
 	}
 	
 	// replicated port class
@@ -98,6 +104,11 @@ public class EventHappened {
 		public void eventHappened(){
 			for (InterfaceItemBase item : getItems()) {
 				((EventHappenedPort)item).eventHappened();
+			}
+		}
+		public void normalLevel(){
+			for (InterfaceItemBase item : getItems()) {
+				((EventHappenedPort)item).normalLevel();
 			}
 		}
 	}

@@ -1,6 +1,7 @@
 RoomModel InterrupSensorModel {
 
 	import etrice.api.types.*
+	import etrice.api.timer.PTimer
 
 	eventdriven ActorClass InterruptSensor {
 
@@ -10,19 +11,40 @@ RoomModel InterrupSensorModel {
 		}
 
 		Structure {
+			usercode2 '''
+				private static int PERIOD_OF_ACTIVATION_MS = 5000;
+				private boolean eventHappened = false;
+			'''
 			external Port inputEvent
 			external Port outputEvent
+			SAP timingService: PTimer
 		}
 		Behavior {
 			StateMachine {
 				State waitForEvent
-				Transition init1: initial -> waitForEvent
+				Transition init1: initial -> waitForEvent {
+					action '''
+						timingService.startTimeout(PERIOD_OF_ACTIVATION_MS);                        
+					'''
+				}
 				Transition eventHappened: waitForEvent -> waitForEvent {
 					triggers {
 						<eventHappened: inputEvent>
 					}
 					action '''
-						outputEvent.eventHappened();
+						eventHappened = true;
+					'''
+				}
+				Transition tr0: waitForEvent -> waitForEvent {
+					triggers {
+						<timeout: timingService>
+					}
+					action '''
+						if(eventHappened){
+						    outputEvent.eventHappened();
+						    eventHappened = false;
+						}
+						timingService.startTimeout(PERIOD_OF_ACTIVATION_MS);						
 					'''
 				}
 			}
@@ -32,6 +54,7 @@ RoomModel InterrupSensorModel {
 	eventdriven ProtocolClass EventHappened {
 		outgoing {
 			Message eventHappened()
+			Message normalLevel()
 		}
 	}
 

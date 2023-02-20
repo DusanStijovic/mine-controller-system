@@ -20,23 +20,36 @@ import PoolingSensorModel.PoolingSensorCommands.*;
 import PumpModel.PumpMotorControll.*;
 import EnvironmentModel.supstanceLevelEvent.*;
 
+/*--------------------- begin user code ---------------------*/
+import java.util.Date;
+import java.util.Calendar;
+
+/*--------------------- end user code ---------------------*/
 
 
 public class PumpControlStation extends ActorClassBase {
 
 	/*--------------------- begin user code ---------------------*/
-	private boolean isPumpActive = true;
+	private boolean isPumpActive = false;
 	private int MAX_ERROR_COUNT = 2;
-	private boolean shouldGetFlow;
+	private boolean shouldGetFlow = false;
 	private int errorCount = 0;
 	private int numberOfSameMeasure = 0;
-	private static int MAX_TIME_FOR_MOTOR_CHANGE_MS = 900;
-	private static int PERIOD_OF_ACTIVATION_MS = 20;
-	private static int NUM_OF_NEEDED_MEASURE = MAX_TIME_FOR_MOTOR_CHANGE_MS / PERIOD_OF_ACTIVATION_MS;
-	private static int PERIOD_OF_CHECKING_DEVICE = 20;
+	private static int PERIOD_OF_ACTIVATION_MS = 100;
+	private static int NUM_OF_NEEDED_MEASURE = 11;
+	private static int PERIOD_OF_CHECKING_DEVICE = 50;
 	private boolean highDetected = false;
 	private boolean lowDetected = false;
 	private  boolean highMethaneDetected = false;
+	private boolean inProcess = false;
+	private long waterSensorActivationInMs = 0;
+	
+	private int calculateWaitTime(long nextActivationInMs){
+		long waitTime = nextActivationInMs - Calendar.getInstance().getTimeInMillis();
+		waitTime = Math.max(waitTime, 1);
+		return (int)waitTime;
+	}
+	
 	
 	/*--------------------- end user code ---------------------*/
 
@@ -143,34 +156,29 @@ public class PumpControlStation extends ActorClassBase {
 
 	/* state IDs */
 	public static final int STATE_startCheckingPumpState = 2;
-	public static final int STATE_lowWaterLevelHandler = 3;
-	public static final int STATE_highWaterHandler = 4;
-	public static final int STATE_init = 5;
-	public static final int STATE_askForStatus = 6;
-	public static final int STATE_statusGet = 7;
-	public static final int STATE_highMethaneLevelHandler = 8;
-	public static final int STATE_MAX = 9;
+	public static final int STATE_askForStatus = 3;
+	public static final int STATE_statusGet = 4;
+	public static final int STATE_MAX = 5;
 	
 	/* transition chains */
-	public static final int CHAIN_TRANS_INITIAL_TO__init = 1;
-	public static final int CHAIN_TRANS_initialTimeOut_FROM_startCheckingPumpState_TO_startCheckingPumpState_BY_timeouttimingService_initialTimeOut = 2;
-	public static final int CHAIN_TRANS_tr1_FROM_startCheckingPumpState_TO_askForStatus_BY_timeouttimingService = 3;
-	public static final int CHAIN_TRANS_t_FROM_askForStatus_TO_statusGet_BY_sendStatuswaterFlowSensor = 4;
-	public static final int CHAIN_TRANS_tr0_FROM_statusGet_TO_askForStatus_BY_timeouttimingService = 5;
-	public static final int CHAIN_TRANS_tr4_FROM_lowWaterLevelHandler_TO_startCheckingPumpState_BY_timeouttimingService = 6;
-	public static final int CHAIN_TRANS_tr5_FROM_highWaterHandler_TO_startCheckingPumpState_BY_timeouttimingService = 7;
-	public static final int CHAIN_TRANS_tr7_FROM_highMethaneLevelHandler_TO_startCheckingPumpState_BY_timeouttimingService = 8;
-	public static final int CHAIN_TRANS_tr6_FROM_init_TO_lowWaterLevelHandler_BY_eventHappenedlowWaterSensor = 9;
-	public static final int CHAIN_TRANS_tr8_FROM_init_TO_highWaterHandler_BY_eventHappenedhighWaterSensor = 10;
-	public static final int CHAIN_TRANS_tr9_FROM_init_TO_highMethaneLevelHandler_BY_highLevelmethaneLevel = 11;
-	public static final int CHAIN_TRANS_tr11_FROM_statusGet_TO_init_BY_sendValueRegisterwaterFlowSensor = 12;
-	public static final int CHAIN_TRANS_tr2_FROM_statusGet_TO_startCheckingPumpState_BY_sendErrorRegisterwaterFlowSensor = 13;
-	public static final int CHAIN_TRANS_tr3_FROM_init_TO_init_BY_normalLevelmethaneLevel_tr3 = 14;
+	public static final int CHAIN_TRANS_initialTimeOut_FROM_startCheckingPumpState_TO_startCheckingPumpState_BY_timeouttimingService_initialTimeOut = 1;
+	public static final int CHAIN_TRANS_tr1_FROM_startCheckingPumpState_TO_askForStatus_BY_timeouttimingService = 2;
+	public static final int CHAIN_TRANS_t_FROM_askForStatus_TO_statusGet_BY_sendStatuswaterFlowSensor = 3;
+	public static final int CHAIN_TRANS_tr0_FROM_statusGet_TO_askForStatus_BY_timeouttimingService = 4;
+	public static final int CHAIN_TRANS_tr6_FROM_startCheckingPumpState_TO_startCheckingPumpState_BY_eventHappenedlowWaterSensor_tr6 = 5;
+	public static final int CHAIN_TRANS_tr8_FROM_startCheckingPumpState_TO_startCheckingPumpState_BY_eventHappenedhighWaterSensor_tr8 = 6;
+	public static final int CHAIN_TRANS_tr9_FROM_startCheckingPumpState_TO_startCheckingPumpState_BY_highLevelmethaneLevel_tr9 = 7;
+	public static final int CHAIN_TRANS_tr11_FROM_statusGet_TO_startCheckingPumpState_BY_sendValueRegisterwaterFlowSensor = 8;
+	public static final int CHAIN_TRANS_tr2_FROM_statusGet_TO_startCheckingPumpState_BY_sendErrorRegisterwaterFlowSensor = 9;
+	public static final int CHAIN_TRANS_tr3_FROM_startCheckingPumpState_TO_startCheckingPumpState_BY_normalLevelmethaneLevel_tr3 = 10;
+	public static final int CHAIN_TRANS_INITIAL_TO__startCheckingPumpState = 11;
 	
 	/* triggers */
 	public static final int POLLING = 0;
 	public static final int TRIG_lowWaterSensor__eventHappened = IFITEM_lowWaterSensor + EVT_SHIFT*EventHappened.OUT_eventHappened;
+	public static final int TRIG_lowWaterSensor__normalLevel = IFITEM_lowWaterSensor + EVT_SHIFT*EventHappened.OUT_normalLevel;
 	public static final int TRIG_highWaterSensor__eventHappened = IFITEM_highWaterSensor + EVT_SHIFT*EventHappened.OUT_eventHappened;
+	public static final int TRIG_highWaterSensor__normalLevel = IFITEM_highWaterSensor + EVT_SHIFT*EventHappened.OUT_normalLevel;
 	public static final int TRIG_waterFlowSensor__sendStatus = IFITEM_waterFlowSensor + EVT_SHIFT*PoolingSensorCommands.IN_sendStatus;
 	public static final int TRIG_waterFlowSensor__sendValueRegister = IFITEM_waterFlowSensor + EVT_SHIFT*PoolingSensorCommands.IN_sendValueRegister;
 	public static final int TRIG_waterFlowSensor__sendErrorRegister = IFITEM_waterFlowSensor + EVT_SHIFT*PoolingSensorCommands.IN_sendErrorRegister;
@@ -185,16 +193,12 @@ public class PumpControlStation extends ActorClassBase {
 		"<no state>",
 		"<top>",
 		"startCheckingPumpState",
-		"lowWaterLevelHandler",
-		"highWaterHandler",
-		"init",
 		"askForStatus",
-		"statusGet",
-		"highMethaneLevelHandler"
+		"statusGet"
 	};
 	
 	// history
-	protected int history[] = {NO_STATE, NO_STATE, NO_STATE, NO_STATE, NO_STATE, NO_STATE, NO_STATE, NO_STATE, NO_STATE};
+	protected int history[] = {NO_STATE, NO_STATE, NO_STATE, NO_STATE, NO_STATE};
 	
 	private void setState(int new_state) {
 		DebuggingService.getInstance().addActorState(this,stateStrings[new_state]);
@@ -203,73 +207,74 @@ public class PumpControlStation extends ActorClassBase {
 	
 	/* Entry and Exit Codes */
 	protected void entry_startCheckingPumpState() {
-								if (numberOfSameMeasure <= NUM_OF_NEEDED_MEASURE){
-									shouldGetFlow = false;
-									numberOfSameMeasure++;
-									timingService.kill();
-									timingService.startTimeout(PERIOD_OF_ACTIVATION_MS);
-		//							System.out.println("ne racunaj jos uvek");
-								} else {
-									System.out.println("Usao u proveru");
-									numberOfSameMeasure = 0;
-									waterFlowSensor.startADConverstion();
-									shouldGetFlow = true;
-									timingService.kill();
-									timingService.startTimeout(PERIOD_OF_CHECKING_DEVICE);
-									System.out.println("daj racun");
-									
-								}
-	}
-	protected void entry_lowWaterLevelHandler() {
-		System.out.println("Usao low pre provere");
-			if (!lowDetected){
-									System.out.println("Usao low nakon provere");
-				controlMotor.turnOffPump();
-				isPumpActive = false;
-				lowDetected = true;
-				highDetected = false;
-				numberOfSameMeasure = 0;
-				shouldGetFlow = false;
-				timingService.kill();
-				timingService.startTimeout(PERIOD_OF_ACTIVATION_MS);
-			}
-	}
-	protected void entry_highWaterHandler() {
-		System.out.println("Usao high pre provere");
-			if (!highDetected){
-				highDetected = true;
-				lowDetected = false;
-				System.out.println("Usao high nakon provere");
-				controlMotor.turnOnPump();
-				isPumpActive = true;
-				numberOfSameMeasure = 0;
-				shouldGetFlow = false;
-				timingService.kill();
-				timingService.startTimeout(PERIOD_OF_ACTIVATION_MS);
-			}
+		waterSensorActivationInMs += PERIOD_OF_ACTIVATION_MS;
+		if (!inProcess){
+		    if (highDetected){
+		        highDetected = false;
+		        inProcess = true;
+		        System.out.println("Usao high nakon provere");
+		        inProcess = true;
+		        controlMotor.turnOnPump();
+		        isPumpActive = true;
+		        numberOfSameMeasure = 0;
+		        shouldGetFlow = false;
+		        timingService.kill();
+		        timingService.startTimeout(calculateWaitTime(waterSensorActivationInMs));
+		    } else if (lowDetected){
+		        lowDetected = false;
+		        inProcess = true;
+		        System.out.println("Usao low nakon provere");
+		        controlMotor.turnOffPump();
+		        isPumpActive = false;
+		        numberOfSameMeasure = 0;
+		        shouldGetFlow = false;
+		        timingService.kill();
+		        timingService.startTimeout(calculateWaitTime(waterSensorActivationInMs));
+		    } else if (highMethaneDetected){
+		        highMethaneDetected = false;
+		        inProcess = true;
+		        System.out.println("Usao high metan nakon provere");
+		        controlMotor.turnOffPump();
+		        isPumpActive = false;
+		        numberOfSameMeasure = 0;
+		        shouldGetFlow = false;
+		        timingService.kill();
+		        timingService.startTimeout(calculateWaitTime(waterSensorActivationInMs));
+		    } else {
+		        inProcess = true;
+		        // System.out.println("Normalna provera");
+		        shouldGetFlow = true;
+		        timingService.kill();
+		        waterFlowSensor.startADConverstion();
+		        timingService.startTimeout(calculateWaitTime(waterSensorActivationInMs));
+		        // System.out.println("Posalji status odbirka");
+		    }
+		} else {              
+		    if (numberOfSameMeasure <= NUM_OF_NEEDED_MEASURE){
+		        shouldGetFlow = false;
+		        numberOfSameMeasure++;
+		        timingService.kill();
+		        timingService.startTimeout(calculateWaitTime(waterSensorActivationInMs));
+		       // System.out.println("ne racunaj jos uvek");
+		    } else {
+		        System.out.println("Usao u proveru");
+		        numberOfSameMeasure = 0;
+		        shouldGetFlow = true;
+		        timingService.kill();
+		        waterFlowSensor.startADConverstion();
+		        timingService.startTimeout(calculateWaitTime(waterSensorActivationInMs));
+		        System.out.println("Posalji status odbirka");
+		    }
+		}
 	}
 	protected void entry_askForStatus() {
 		waterFlowSensor.readStatus();
-	}
-	protected void entry_highMethaneLevelHandler() {
-		System.out.println("Metan");
-		if (!highMethaneDetected){
-			if (isPumpActive){
-				controlMotor.turnOffPump();
-				isPumpActive = false;
-			}	
-			highMethaneDetected = true;
-			numberOfSameMeasure = 0;
-			shouldGetFlow = false;
-			timingService.kill();
-			timingService.startTimeout(PERIOD_OF_ACTIVATION_MS);
-			}
 	}
 	
 	/* Action Codes */
 	protected void action_TRANS_t_FROM_askForStatus_TO_statusGet_BY_sendStatuswaterFlowSensor(InterfaceItemBase ifitem, byte transitionData) {
 		int status = transitionData;
-										System.out.println("Nesto");
+		System.out.println("Dobijanje statusa");
 		
 		if (status == PoolingSensorCommands.Status.NOT_READY.ordinal()){
 				timingService.startTimeout(PERIOD_OF_CHECKING_DEVICE);
@@ -290,27 +295,38 @@ public class PumpControlStation extends ActorClassBase {
 		 	waterFlowSensor.readValueRegister();
 		}
 	}
-	protected void action_TRANS_tr11_FROM_statusGet_TO_init_BY_sendValueRegisterwaterFlowSensor(InterfaceItemBase ifitem, double transitionData) {
+	protected void action_TRANS_tr6_FROM_startCheckingPumpState_TO_startCheckingPumpState_BY_eventHappenedlowWaterSensor_tr6(InterfaceItemBase ifitem) {
+		lowDetected = true;
+	}
+	protected void action_TRANS_tr8_FROM_startCheckingPumpState_TO_startCheckingPumpState_BY_eventHappenedhighWaterSensor_tr8(InterfaceItemBase ifitem) {
+		highDetected = true;
+	}
+	protected void action_TRANS_tr9_FROM_startCheckingPumpState_TO_startCheckingPumpState_BY_highLevelmethaneLevel_tr9(InterfaceItemBase ifitem) {
+		highMethaneDetected = true;
+	}
+	protected void action_TRANS_tr11_FROM_statusGet_TO_startCheckingPumpState_BY_sendValueRegisterwaterFlowSensor(InterfaceItemBase ifitem, double transitionData) {
 		double waterFlow = transitionData;
 		System.out.println("WaterFlow: " + waterFlow);
 		if (isPumpActive && waterFlow == 0){
-			alarmSender.alarmErrorStartingPump();
-			highDetected = false;
-			System.out.println("Poslat zahtev za aktiviranje pumpe, a protok vode ne postoji");
+		    alarmSender.alarmErrorStartingPump();
+		    System.out.println("Poslat zahtev za aktiviranje pumpe, a protok vode ne postoji");
 		}
 		if (!isPumpActive && waterFlow != 0){
-			alarmSender.alarmErrorStoppingPump();
-			lowDetected = false;
-			System.out.println("Poslat zahtev za gasenje pumpe, a protok vode postoji");
+		    alarmSender.alarmErrorStoppingPump();
+		    System.out.println("Poslat zahtev za gasenje pumpe, a protok vode postoji");
 		}
 		if (isPumpActive && waterFlow != 0){
-			System.out.println("Pumpa radi i protoka ima");
+		    System.out.println("Pumpa radi i protoka ima");
 		}
 		if (!isPumpActive && waterFlow == 0){
-			System.out.println("Pumpa ne radi  i nema protoka");
+		    System.out.println("Pumpa ne radi  i nema protoka");
 		}
+		inProcess = false;
 	}
-	protected void action_TRANS_tr3_FROM_init_TO_init_BY_normalLevelmethaneLevel_tr3(InterfaceItemBase ifitem) {
+	protected void action_TRANS_tr2_FROM_statusGet_TO_startCheckingPumpState_BY_sendErrorRegisterwaterFlowSensor(InterfaceItemBase ifitem, String transitionData) {
+		inProcess = false;
+	}
+	protected void action_TRANS_tr3_FROM_startCheckingPumpState_TO_startCheckingPumpState_BY_normalLevelmethaneLevel_tr3(InterfaceItemBase ifitem) {
 		highMethaneDetected = false;
 	}
 	
@@ -326,22 +342,6 @@ public class PumpControlStation extends ActorClassBase {
 			switch (current__et) {
 				case STATE_askForStatus:
 					this.history[STATE_TOP] = STATE_askForStatus;
-					current__et = STATE_TOP;
-					break;
-				case STATE_highMethaneLevelHandler:
-					this.history[STATE_TOP] = STATE_highMethaneLevelHandler;
-					current__et = STATE_TOP;
-					break;
-				case STATE_highWaterHandler:
-					this.history[STATE_TOP] = STATE_highWaterHandler;
-					current__et = STATE_TOP;
-					break;
-				case STATE_init:
-					this.history[STATE_TOP] = STATE_init;
-					current__et = STATE_TOP;
-					break;
-				case STATE_lowWaterLevelHandler:
-					this.history[STATE_TOP] = STATE_lowWaterLevelHandler;
 					current__et = STATE_TOP;
 					break;
 				case STATE_startCheckingPumpState:
@@ -368,9 +368,9 @@ public class PumpControlStation extends ActorClassBase {
 	 */
 	private int executeTransitionChain(int chain__et, InterfaceItemBase ifitem, Object generic_data__et) {
 		switch (chain__et) {
-			case PumpControlStation.CHAIN_TRANS_INITIAL_TO__init:
+			case PumpControlStation.CHAIN_TRANS_INITIAL_TO__startCheckingPumpState:
 			{
-				return STATE_init;
+				return STATE_startCheckingPumpState;
 			}
 			case PumpControlStation.CHAIN_TRANS_initialTimeOut_FROM_startCheckingPumpState_TO_startCheckingPumpState_BY_timeouttimingService_initialTimeOut:
 			{
@@ -386,11 +386,11 @@ public class PumpControlStation extends ActorClassBase {
 			{
 				return STATE_askForStatus;
 			}
-			case PumpControlStation.CHAIN_TRANS_tr11_FROM_statusGet_TO_init_BY_sendValueRegisterwaterFlowSensor:
+			case PumpControlStation.CHAIN_TRANS_tr11_FROM_statusGet_TO_startCheckingPumpState_BY_sendValueRegisterwaterFlowSensor:
 			{
 				double transitionData = (Double) generic_data__et;
-				action_TRANS_tr11_FROM_statusGet_TO_init_BY_sendValueRegisterwaterFlowSensor(ifitem, transitionData);
-				return STATE_init;
+				action_TRANS_tr11_FROM_statusGet_TO_startCheckingPumpState_BY_sendValueRegisterwaterFlowSensor(ifitem, transitionData);
+				return STATE_startCheckingPumpState;
 			}
 			case PumpControlStation.CHAIN_TRANS_tr1_FROM_startCheckingPumpState_TO_askForStatus_BY_timeouttimingService:
 			{
@@ -399,36 +399,28 @@ public class PumpControlStation extends ActorClassBase {
 			case PumpControlStation.CHAIN_TRANS_tr2_FROM_statusGet_TO_startCheckingPumpState_BY_sendErrorRegisterwaterFlowSensor:
 			{
 				String transitionData = (String) generic_data__et;
+				action_TRANS_tr2_FROM_statusGet_TO_startCheckingPumpState_BY_sendErrorRegisterwaterFlowSensor(ifitem, transitionData);
 				return STATE_startCheckingPumpState;
 			}
-			case PumpControlStation.CHAIN_TRANS_tr3_FROM_init_TO_init_BY_normalLevelmethaneLevel_tr3:
+			case PumpControlStation.CHAIN_TRANS_tr3_FROM_startCheckingPumpState_TO_startCheckingPumpState_BY_normalLevelmethaneLevel_tr3:
 			{
-				action_TRANS_tr3_FROM_init_TO_init_BY_normalLevelmethaneLevel_tr3(ifitem);
-				return STATE_init;
-			}
-			case PumpControlStation.CHAIN_TRANS_tr4_FROM_lowWaterLevelHandler_TO_startCheckingPumpState_BY_timeouttimingService:
-			{
+				action_TRANS_tr3_FROM_startCheckingPumpState_TO_startCheckingPumpState_BY_normalLevelmethaneLevel_tr3(ifitem);
 				return STATE_startCheckingPumpState;
 			}
-			case PumpControlStation.CHAIN_TRANS_tr5_FROM_highWaterHandler_TO_startCheckingPumpState_BY_timeouttimingService:
+			case PumpControlStation.CHAIN_TRANS_tr6_FROM_startCheckingPumpState_TO_startCheckingPumpState_BY_eventHappenedlowWaterSensor_tr6:
 			{
+				action_TRANS_tr6_FROM_startCheckingPumpState_TO_startCheckingPumpState_BY_eventHappenedlowWaterSensor_tr6(ifitem);
 				return STATE_startCheckingPumpState;
 			}
-			case PumpControlStation.CHAIN_TRANS_tr6_FROM_init_TO_lowWaterLevelHandler_BY_eventHappenedlowWaterSensor:
+			case PumpControlStation.CHAIN_TRANS_tr8_FROM_startCheckingPumpState_TO_startCheckingPumpState_BY_eventHappenedhighWaterSensor_tr8:
 			{
-				return STATE_lowWaterLevelHandler;
-			}
-			case PumpControlStation.CHAIN_TRANS_tr7_FROM_highMethaneLevelHandler_TO_startCheckingPumpState_BY_timeouttimingService:
-			{
+				action_TRANS_tr8_FROM_startCheckingPumpState_TO_startCheckingPumpState_BY_eventHappenedhighWaterSensor_tr8(ifitem);
 				return STATE_startCheckingPumpState;
 			}
-			case PumpControlStation.CHAIN_TRANS_tr8_FROM_init_TO_highWaterHandler_BY_eventHappenedhighWaterSensor:
+			case PumpControlStation.CHAIN_TRANS_tr9_FROM_startCheckingPumpState_TO_startCheckingPumpState_BY_highLevelmethaneLevel_tr9:
 			{
-				return STATE_highWaterHandler;
-			}
-			case PumpControlStation.CHAIN_TRANS_tr9_FROM_init_TO_highMethaneLevelHandler_BY_highLevelmethaneLevel:
-			{
-				return STATE_highMethaneLevelHandler;
+				action_TRANS_tr9_FROM_startCheckingPumpState_TO_startCheckingPumpState_BY_highLevelmethaneLevel_tr9(ifitem);
+				return STATE_startCheckingPumpState;
 			}
 				default:
 					/* should not occur */
@@ -454,21 +446,6 @@ public class PumpControlStation extends ActorClassBase {
 					if (!(skip_entry__et)) entry_askForStatus();
 					/* in leaf state: return state id */
 					return STATE_askForStatus;
-				case STATE_highMethaneLevelHandler:
-					if (!(skip_entry__et)) entry_highMethaneLevelHandler();
-					/* in leaf state: return state id */
-					return STATE_highMethaneLevelHandler;
-				case STATE_highWaterHandler:
-					if (!(skip_entry__et)) entry_highWaterHandler();
-					/* in leaf state: return state id */
-					return STATE_highWaterHandler;
-				case STATE_init:
-					/* in leaf state: return state id */
-					return STATE_init;
-				case STATE_lowWaterLevelHandler:
-					if (!(skip_entry__et)) entry_lowWaterLevelHandler();
-					/* in leaf state: return state id */
-					return STATE_lowWaterLevelHandler;
 				case STATE_startCheckingPumpState:
 					if (!(skip_entry__et)) entry_startCheckingPumpState();
 					/* in leaf state: return state id */
@@ -489,7 +466,7 @@ public class PumpControlStation extends ActorClassBase {
 	}
 	
 	public void executeInitTransition() {
-		int chain__et = PumpControlStation.CHAIN_TRANS_INITIAL_TO__init;
+		int chain__et = PumpControlStation.CHAIN_TRANS_INITIAL_TO__startCheckingPumpState;
 		int next__et = executeTransitionChain(chain__et, null, null);
 		next__et = enterHistory(next__et);
 		setState(next__et);
@@ -516,87 +493,32 @@ public class PumpControlStation extends ActorClassBase {
 							break;
 					}
 					break;
-				case STATE_highMethaneLevelHandler:
-					switch(trigger__et) {
-						case TRIG_timingService__timeout:
-							{
-								chain__et = PumpControlStation.CHAIN_TRANS_tr7_FROM_highMethaneLevelHandler_TO_startCheckingPumpState_BY_timeouttimingService;
-								catching_state__et = STATE_TOP;
-							}
-						break;
-						default:
-							/* should not occur */
-							break;
-					}
-					break;
-				case STATE_highWaterHandler:
-					switch(trigger__et) {
-						case TRIG_timingService__timeout:
-							{
-								chain__et = PumpControlStation.CHAIN_TRANS_tr5_FROM_highWaterHandler_TO_startCheckingPumpState_BY_timeouttimingService;
-								catching_state__et = STATE_TOP;
-							}
-						break;
-						default:
-							/* should not occur */
-							break;
-					}
-					break;
-				case STATE_init:
+				case STATE_startCheckingPumpState:
 					switch(trigger__et) {
 						case TRIG_highWaterSensor__eventHappened:
-							{ 
-							if (!highDetected && !highMethaneDetected)
 							{
-								chain__et = PumpControlStation.CHAIN_TRANS_tr8_FROM_init_TO_highWaterHandler_BY_eventHappenedhighWaterSensor;
+								chain__et = PumpControlStation.CHAIN_TRANS_tr8_FROM_startCheckingPumpState_TO_startCheckingPumpState_BY_eventHappenedhighWaterSensor_tr8;
 								catching_state__et = STATE_TOP;
-							}
 							}
 						break;
 						case TRIG_lowWaterSensor__eventHappened:
-							{ 
-							if (!lowDetected)
 							{
-								chain__et = PumpControlStation.CHAIN_TRANS_tr6_FROM_init_TO_lowWaterLevelHandler_BY_eventHappenedlowWaterSensor;
+								chain__et = PumpControlStation.CHAIN_TRANS_tr6_FROM_startCheckingPumpState_TO_startCheckingPumpState_BY_eventHappenedlowWaterSensor_tr6;
 								catching_state__et = STATE_TOP;
-							}
 							}
 						break;
 						case TRIG_methaneLevel__highLevel:
-							{ 
-							if (!highMethaneDetected)
 							{
-								chain__et = PumpControlStation.CHAIN_TRANS_tr9_FROM_init_TO_highMethaneLevelHandler_BY_highLevelmethaneLevel;
+								chain__et = PumpControlStation.CHAIN_TRANS_tr9_FROM_startCheckingPumpState_TO_startCheckingPumpState_BY_highLevelmethaneLevel_tr9;
 								catching_state__et = STATE_TOP;
-							}
 							}
 						break;
 						case TRIG_methaneLevel__normalLevel:
 							{
-								chain__et = PumpControlStation.CHAIN_TRANS_tr3_FROM_init_TO_init_BY_normalLevelmethaneLevel_tr3;
+								chain__et = PumpControlStation.CHAIN_TRANS_tr3_FROM_startCheckingPumpState_TO_startCheckingPumpState_BY_normalLevelmethaneLevel_tr3;
 								catching_state__et = STATE_TOP;
 							}
 						break;
-						default:
-							/* should not occur */
-							break;
-					}
-					break;
-				case STATE_lowWaterLevelHandler:
-					switch(trigger__et) {
-						case TRIG_timingService__timeout:
-							{
-								chain__et = PumpControlStation.CHAIN_TRANS_tr4_FROM_lowWaterLevelHandler_TO_startCheckingPumpState_BY_timeouttimingService;
-								catching_state__et = STATE_TOP;
-							}
-						break;
-						default:
-							/* should not occur */
-							break;
-					}
-					break;
-				case STATE_startCheckingPumpState:
-					switch(trigger__et) {
 						case TRIG_timingService__timeout:
 							{ 
 							if (!shouldGetFlow)
@@ -632,7 +554,7 @@ public class PumpControlStation extends ActorClassBase {
 						break;
 						case TRIG_waterFlowSensor__sendValueRegister:
 							{
-								chain__et = PumpControlStation.CHAIN_TRANS_tr11_FROM_statusGet_TO_init_BY_sendValueRegisterwaterFlowSensor;
+								chain__et = PumpControlStation.CHAIN_TRANS_tr11_FROM_statusGet_TO_startCheckingPumpState_BY_sendValueRegisterwaterFlowSensor;
 								catching_state__et = STATE_TOP;
 							}
 						break;

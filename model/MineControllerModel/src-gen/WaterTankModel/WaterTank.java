@@ -164,6 +164,7 @@ public class WaterTank extends ActorClassBase {
 								double increaseValue = WATER_LEVEL_INCREASE_ML_PER_MS * SLEEP_TIME_IN_MS;
 		//						System.out.println("Puni se za: " + increaseValue);
 								waterLevel += increaseValue;
+								waterLevel = Math.min(waterLevel, WATER_TANK_CAPACITY_IN_ML);
 								timingService.kill();
 								timingService.startTimeout(SLEEP_TIME_IN_MS);
 	}

@@ -140,8 +140,8 @@ public class waterPumpTunnel extends ActorClassBase {
 								waterFlow = transitionData;
 								timingService.kill();
 								resetWaterFlow = true;
-								timingService.startTimeout(PUMP_FLOW_VALID_TIME);
 								wateflowSensor.sendSample(waterFlow);
+								timingService.startTimeout(PUMP_FLOW_VALID_TIME);
 	}
 	protected void action_TRANS_tr2_FROM_initial_TO_initial_BY_timeouttimingService_tr2(InterfaceItemBase ifitem) {
 		waterFlow = 0;				

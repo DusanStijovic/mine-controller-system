@@ -6,18 +6,26 @@ import org.eclipse.etrice.runtime.java.debugging.*;
 
 import static org.eclipse.etrice.runtime.java.etunit.EtUnit.*;
 
+import etrice.api.timer.*;
 import InterrupSensorModel.EventHappened.*;
+import etrice.api.timer.PTimer.*;
 
 
 
 public class InterruptSensor extends ActorClassBase {
 
+	/*--------------------- begin user code ---------------------*/
+	private static int PERIOD_OF_ACTIVATION_MS = 5000;
+	private boolean eventHappened = false;
+	
+	/*--------------------- end user code ---------------------*/
 
 	//--------------------- ports
 	protected EventHappenedConjPort inputEvent = null;
 	protected EventHappenedPort outputEvent = null;
 
 	//--------------------- saps
+	protected PTimerConjPort timingService = null;
 
 	//--------------------- services
 
@@ -26,6 +34,7 @@ public class InterruptSensor extends ActorClassBase {
 	//--------------------- interface item IDs
 	public static final int IFITEM_inputEvent = 1;
 	public static final int IFITEM_outputEvent = 2;
+	public static final int IFITEM_timingService = 3;
 
 	/*--------------------- attributes ---------------------*/
 
@@ -44,6 +53,7 @@ public class InterruptSensor extends ActorClassBase {
 		outputEvent = new EventHappenedPort(this, "outputEvent", IFITEM_outputEvent);
 
 		// own saps
+		timingService = new PTimerConjPort(this, "timingService", IFITEM_timingService, 0);
 
 		// own service implementations
 
@@ -66,6 +76,9 @@ public class InterruptSensor extends ActorClassBase {
 	public EventHappenedPort getOutputEvent (){
 		return this.outputEvent;
 	}
+	public PTimerConjPort getTimingService (){
+		return this.timingService;
+	}
 
 	//--------------------- lifecycle functions
 	public void stop(){
@@ -85,10 +98,15 @@ public class InterruptSensor extends ActorClassBase {
 	/* transition chains */
 	public static final int CHAIN_TRANS_INITIAL_TO__waitForEvent = 1;
 	public static final int CHAIN_TRANS_eventHappened_FROM_waitForEvent_TO_waitForEvent_BY_eventHappenedinputEvent_eventHappened = 2;
+	public static final int CHAIN_TRANS_tr0_FROM_waitForEvent_TO_waitForEvent_BY_timeouttimingService_tr0 = 3;
 	
 	/* triggers */
 	public static final int POLLING = 0;
 	public static final int TRIG_inputEvent__eventHappened = IFITEM_inputEvent + EVT_SHIFT*EventHappened.OUT_eventHappened;
+	public static final int TRIG_inputEvent__normalLevel = IFITEM_inputEvent + EVT_SHIFT*EventHappened.OUT_normalLevel;
+	public static final int TRIG_timingService__timeout = IFITEM_timingService + EVT_SHIFT*PTimer.OUT_timeout;
+	public static final int TRIG_timingService__internalTimer = IFITEM_timingService + EVT_SHIFT*PTimer.OUT_internalTimer;
+	public static final int TRIG_timingService__internalTimeout = IFITEM_timingService + EVT_SHIFT*PTimer.OUT_internalTimeout;
 	
 	// state names
 	protected static final String stateStrings[] = {
@@ -108,8 +126,18 @@ public class InterruptSensor extends ActorClassBase {
 	/* Entry and Exit Codes */
 	
 	/* Action Codes */
+	protected void action_TRANS_INITIAL_TO__waitForEvent() {
+		timingService.startTimeout(PERIOD_OF_ACTIVATION_MS);                        
+	}
 	protected void action_TRANS_eventHappened_FROM_waitForEvent_TO_waitForEvent_BY_eventHappenedinputEvent_eventHappened(InterfaceItemBase ifitem) {
-		outputEvent.eventHappened();
+		eventHappened = true;
+	}
+	protected void action_TRANS_tr0_FROM_waitForEvent_TO_waitForEvent_BY_timeouttimingService_tr0(InterfaceItemBase ifitem) {
+		if(eventHappened){
+		    outputEvent.eventHappened();
+		    eventHappened = false;
+		}
+		timingService.startTimeout(PERIOD_OF_ACTIVATION_MS);						
 	}
 	
 	/* State Switch Methods */
@@ -144,11 +172,17 @@ public class InterruptSensor extends ActorClassBase {
 		switch (chain__et) {
 			case InterruptSensor.CHAIN_TRANS_INITIAL_TO__waitForEvent:
 			{
+				action_TRANS_INITIAL_TO__waitForEvent();
 				return STATE_waitForEvent;
 			}
 			case InterruptSensor.CHAIN_TRANS_eventHappened_FROM_waitForEvent_TO_waitForEvent_BY_eventHappenedinputEvent_eventHappened:
 			{
 				action_TRANS_eventHappened_FROM_waitForEvent_TO_waitForEvent_BY_eventHappenedinputEvent_eventHappened(ifitem);
+				return STATE_waitForEvent;
+			}
+			case InterruptSensor.CHAIN_TRANS_tr0_FROM_waitForEvent_TO_waitForEvent_BY_timeouttimingService_tr0:
+			{
+				action_TRANS_tr0_FROM_waitForEvent_TO_waitForEvent_BY_timeouttimingService_tr0(ifitem);
 				return STATE_waitForEvent;
 			}
 				default:
@@ -203,6 +237,12 @@ public class InterruptSensor extends ActorClassBase {
 						case TRIG_inputEvent__eventHappened:
 							{
 								chain__et = InterruptSensor.CHAIN_TRANS_eventHappened_FROM_waitForEvent_TO_waitForEvent_BY_eventHappenedinputEvent_eventHappened;
+								catching_state__et = STATE_TOP;
+							}
+						break;
+						case TRIG_timingService__timeout:
+							{
+								chain__et = InterruptSensor.CHAIN_TRANS_tr0_FROM_waitForEvent_TO_waitForEvent_BY_timeouttimingService_tr0;
 								catching_state__et = STATE_TOP;
 							}
 						break;

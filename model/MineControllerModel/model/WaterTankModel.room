@@ -34,7 +34,6 @@ RoomModel WaterTankModel {
 			external Port drainWater
 		}
 		Behavior {
-
 			StateMachine {
 				State SimulacijaVode {
 					entry '''
@@ -64,6 +63,7 @@ RoomModel WaterTankModel {
 												double increaseValue = WATER_LEVEL_INCREASE_ML_PER_MS * SLEEP_TIME_IN_MS;
 						//						System.out.println("Puni se za: " + increaseValue);
 												waterLevel += increaseValue;
+												waterLevel = Math.min(waterLevel, WATER_TANK_CAPACITY_IN_ML);
 												timingService.kill();
 												timingService.startTimeout(SLEEP_TIME_IN_MS);
 					'''
@@ -110,13 +110,13 @@ RoomModel WaterTankModel {
 						<drainWater: waterTenkPump>
 					}
 					action '''
-//						System.out.println("WaterPumpTunnelFlow:" + transitionData);
-						waterTenk.drainWater(transitionData);
-						waterFlow = transitionData;
-						timingService.kill();
-						resetWaterFlow = true;
-						timingService.startTimeout(PUMP_FLOW_VALID_TIME);
-						wateflowSensor.sendSample(waterFlow);
+						//						System.out.println("WaterPumpTunnelFlow:" + transitionData);
+												waterTenk.drainWater(transitionData);
+												waterFlow = transitionData;
+												timingService.kill();
+												resetWaterFlow = true;
+												wateflowSensor.sendSample(waterFlow);
+												timingService.startTimeout(PUMP_FLOW_VALID_TIME);
 					'''
 				}
 				Transition tr2: ^initial -> ^initial {

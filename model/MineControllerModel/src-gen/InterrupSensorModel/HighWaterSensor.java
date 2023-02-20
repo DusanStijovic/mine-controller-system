@@ -6,7 +6,9 @@ import org.eclipse.etrice.runtime.java.debugging.*;
 
 import static org.eclipse.etrice.runtime.java.etunit.EtUnit.*;
 
+import etrice.api.timer.*;
 import InterrupSensorModel.EventHappened.*;
+import etrice.api.timer.PTimer.*;
 
 
 

@@ -25,7 +25,7 @@ public class PumpMotor extends ActorClassBase {
 	
 	
 	private boolean shouldIgnoreCommand(){
-		boolean ignore =  Math.random() > 0.4;
+		boolean ignore =  Math.random() > 0.7;
 		if (ignore){
 			System.out.println("Ignorisana komanda");
 		}
