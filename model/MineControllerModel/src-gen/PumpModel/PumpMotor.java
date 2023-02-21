@@ -223,7 +223,7 @@ public class PumpMotor extends ActorClassBase {
 		timingService.startTimeout(MOTOR_CHANGE_MODE_TIME_MS);
 	}
 	protected void action_TRANS_INITIAL_TO__connect() {
-		pump.connect(4023);
+		pump.connect(4021);
 	}
 	protected void action_TRANS_tr8_FROM_motorTurnOn_TO_changeModeFromOnToOff_BY_turnOffPumppump(InterfaceItemBase ifitem) {
 		timeElapsedToTurnOf = 0;

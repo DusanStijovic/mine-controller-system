@@ -413,7 +413,7 @@ RoomModel PumpModel {
 					}
 				}
 				Transition init1: initial -> connect {
-					action '''pump.connect(4023);'''
+					action '''pump.connect(4021);'''
 				}
 				Transition tr8: motorTurnOn -> changeModeFromOnToOff {
 					triggers {
@@ -451,8 +451,7 @@ RoomModel PumpModel {
 					triggers {
 						<setPumpFlow: pump>
 					}
-					action 
-					'''
+					action '''
 						WATER_DRAIN_ML = transitionData;
 						System.out.println("Promenjeno na: " + transitionData);
 					'''
