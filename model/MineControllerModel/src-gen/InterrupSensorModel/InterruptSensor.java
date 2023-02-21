@@ -10,6 +10,11 @@ import etrice.api.timer.*;
 import InterrupSensorModel.EventHappened.*;
 import etrice.api.timer.PTimer.*;
 
+/*--------------------- begin user code ---------------------*/
+import java.util.Date;
+import java.util.Calendar;
+
+/*--------------------- end user code ---------------------*/
 
 
 public class InterruptSensor extends ActorClassBase {
@@ -17,6 +22,14 @@ public class InterruptSensor extends ActorClassBase {
 	/*--------------------- begin user code ---------------------*/
 	private static int PERIOD_OF_ACTIVATION_MS = 5000;
 	private boolean eventHappened = false;
+	private long worstExecutionTime = 0;
+	private long nextActivation = 0;
+	
+	private int calculateWaitTime(long nextActivationInMs){
+		long waitTime = nextActivationInMs - System.currentTimeMillis();
+		waitTime = Math.max(waitTime, 0);
+		return (int)waitTime;
+	}
 	
 	/*--------------------- end user code ---------------------*/
 
@@ -127,17 +140,27 @@ public class InterruptSensor extends ActorClassBase {
 	
 	/* Action Codes */
 	protected void action_TRANS_INITIAL_TO__waitForEvent() {
-		timingService.startTimeout(PERIOD_OF_ACTIVATION_MS);                        
+		timingService.startTimeout(PERIOD_OF_ACTIVATION_MS);
+		nextActivation = System.currentTimeMillis();                   
 	}
 	protected void action_TRANS_eventHappened_FROM_waitForEvent_TO_waitForEvent_BY_eventHappenedinputEvent_eventHappened(InterfaceItemBase ifitem) {
 		eventHappened = true;
 	}
 	protected void action_TRANS_tr0_FROM_waitForEvent_TO_waitForEvent_BY_timeouttimingService_tr0(InterfaceItemBase ifitem) {
-		if(eventHappened){
-		    outputEvent.eventHappened();
-		    eventHappened = false;
-		}
-		timingService.startTimeout(PERIOD_OF_ACTIVATION_MS);						
+								long timeStart = System.currentTimeMillis();
+								nextActivation += PERIOD_OF_ACTIVATION_MS;
+								if(eventHappened){
+								    outputEvent.eventHappened();
+								    eventHappened = false;
+								}
+								long timeEnd = System.currentTimeMillis();
+								long duration= timeEnd - timeStart;
+		//						System.out.println("Water monitoring duration: " + duration);
+								if (duration > worstExecutionTime){
+									worstExecutionTime = duration;
+									System.out.println("WCET water monitoring: " + worstExecutionTime);
+								}
+								timingService.startTimeout(calculateWaitTime(nextActivation));						
 	}
 	
 	/* State Switch Methods */

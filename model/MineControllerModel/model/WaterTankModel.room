@@ -11,14 +11,15 @@ RoomModel WaterTankModel {
 			Port highWaterLevel: EventHappened
 			Port lowWaterLevel: EventHappened
 			conjugated Port drainWater: DrainWater
+			conjugated Port tcpWaterTenk: TcpCommunication.PTrafficLightInterface
 		}
 		Structure {
 			usercode2 '''
-				private static final double WATER_LEVEL_INCREASE_ML_PER_MS = 5;
-				private static final int SLEEP_TIME_IN_MS = 2;
-				private static final double WATER_TANK_CAPACITY_IN_ML = 5000;
-				private static final double HIGH_WATER_LIMIT_PERCENTAGE = 80;
-				private static final double LOW_WATER_LIMIT_PERCENTAGE = 20;
+				private static double WATER_LEVEL_INCREASE = 5;
+				private static final int SLEEP_TIME_IN_MS = 100;
+				private static final double WATER_TANK_CAPACITY_IN_ML = 400;
+				private static final double HIGH_WATER_LIMIT_PERCENTAGE = 70;
+				private static final double LOW_WATER_LIMIT_PERCENTAGE = 30;
 				private double waterLevel;
 				private boolean  isWaterLevelHigh(){
 					return waterLevel >= HIGH_WATER_LIMIT_PERCENTAGE * WATER_TANK_CAPACITY_IN_ML / 100.0;
@@ -27,32 +28,55 @@ RoomModel WaterTankModel {
 				private boolean  isWaterLevelLow(){
 					return waterLevel <= LOW_WATER_LIMIT_PERCENTAGE * WATER_TANK_CAPACITY_IN_ML / 100.0;
 				}
+				private double sentWaterLevel = 0;
+				
+				private Boolean sentIsLow = null;
+				private Boolean sentIsHigh = null;
+				
+				private void sendHighLevel(boolean isHigh){
+					if (sentIsHigh == null || sentIsHigh != isHigh){
+						sentIsHigh = isHigh;
+						tcpWaterTenk.setHighWaterLevel(isHigh);
+					}
+				}
+				private void sendLowLevel(boolean isLow){
+					if (sentIsLow == null || sentIsLow != isLow){
+						sentIsLow = isLow;
+						tcpWaterTenk.setLowWaterLevel(isLow);
+					}
+				}
 			'''
 			SAP timingService: PTimer
 			external Port highWaterLevel
 			external Port lowWaterLevel
 			external Port drainWater
+			external Port tcpWaterTenk
 		}
 		Behavior {
 			StateMachine {
 				State SimulacijaVode {
 					entry '''
-																		if (isWaterLevelHigh()){
-												//								System.out.println("HIGH");
-												//								System.out.println("Water Level: " + waterLevel);
-																				highWaterLevel.eventHappened();
-																		}
-																		if (isWaterLevelLow()){
-						//														System.out.println("LOW");
-												//								System.out.println("Water Level: " + waterLevel);
-																				lowWaterLevel.eventHappened();
-																		}
+						if (isWaterLevelHigh()){
+							//System.out.println("HIGH");
+							//System.out.println("Water Level: " + waterLevel);
+							highWaterLevel.eventHappened();
+							sendHighLevel(true);
+						} else {
+							sendHighLevel(false);
+						}
+						if (isWaterLevelLow()){
+							//System.out.println("LOW");
+							//System.out.println("Water Level: " + waterLevel);
+							lowWaterLevel.eventHappened();
+							sendLowLevel(true);
+						} else {
+							sendLowLevel(false);
+						}
 					'''
 				}
-				Transition init0: initial -> SimulacijaVode {
+				Transition init0: initial -> connect {
 					action '''
-						timingService.kill();
-						timingService.startTimeout(SLEEP_TIME_IN_MS);
+						tcpWaterTenk.connect(4022);
 					'''
 				}
 				Transition napuniVodu: SimulacijaVode -> SimulacijaVode {
@@ -60,10 +84,13 @@ RoomModel WaterTankModel {
 						<timeout: timingService>
 					}
 					action '''
-												double increaseValue = WATER_LEVEL_INCREASE_ML_PER_MS * SLEEP_TIME_IN_MS;
+												double increaseValue = WATER_LEVEL_INCREASE;
 						//						System.out.println("Puni se za: " + increaseValue);
 												waterLevel += increaseValue;
-												waterLevel = Math.min(waterLevel, WATER_TANK_CAPACITY_IN_ML);
+												if (waterLevel != sentWaterLevel){
+													tcpWaterTenk.setWaterLevel(waterLevel);
+													sentWaterLevel = waterLevel;
+												}
 												timingService.kill();
 												timingService.startTimeout(SLEEP_TIME_IN_MS);
 					'''
@@ -75,9 +102,31 @@ RoomModel WaterTankModel {
 					action '''
 						//						System.out.println("Umanjenje za: " + transitionData);
 												waterLevel -= transitionData;
-												if (waterLevel < 0){
+												if (waterLevel <= 0){
 													waterLevel = 0;
 												}
+												if (waterLevel != sentWaterLevel){
+													tcpWaterTenk.setWaterLevel(waterLevel);
+													sentWaterLevel = waterLevel;
+												}
+					'''
+				}
+				State connect
+				Transition tr1: connect -> SimulacijaVode {
+					triggers {
+						<connected: tcpWaterTenk>
+					}
+					action '''
+						timingService.kill();
+						timingService.startTimeout(SLEEP_TIME_IN_MS);'''
+				}
+				Transition tr2: SimulacijaVode -> SimulacijaVode {
+					triggers {
+						<setWaterTenkFlow: tcpWaterTenk>
+					}
+					action '''
+						System.out.println("Porstavljen water tank flow na: " + transitionData);
+						WATER_LEVEL_INCREASE = transitionData;
 					'''
 				}
 			}
@@ -89,34 +138,41 @@ RoomModel WaterTankModel {
 			Port waterTenk: DrainWater
 			conjugated Port waterTenkPump: DrainWater
 			conjugated Port wateflowSensor: PoolingSensorSample
+			conjugated Port tcpPumpTunel: TcpCommunication.PTrafficLightInterface
 		}
 		Structure {
 			usercode2 '''
-				private static final int PUMP_FLOW_VALID_TIME = 15;
+				private static final int PUMP_FLOW_VALID_TIME = 110;
 				private double waterFlow = 0;
 				private boolean resetWaterFlow = false;
+				private double lastSentPumpFlow = -1;
 			'''
 			external Port waterTenkPump
 			external Port waterTenk
 			external Port wateflowSensor
 			SAP timingService: PTimer
+			external Port tcpPumpTunel
 		}
 		Behavior {
 			StateMachine {
 				State ^initial
-				Transition init0: initial -> ^initial
+
 				Transition tr0: ^initial -> ^initial {
 					triggers {
 						<drainWater: waterTenkPump>
 					}
 					action '''
-						//						System.out.println("WaterPumpTunnelFlow:" + transitionData);
-												waterTenk.drainWater(transitionData);
-												waterFlow = transitionData;
-												timingService.kill();
-												resetWaterFlow = true;
-												wateflowSensor.sendSample(waterFlow);
-												timingService.startTimeout(PUMP_FLOW_VALID_TIME);
+						//System.out.println("WaterPumpTunnelFlow:" + transitionData);
+						waterTenk.drainWater(transitionData);
+						waterFlow = transitionData;
+						timingService.kill();
+						resetWaterFlow = true;
+						wateflowSensor.sendSample(waterFlow);
+						timingService.startTimeout(PUMP_FLOW_VALID_TIME);
+						if (lastSentPumpFlow != waterFlow){
+							lastSentPumpFlow = waterFlow;
+							tcpPumpTunel.setPumpFlow(waterFlow);
+						}
 					'''
 				}
 				Transition tr2: ^initial -> ^initial {
@@ -127,7 +183,18 @@ RoomModel WaterTankModel {
 						waterFlow = 0;				
 						resetWaterFlow = false;
 						wateflowSensor.sendSample(waterFlow);
+						tcpPumpTunel.setPumpFlow(0);
+						lastSentPumpFlow = 0;
 					'''
+				}
+				State connect
+				Transition init0: connect -> ^initial {
+					triggers {
+						<connected: tcpPumpTunel>
+					}
+				}
+				Transition init1: initial -> connect {
+					action '''tcpPumpTunel.connect(4020);'''
 				}
 			}
 		}

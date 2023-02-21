@@ -16,12 +16,13 @@ import org.eclipse.etrice.runtime.java.modelbase.InterfaceItemBase;
 import org.eclipse.etrice.runtime.java.modelbase.InterfaceItemBroker;
 
 import AlarmModel.*;
-import ConsoleModel.*;
 import EnvironmentModel.*;
 import InterrupSensorModel.*;
 import PoolingSensorModel.*;
 import PumpModel.*;
+import TcpCommunication.*;
 import WaterTankModel.*;
+import etrice.api.tcp.*;
 import etrice.api.timer.*;
 
 

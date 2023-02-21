@@ -11,9 +11,21 @@ RoomModel InterrupSensorModel {
 		}
 
 		Structure {
+			usercode1 '''
+				import java.util.Date;
+				import java.util.Calendar;
+			'''
 			usercode2 '''
 				private static int PERIOD_OF_ACTIVATION_MS = 5000;
 				private boolean eventHappened = false;
+				private long worstExecutionTime = 0;
+				private long nextActivation = 0;
+				
+				private int calculateWaitTime(long nextActivationInMs){
+					long waitTime = nextActivationInMs - System.currentTimeMillis();
+					waitTime = Math.max(waitTime, 0);
+					return (int)waitTime;
+				}
 			'''
 			external Port inputEvent
 			external Port outputEvent
@@ -24,7 +36,8 @@ RoomModel InterrupSensorModel {
 				State waitForEvent
 				Transition init1: initial -> waitForEvent {
 					action '''
-						timingService.startTimeout(PERIOD_OF_ACTIVATION_MS);                        
+						timingService.startTimeout(PERIOD_OF_ACTIVATION_MS);
+						nextActivation = System.currentTimeMillis();                   
 					'''
 				}
 				Transition eventHappened: waitForEvent -> waitForEvent {
@@ -40,11 +53,20 @@ RoomModel InterrupSensorModel {
 						<timeout: timingService>
 					}
 					action '''
+						long timeStart = System.currentTimeMillis();
+						nextActivation += PERIOD_OF_ACTIVATION_MS;
 						if(eventHappened){
 						    outputEvent.eventHappened();
 						    eventHappened = false;
 						}
-						timingService.startTimeout(PERIOD_OF_ACTIVATION_MS);						
+						long timeEnd = System.currentTimeMillis();
+						long duration= timeEnd - timeStart;
+//						System.out.println("Water monitoring duration: " + duration);
+						if (duration > worstExecutionTime){
+							worstExecutionTime = duration;
+							System.out.println("WCET water monitoring: " + worstExecutionTime);
+						}
+						timingService.startTimeout(calculateWaitTime(nextActivation));						
 					'''
 				}
 			}

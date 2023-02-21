@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="ASCII"?>
-<pi:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:al="http://eclipse.org/graphiti/mm/algorithms" xmlns:pi="http://eclipse.org/graphiti/mm/pictograms" visible="true" gridUnit="10" diagramTypeId="room.structure" name="TopActor Structure" pictogramLinks="//@link //@children.0/@link //@children.0/@children.0/@link //@children.0/@children.1/@link //@children.0/@children.2/@link //@children.0/@children.3/@link //@children.0/@children.4/@link //@children.0/@children.5/@link //@children.0/@children.6/@link //@children.0/@children.7/@link //@children.0/@children.2/@children.2/@link //@children.0/@children.2/@children.3/@link //@children.0/@children.0/@children.2/@link //@children.0/@children.0/@children.3/@link //@children.0/@children.1/@children.2/@link //@children.0/@children.1/@children.3/@link //@children.0/@children.6/@children.2/@link //@children.0/@children.6/@children.3/@link //@children.0/@children.6/@children.4/@link //@connections.4/@link //@connections.5/@link //@children.0/@children.7/@children.2/@link //@children.0/@children.7/@children.3/@link //@children.0/@children.7/@children.4/@link //@connections.6/@link //@connections.7/@link //@children.0/@children.4/@children.2/@link //@children.0/@children.4/@children.3/@link //@children.0/@children.8/@link //@children.0/@children.8/@children.2/@link //@connections.8/@link //@children.0/@children.9/@link //@children.0/@children.9/@children.2/@link //@children.0/@children.3/@children.2/@link //@children.0/@children.3/@children.3/@link //@connections.9/@link //@children.0/@children.4/@children.4/@link //@connections.10/@link //@children.0/@children.5/@children.2/@link //@children.0/@children.5/@children.3/@link //@children.0/@children.5/@children.4/@link //@children.0/@children.5/@children.5/@link //@children.0/@children.5/@children.6/@link //@children.0/@children.5/@children.7/@link //@children.0/@children.5/@children.8/@link //@connections.11/@link //@connections.12/@link //@connections.13/@link //@connections.14/@link //@connections.15/@link //@connections.16/@link //@connections.17/@link" verticalGridUnit="10" version="0.18.0">
+<pi:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:al="http://eclipse.org/graphiti/mm/algorithms" xmlns:pi="http://eclipse.org/graphiti/mm/pictograms" visible="true" gridUnit="10" diagramTypeId="room.structure" name="TopActor Structure" pictogramLinks="//@link //@children.0/@link //@children.0/@children.0/@link //@children.0/@children.1/@link //@children.0/@children.2/@link //@children.0/@children.3/@link //@children.0/@children.4/@link //@children.0/@children.5/@link //@children.0/@children.6/@link //@children.0/@children.7/@link //@children.0/@children.2/@children.2/@link //@children.0/@children.2/@children.3/@link //@children.0/@children.0/@children.2/@link //@children.0/@children.0/@children.3/@link //@children.0/@children.1/@children.2/@link //@children.0/@children.1/@children.3/@link //@children.0/@children.6/@children.2/@link //@children.0/@children.6/@children.3/@link //@children.0/@children.6/@children.4/@link //@connections.4/@link //@connections.5/@link //@children.0/@children.7/@children.2/@link //@children.0/@children.7/@children.3/@link //@children.0/@children.7/@children.4/@link //@connections.6/@link //@connections.7/@link //@children.0/@children.4/@children.2/@link //@children.0/@children.4/@children.3/@link //@children.0/@children.8/@link //@children.0/@children.8/@children.2/@link //@connections.8/@link //@children.0/@children.3/@children.2/@link //@children.0/@children.3/@children.3/@link //@connections.9/@link //@children.0/@children.5/@children.2/@link //@children.0/@children.5/@children.3/@link //@children.0/@children.5/@children.4/@link //@children.0/@children.5/@children.5/@link //@children.0/@children.5/@children.6/@link //@children.0/@children.5/@children.7/@link //@connections.10/@link //@connections.11/@link //@connections.12/@link //@connections.13/@link //@connections.14/@link //@connections.15/@link //@children.0/@children.9/@link //@children.0/@children.9/@children.2/@link //@children.0/@children.9/@children.3/@link //@children.0/@children.9/@children.4/@link //@children.0/@children.10/@link //@children.0/@children.10/@children.2/@link //@children.0/@children.10/@children.3/@link //@connections.16/@link //@connections.17/@link //@children.0/@children.6/@children.5/@link //@connections.18/@link //@children.0/@children.11/@link //@children.0/@children.11/@children.2/@link //@children.0/@children.11/@children.3/@link //@children.0/@children.11/@children.4/@link //@children.0/@children.12/@link //@children.0/@children.12/@children.2/@link //@children.0/@children.12/@children.3/@link //@connections.19/@link //@connections.20/@link //@children.0/@children.3/@children.4/@link //@connections.21/@link //@children.0/@children.13/@link //@children.0/@children.13/@children.2/@link //@children.0/@children.13/@children.3/@link //@children.0/@children.13/@children.4/@link //@children.0/@children.14/@link //@children.0/@children.14/@children.2/@link //@children.0/@children.14/@children.3/@link //@connections.22/@link //@connections.23/@link //@children.0/@children.8/@children.3/@link //@connections.24/@link //@children.0/@children.15/@link //@children.0/@children.15/@children.2/@link //@children.0/@children.15/@children.3/@link //@children.0/@children.15/@children.4/@link //@children.0/@children.16/@link //@children.0/@children.16/@children.2/@link //@children.0/@children.16/@children.3/@link //@connections.25/@link //@connections.26/@link //@children.0/@children.4/@children.4/@link //@connections.27/@link //@children.0/@children.17/@link //@children.0/@children.17/@children.2/@link //@children.0/@children.17/@children.3/@link //@children.0/@children.17/@children.4/@link //@children.0/@children.18/@link //@children.0/@children.18/@children.2/@link //@children.0/@children.18/@children.3/@link //@connections.28/@link //@connections.29/@link //@children.0/@children.5/@children.8/@link //@connections.30/@link //@children.0/@children.19/@link //@children.0/@children.19/@children.2/@link //@children.0/@children.19/@children.3/@link //@children.0/@children.20/@link //@children.0/@children.20/@children.2/@link //@children.0/@children.20/@children.3/@link //@children.0/@children.20/@children.4/@link //@connections.31/@link //@connections.32/@link //@children.0/@children.7/@children.5/@link //@connections.33/@link" verticalGridUnit="10" version="0.18.0">
   <graphicsAlgorithm xsi:type="al:Rectangle" background="//@colors.1" foreground="//@colors.0" lineWidth="1" transparency="0.0" width="1000" height="1000"/>
   <link>
     <businessObjects href="../MineControllerModel.room#ActorClass:TopActor"/>
   </link>
   <children xsi:type="pi:ContainerShape" visible="true" active="true">
     <properties key="obj-type" value="cls"/>
-    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="1225" height="584" x="203" y="68">
-      <graphicsAlgorithmChildren xsi:type="al:Rectangle" background="//@colors.1" foreground="//@colors.2" lineWidth="1" lineVisible="false" transparency="0.5" width="1145" height="504" x="40" y="40"/>
-      <graphicsAlgorithmChildren xsi:type="al:Rectangle" foreground="//@colors.2" lineWidth="4" filled="false" transparency="0.0" width="1145" height="504" x="40" y="40"/>
+    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="1523" height="1072" x="-103" y="-89">
+      <graphicsAlgorithmChildren xsi:type="al:Rectangle" background="//@colors.1" foreground="//@colors.2" lineWidth="1" lineVisible="false" transparency="0.5" width="1443" height="992" x="40" y="40"/>
+      <graphicsAlgorithmChildren xsi:type="al:Rectangle" foreground="//@colors.2" lineWidth="4" filled="false" transparency="0.0" width="1443" height="992" x="40" y="40"/>
     </graphicsAlgorithm>
     <link>
       <businessObjects href="../MineControllerModel.room#ActorClass:TopActor"/>
@@ -16,7 +16,7 @@
     <children xsi:type="pi:ContainerShape" visible="true" active="true">
       <properties key="obj-type" value="ref"/>
       <properties key="actorref_version" value="2"/>
-      <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="240" height="140" x="50" y="177">
+      <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="240" height="140" x="356" y="387">
         <graphicsAlgorithmChildren xsi:type="al:Rectangle" background="//@colors.3" foreground="//@colors.2" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="180" height="80" x="33" y="27">
           <properties key="actorref_graphic_element" value="replborder"/>
         </graphicsAlgorithmChildren>
@@ -157,7 +157,7 @@
         <link>
           <businessObjects href="../InterrupSensorModel.room#Port:InterruptSensor$outputEvent"/>
         </link>
-        <anchors xsi:type="pi:ChopboxAnchor" outgoingConnections="//@connections.16" referencedGraphicsAlgorithm="//@children.0/@children.0/@children.3/@graphicsAlgorithm/@graphicsAlgorithmChildren.0"/>
+        <anchors xsi:type="pi:ChopboxAnchor" outgoingConnections="//@connections.14" referencedGraphicsAlgorithm="//@children.0/@children.0/@children.3/@graphicsAlgorithm/@graphicsAlgorithmChildren.0"/>
         <children visible="true">
           <graphicsAlgorithm xsi:type="al:Text" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0" width="60" height="15" y="6" font="//@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="outputEvent"/>
         </children>
@@ -166,7 +166,7 @@
     <children xsi:type="pi:ContainerShape" visible="true" active="true">
       <properties key="obj-type" value="ref"/>
       <properties key="actorref_version" value="2"/>
-      <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="240" height="140" x="50" y="52">
+      <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="240" height="140" x="356" y="262">
         <graphicsAlgorithmChildren xsi:type="al:Rectangle" background="//@colors.3" foreground="//@colors.2" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="180" height="80" x="33" y="27">
           <properties key="actorref_graphic_element" value="replborder"/>
         </graphicsAlgorithmChildren>
@@ -307,7 +307,7 @@
         <link>
           <businessObjects href="../InterrupSensorModel.room#Port:InterruptSensor$outputEvent"/>
         </link>
-        <anchors xsi:type="pi:ChopboxAnchor" outgoingConnections="//@connections.11" referencedGraphicsAlgorithm="//@children.0/@children.1/@children.3/@graphicsAlgorithm/@graphicsAlgorithmChildren.0"/>
+        <anchors xsi:type="pi:ChopboxAnchor" outgoingConnections="//@connections.10" referencedGraphicsAlgorithm="//@children.0/@children.1/@children.3/@graphicsAlgorithm/@graphicsAlgorithmChildren.0"/>
         <children visible="true">
           <graphicsAlgorithm xsi:type="al:Text" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0" width="60" height="15" y="6" font="//@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="outputEvent"/>
         </children>
@@ -316,7 +316,7 @@
     <children xsi:type="pi:ContainerShape" visible="true" active="true">
       <properties key="obj-type" value="ref"/>
       <properties key="actorref_version" value="2"/>
-      <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="240" height="140" x="296" y="285">
+      <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="240" height="140" x="602" y="495">
         <graphicsAlgorithmChildren xsi:type="al:Rectangle" background="//@colors.3" foreground="//@colors.2" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="180" height="80" x="33" y="27">
           <properties key="actorref_graphic_element" value="replborder"/>
         </graphicsAlgorithmChildren>
@@ -442,7 +442,7 @@
         <link>
           <businessObjects href="../PoolingSensorModel.room#Port:PoolingSensor$poolingSensorCommands"/>
         </link>
-        <anchors xsi:type="pi:ChopboxAnchor" incomingConnections="//@connections.13" referencedGraphicsAlgorithm="//@children.0/@children.2/@children.2/@graphicsAlgorithm/@graphicsAlgorithmChildren.0"/>
+        <anchors xsi:type="pi:ChopboxAnchor" incomingConnections="//@connections.12" referencedGraphicsAlgorithm="//@children.0/@children.2/@children.2/@graphicsAlgorithm/@graphicsAlgorithmChildren.0"/>
         <children visible="true">
           <graphicsAlgorithm xsi:type="al:Text" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0" width="60" height="15" y="6" font="//@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="poolingSensorCommands"/>
         </children>
@@ -466,7 +466,7 @@
     <children xsi:type="pi:ContainerShape" visible="true" active="true">
       <properties key="obj-type" value="ref"/>
       <properties key="actorref_version" value="2"/>
-      <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="240" height="140" x="308" y="417">
+      <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="240" height="140" x="614" y="627">
         <graphicsAlgorithmChildren xsi:type="al:Rectangle" background="//@colors.3" foreground="//@colors.2" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="180" height="80" x="33" y="27">
           <properties key="actorref_graphic_element" value="replborder"/>
         </graphicsAlgorithmChildren>
@@ -607,16 +607,31 @@
         <link>
           <businessObjects href="../PumpModel.room#Port:PumpMotor$controlMotor"/>
         </link>
-        <anchors xsi:type="pi:ChopboxAnchor" incomingConnections="//@connections.14" referencedGraphicsAlgorithm="//@children.0/@children.3/@children.3/@graphicsAlgorithm/@graphicsAlgorithmChildren.0"/>
+        <anchors xsi:type="pi:ChopboxAnchor" incomingConnections="//@connections.13" referencedGraphicsAlgorithm="//@children.0/@children.3/@children.3/@graphicsAlgorithm/@graphicsAlgorithmChildren.0"/>
         <children visible="true">
           <graphicsAlgorithm xsi:type="al:Text" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0" width="60" height="15" y="6" font="//@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="controlMotor"/>
+        </children>
+      </children>
+      <children xsi:type="pi:ContainerShape" visible="true" active="true">
+        <properties key="obj-type" value="port"/>
+        <properties key="inherited" value="false"/>
+        <properties key="item-kind" value="C"/>
+        <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="60" height="60" x="87" y="80">
+          <graphicsAlgorithmChildren xsi:type="al:Rectangle" background="//@colors.1" foreground="//@colors.2" lineWidth="1" transparency="0.0" width="18" height="18" x="21" y="21"/>
+        </graphicsAlgorithm>
+        <link>
+          <businessObjects href="../PumpModel.room#Port:PumpMotor$pump"/>
+        </link>
+        <anchors xsi:type="pi:ChopboxAnchor" outgoingConnections="//@connections.21" referencedGraphicsAlgorithm="//@children.0/@children.3/@children.4/@graphicsAlgorithm/@graphicsAlgorithmChildren.0"/>
+        <children visible="true">
+          <graphicsAlgorithm xsi:type="al:Text" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0" width="60" height="15" y="39" font="//@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="pump"/>
         </children>
       </children>
     </children>
     <children xsi:type="pi:ContainerShape" visible="true" active="true">
       <properties key="obj-type" value="ref"/>
       <properties key="actorref_version" value="2"/>
-      <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="275" height="163" x="591" y="315">
+      <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="275" height="163" x="845" y="419">
         <graphicsAlgorithmChildren xsi:type="al:Rectangle" background="//@colors.3" foreground="//@colors.2" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="215" height="103" x="33" y="27">
           <properties key="actorref_graphic_element" value="replborder"/>
         </graphicsAlgorithmChildren>
@@ -762,7 +777,7 @@
         <link>
           <businessObjects href="../EnvironmentModel.room#Port:EnvironmentMonitoringStation$supstanceLevel"/>
         </link>
-        <anchors xsi:type="pi:ChopboxAnchor" outgoingConnections="//@connections.17" referencedGraphicsAlgorithm="//@children.0/@children.4/@children.2/@graphicsAlgorithm/@graphicsAlgorithmChildren.0"/>
+        <anchors xsi:type="pi:ChopboxAnchor" outgoingConnections="//@connections.15" referencedGraphicsAlgorithm="//@children.0/@children.4/@children.2/@graphicsAlgorithm/@graphicsAlgorithmChildren.0"/>
         <children visible="true">
           <graphicsAlgorithm xsi:type="al:Text" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0" width="60" height="15" y="6" font="//@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="supstanceLevel"/>
         </children>
@@ -785,23 +800,23 @@
       <children xsi:type="pi:ContainerShape" visible="true" active="true">
         <properties key="obj-type" value="port"/>
         <properties key="inherited" value="false"/>
-        <properties key="item-kind" value="C"/>
-        <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="60" height="60" x="215" y="29">
+        <properties key="item-kind" value="CR"/>
+        <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="60" height="60" x="78" y="103">
           <graphicsAlgorithmChildren xsi:type="al:Rectangle" background="//@colors.1" foreground="//@colors.2" lineWidth="1" transparency="0.0" width="18" height="18" x="21" y="21"/>
         </graphicsAlgorithm>
         <link>
-          <businessObjects href="../EnvironmentModel.room#Port:EnvironmentMonitoringStation$sendToConsole"/>
+          <businessObjects href="../EnvironmentModel.room#Port:EnvironmentMonitoringStation$tcpEnvironmet"/>
         </link>
-        <anchors xsi:type="pi:ChopboxAnchor" outgoingConnections="//@connections.10" referencedGraphicsAlgorithm="//@children.0/@children.4/@children.4/@graphicsAlgorithm/@graphicsAlgorithmChildren.0"/>
+        <anchors xsi:type="pi:ChopboxAnchor" incomingConnections="//@connections.27" referencedGraphicsAlgorithm="//@children.0/@children.4/@children.4/@graphicsAlgorithm/@graphicsAlgorithmChildren.0"/>
         <children visible="true">
-          <graphicsAlgorithm xsi:type="al:Text" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0" width="60" height="15" y="6" font="//@fonts.0" horizontalAlignment="ALIGNMENT_RIGHT" value="sendToConsole"/>
+          <graphicsAlgorithm xsi:type="al:Text" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0" width="60" height="15" y="39" font="//@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="tcpEnvironmet"/>
         </children>
       </children>
     </children>
     <children xsi:type="pi:ContainerShape" visible="true" active="true">
       <properties key="obj-type" value="ref"/>
       <properties key="actorref_version" value="2"/>
-      <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="240" height="140" x="336" y="52">
+      <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="240" height="140" x="642" y="262">
         <graphicsAlgorithmChildren xsi:type="al:Rectangle" background="//@colors.3" foreground="//@colors.2" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="180" height="80" x="33" y="27">
           <properties key="actorref_graphic_element" value="replborder"/>
         </graphicsAlgorithmChildren>
@@ -927,7 +942,7 @@
         <link>
           <businessObjects href="../PumpModel.room#Port:PumpControlStation$controlMotor"/>
         </link>
-        <anchors xsi:type="pi:ChopboxAnchor" outgoingConnections="//@connections.14" referencedGraphicsAlgorithm="//@children.0/@children.5/@children.2/@graphicsAlgorithm/@graphicsAlgorithmChildren.0"/>
+        <anchors xsi:type="pi:ChopboxAnchor" outgoingConnections="//@connections.13" referencedGraphicsAlgorithm="//@children.0/@children.5/@children.2/@graphicsAlgorithm/@graphicsAlgorithmChildren.0"/>
         <children visible="true">
           <graphicsAlgorithm xsi:type="al:Text" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0" width="60" height="15" y="39" font="//@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="controlMotor"/>
         </children>
@@ -942,24 +957,9 @@
         <link>
           <businessObjects href="../PumpModel.room#Port:PumpControlStation$lowWaterSensor"/>
         </link>
-        <anchors xsi:type="pi:ChopboxAnchor" incomingConnections="//@connections.11" referencedGraphicsAlgorithm="//@children.0/@children.5/@children.3/@graphicsAlgorithm/@graphicsAlgorithmChildren.0"/>
+        <anchors xsi:type="pi:ChopboxAnchor" incomingConnections="//@connections.10" referencedGraphicsAlgorithm="//@children.0/@children.5/@children.3/@graphicsAlgorithm/@graphicsAlgorithmChildren.0"/>
         <children visible="true">
           <graphicsAlgorithm xsi:type="al:Text" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0" width="60" height="15" y="39" font="//@fonts.0" value="lowWaterSensor"/>
-        </children>
-      </children>
-      <children xsi:type="pi:ContainerShape" visible="true" active="true">
-        <properties key="obj-type" value="port"/>
-        <properties key="inherited" value="false"/>
-        <properties key="item-kind" value="C"/>
-        <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="60" height="60" x="180" y="17">
-          <graphicsAlgorithmChildren xsi:type="al:Rectangle" background="//@colors.1" foreground="//@colors.2" lineWidth="1" transparency="0.0" width="18" height="18" x="21" y="21"/>
-        </graphicsAlgorithm>
-        <link>
-          <businessObjects href="../PumpModel.room#Port:PumpControlStation$messageSender"/>
-        </link>
-        <anchors xsi:type="pi:ChopboxAnchor" outgoingConnections="//@connections.15" referencedGraphicsAlgorithm="//@children.0/@children.5/@children.4/@graphicsAlgorithm/@graphicsAlgorithmChildren.0"/>
-        <children visible="true">
-          <graphicsAlgorithm xsi:type="al:Text" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0" width="60" height="15" y="6" font="//@fonts.0" horizontalAlignment="ALIGNMENT_RIGHT" value="messageSender"/>
         </children>
       </children>
       <children xsi:type="pi:ContainerShape" visible="true" active="true">
@@ -972,7 +972,7 @@
         <link>
           <businessObjects href="../PumpModel.room#Port:PumpControlStation$methaneLevel"/>
         </link>
-        <anchors xsi:type="pi:ChopboxAnchor" incomingConnections="//@connections.17" referencedGraphicsAlgorithm="//@children.0/@children.5/@children.5/@graphicsAlgorithm/@graphicsAlgorithmChildren.0"/>
+        <anchors xsi:type="pi:ChopboxAnchor" incomingConnections="//@connections.15" referencedGraphicsAlgorithm="//@children.0/@children.5/@children.4/@graphicsAlgorithm/@graphicsAlgorithmChildren.0"/>
         <children visible="true">
           <graphicsAlgorithm xsi:type="al:Text" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0" width="60" height="15" y="39" font="//@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="methaneLevel"/>
         </children>
@@ -987,7 +987,7 @@
         <link>
           <businessObjects href="../PumpModel.room#Port:PumpControlStation$alarmSender"/>
         </link>
-        <anchors xsi:type="pi:ChopboxAnchor" incomingConnections="//@connections.12" referencedGraphicsAlgorithm="//@children.0/@children.5/@children.6/@graphicsAlgorithm/@graphicsAlgorithmChildren.0"/>
+        <anchors xsi:type="pi:ChopboxAnchor" incomingConnections="//@connections.11" referencedGraphicsAlgorithm="//@children.0/@children.5/@children.5/@graphicsAlgorithm/@graphicsAlgorithmChildren.0"/>
         <children visible="true">
           <graphicsAlgorithm xsi:type="al:Text" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0" width="60" height="15" y="39" font="//@fonts.0" horizontalAlignment="ALIGNMENT_RIGHT" value="alarmSender"/>
         </children>
@@ -1002,7 +1002,7 @@
         <link>
           <businessObjects href="../PumpModel.room#Port:PumpControlStation$waterFlowSensor"/>
         </link>
-        <anchors xsi:type="pi:ChopboxAnchor" outgoingConnections="//@connections.13" referencedGraphicsAlgorithm="//@children.0/@children.5/@children.7/@graphicsAlgorithm/@graphicsAlgorithmChildren.0"/>
+        <anchors xsi:type="pi:ChopboxAnchor" outgoingConnections="//@connections.12" referencedGraphicsAlgorithm="//@children.0/@children.5/@children.6/@graphicsAlgorithm/@graphicsAlgorithmChildren.0"/>
         <children visible="true">
           <graphicsAlgorithm xsi:type="al:Text" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0" width="60" height="15" y="39" font="//@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="waterFlowSensor"/>
         </children>
@@ -1017,16 +1017,31 @@
         <link>
           <businessObjects href="../PumpModel.room#Port:PumpControlStation$highWaterSensor"/>
         </link>
-        <anchors xsi:type="pi:ChopboxAnchor" incomingConnections="//@connections.16" referencedGraphicsAlgorithm="//@children.0/@children.5/@children.8/@graphicsAlgorithm/@graphicsAlgorithmChildren.0"/>
+        <anchors xsi:type="pi:ChopboxAnchor" incomingConnections="//@connections.14" referencedGraphicsAlgorithm="//@children.0/@children.5/@children.7/@graphicsAlgorithm/@graphicsAlgorithmChildren.0"/>
         <children visible="true">
           <graphicsAlgorithm xsi:type="al:Text" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0" width="60" height="15" y="6" font="//@fonts.0" value="highWaterSensor"/>
+        </children>
+      </children>
+      <children xsi:type="pi:ContainerShape" visible="true" active="true">
+        <properties key="obj-type" value="port"/>
+        <properties key="inherited" value="false"/>
+        <properties key="item-kind" value="C"/>
+        <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="60" height="60" x="162">
+          <graphicsAlgorithmChildren xsi:type="al:Rectangle" background="//@colors.1" foreground="//@colors.2" lineWidth="1" transparency="0.0" width="18" height="18" x="21" y="21"/>
+        </graphicsAlgorithm>
+        <link>
+          <businessObjects href="../PumpModel.room#Port:PumpControlStation$tcpPumpControll"/>
+        </link>
+        <anchors xsi:type="pi:ChopboxAnchor" outgoingConnections="//@connections.30" referencedGraphicsAlgorithm="//@children.0/@children.5/@children.8/@graphicsAlgorithm/@graphicsAlgorithmChildren.0"/>
+        <children visible="true">
+          <graphicsAlgorithm xsi:type="al:Text" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0" width="60" height="15" y="6" font="//@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="tcpPumpControll"/>
         </children>
       </children>
     </children>
     <children xsi:type="pi:ContainerShape" visible="true" active="true">
       <properties key="obj-type" value="ref"/>
       <properties key="actorref_version" value="2"/>
-      <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="240" height="140" x="50" y="285">
+      <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="240" height="140" x="356" y="495">
         <graphicsAlgorithmChildren xsi:type="al:Rectangle" background="//@colors.3" foreground="//@colors.2" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="180" height="80" x="33" y="27">
           <properties key="actorref_graphic_element" value="replborder"/>
         </graphicsAlgorithmChildren>
@@ -1187,11 +1202,26 @@
           <graphicsAlgorithm xsi:type="al:Text" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0" width="60" height="15" y="39" font="//@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="drainWater"/>
         </children>
       </children>
+      <children xsi:type="pi:ContainerShape" visible="true" active="true">
+        <properties key="obj-type" value="port"/>
+        <properties key="inherited" value="false"/>
+        <properties key="item-kind" value="C"/>
+        <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="60" height="60" x="35">
+          <graphicsAlgorithmChildren xsi:type="al:Rectangle" background="//@colors.1" foreground="//@colors.2" lineWidth="1" transparency="0.0" width="18" height="18" x="21" y="21"/>
+        </graphicsAlgorithm>
+        <link>
+          <businessObjects href="../WaterTankModel.room#Port:WaterTank$tcpWaterTenk"/>
+        </link>
+        <anchors xsi:type="pi:ChopboxAnchor" incomingConnections="//@connections.18" referencedGraphicsAlgorithm="//@children.0/@children.6/@children.5/@graphicsAlgorithm/@graphicsAlgorithmChildren.0"/>
+        <children visible="true">
+          <graphicsAlgorithm xsi:type="al:Text" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0" width="60" height="15" y="6" font="//@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="tcpWaterTenk"/>
+        </children>
+      </children>
     </children>
     <children xsi:type="pi:ContainerShape" visible="true" active="true">
       <properties key="obj-type" value="ref"/>
       <properties key="actorref_version" value="2"/>
-      <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="240" height="140" x="41" y="426">
+      <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="240" height="140" x="356" y="636">
         <graphicsAlgorithmChildren xsi:type="al:Rectangle" background="//@colors.3" foreground="//@colors.2" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="180" height="80" x="33" y="27">
           <properties key="actorref_graphic_element" value="replborder"/>
         </graphicsAlgorithmChildren>
@@ -1352,11 +1382,26 @@
           <graphicsAlgorithm xsi:type="al:Text" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0" width="60" height="15" y="39" font="//@fonts.0" horizontalAlignment="ALIGNMENT_RIGHT" value="waterTenkPump"/>
         </children>
       </children>
+      <children xsi:type="pi:ContainerShape" visible="true" active="true">
+        <properties key="obj-type" value="port"/>
+        <properties key="inherited" value="false"/>
+        <properties key="item-kind" value="C"/>
+        <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="60" height="60" x="86" y="80">
+          <graphicsAlgorithmChildren xsi:type="al:Rectangle" background="//@colors.1" foreground="//@colors.2" lineWidth="1" transparency="0.0" width="18" height="18" x="21" y="21"/>
+        </graphicsAlgorithm>
+        <link>
+          <businessObjects href="../WaterTankModel.room#Port:waterPumpTunnel$tcpPumpTunel"/>
+        </link>
+        <anchors xsi:type="pi:ChopboxAnchor" outgoingConnections="//@connections.33" referencedGraphicsAlgorithm="//@children.0/@children.7/@children.5/@graphicsAlgorithm/@graphicsAlgorithmChildren.0"/>
+        <children visible="true">
+          <graphicsAlgorithm xsi:type="al:Text" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0" width="60" height="15" y="39" font="//@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="tcpPumpTunel"/>
+        </children>
+      </children>
     </children>
     <children xsi:type="pi:ContainerShape" visible="true" active="true">
       <properties key="obj-type" value="ref"/>
       <properties key="actorref_version" value="2"/>
-      <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="224" height="151" x="929" y="321">
+      <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="224" height="151" x="1123" y="277">
         <graphicsAlgorithmChildren xsi:type="al:Rectangle" background="//@colors.3" foreground="//@colors.2" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="164" height="91" x="33" y="27">
           <properties key="actorref_graphic_element" value="replborder"/>
         </graphicsAlgorithmChildren>
@@ -1476,23 +1521,38 @@
         <properties key="obj-type" value="port"/>
         <properties key="inherited" value="false"/>
         <properties key="item-kind" value="M"/>
-        <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="60" height="60" x="54">
+        <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="60" height="60" y="41">
           <graphicsAlgorithmChildren xsi:type="al:Rectangle" background="//@colors.1" foreground="//@colors.2" lineWidth="1" transparency="0.0" width="18" height="18" x="23" y="19"/>
           <graphicsAlgorithmChildren xsi:type="al:Rectangle" background="//@colors.2" foreground="//@colors.2" lineWidth="1" transparency="0.0" width="18" height="18" x="21" y="21"/>
         </graphicsAlgorithm>
         <link>
           <businessObjects href="../AlarmModel.room#Port:Alarm$alarmReceiver"/>
         </link>
-        <anchors xsi:type="pi:ChopboxAnchor" outgoingConnections="//@connections.12" incomingConnections="//@connections.8" referencedGraphicsAlgorithm="//@children.0/@children.8/@children.2/@graphicsAlgorithm/@graphicsAlgorithmChildren.1"/>
+        <anchors xsi:type="pi:ChopboxAnchor" outgoingConnections="//@connections.11" incomingConnections="//@connections.8" referencedGraphicsAlgorithm="//@children.0/@children.8/@children.2/@graphicsAlgorithm/@graphicsAlgorithmChildren.1"/>
         <children visible="true">
-          <graphicsAlgorithm xsi:type="al:Text" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0" width="60" height="15" y="6" font="//@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="alarmReceiver"/>
+          <graphicsAlgorithm xsi:type="al:Text" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0" width="60" height="15" y="39" font="//@fonts.0" value="alarmReceiver"/>
+        </children>
+      </children>
+      <children xsi:type="pi:ContainerShape" visible="true" active="true">
+        <properties key="obj-type" value="port"/>
+        <properties key="inherited" value="false"/>
+        <properties key="item-kind" value="C"/>
+        <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="60" height="60" x="104" y="91">
+          <graphicsAlgorithmChildren xsi:type="al:Rectangle" background="//@colors.1" foreground="//@colors.2" lineWidth="1" transparency="0.0" width="18" height="18" x="21" y="21"/>
+        </graphicsAlgorithm>
+        <link>
+          <businessObjects href="../AlarmModel.room#Port:Alarm$p0"/>
+        </link>
+        <anchors xsi:type="pi:ChopboxAnchor" incomingConnections="//@connections.24" referencedGraphicsAlgorithm="//@children.0/@children.8/@children.3/@graphicsAlgorithm/@graphicsAlgorithmChildren.0"/>
+        <children visible="true">
+          <graphicsAlgorithm xsi:type="al:Text" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0" width="60" height="15" y="39" font="//@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="p0"/>
         </children>
       </children>
     </children>
     <children xsi:type="pi:ContainerShape" visible="true" active="true">
       <properties key="obj-type" value="ref"/>
       <properties key="actorref_version" value="2"/>
-      <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="240" height="140" x="913" y="36">
+      <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="240" height="140" x="77" y="508">
         <graphicsAlgorithmChildren xsi:type="al:Rectangle" background="//@colors.3" foreground="//@colors.2" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="180" height="80" x="33" y="27">
           <properties key="actorref_graphic_element" value="replborder"/>
         </graphicsAlgorithmChildren>
@@ -1595,14 +1655,14 @@
         </graphicsAlgorithmChildren>
       </graphicsAlgorithm>
       <link>
-        <businessObjects href="../MineControllerModel.room#ActorRef:TopActor$console"/>
+        <businessObjects href="../MineControllerModel.room#ActorRef:TopActor$waterTenk"/>
       </link>
       <anchors xsi:type="pi:ChopboxAnchor" referencedGraphicsAlgorithm="//@children.0/@children.9/@graphicsAlgorithm/@graphicsAlgorithmChildren.1">
         <properties key="actorref_graphic_element" value="layerconn_anchor"/>
       </anchors>
       <children visible="true">
         <properties key="actorref_graphic_element" value="name_shape"/>
-        <graphicsAlgorithm xsi:type="al:Text" background="//@colors.3" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0" width="180" height="80" x="30" y="30" font="//@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="console&#xA;(Conole)"/>
+        <graphicsAlgorithm xsi:type="al:Text" background="//@colors.3" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0" width="180" height="80" x="30" y="30" font="//@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="waterTenk&#xA;(TrafficLightInterface)"/>
       </children>
       <children>
         <properties key="actorref_graphic_element" value="size_shape"/>
@@ -1611,17 +1671,1771 @@
       <children xsi:type="pi:ContainerShape" visible="true" active="true">
         <properties key="obj-type" value="port"/>
         <properties key="inherited" value="false"/>
-        <properties key="item-kind" value="M"/>
-        <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="60" height="60" y="34">
-          <graphicsAlgorithmChildren xsi:type="al:Rectangle" background="//@colors.1" foreground="//@colors.2" lineWidth="1" transparency="0.0" width="18" height="18" x="23" y="19"/>
+        <properties key="item-kind" value=""/>
+        <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="60" height="60" x="45">
           <graphicsAlgorithmChildren xsi:type="al:Rectangle" background="//@colors.2" foreground="//@colors.2" lineWidth="1" transparency="0.0" width="18" height="18" x="21" y="21"/>
         </graphicsAlgorithm>
         <link>
-          <businessObjects href="../ConsoleModel.room#Port:Conole$receiveMessage"/>
+          <businessObjects href="../TcpCommunication.room#Port:TrafficLightInterface$fct"/>
         </link>
-        <anchors xsi:type="pi:ChopboxAnchor" incomingConnections="//@connections.10 //@connections.15" referencedGraphicsAlgorithm="//@children.0/@children.9/@children.2/@graphicsAlgorithm/@graphicsAlgorithmChildren.1"/>
+        <anchors xsi:type="pi:ChopboxAnchor" outgoingConnections="//@connections.18" referencedGraphicsAlgorithm="//@children.0/@children.9/@children.2/@graphicsAlgorithm/@graphicsAlgorithmChildren.0"/>
         <children visible="true">
-          <graphicsAlgorithm xsi:type="al:Text" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0" width="60" height="15" y="39" font="//@fonts.0" value="receiveMessage"/>
+          <graphicsAlgorithm xsi:type="al:Text" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0" width="60" height="15" y="6" font="//@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="fct"/>
+        </children>
+      </children>
+      <children xsi:type="pi:ContainerShape" visible="true" active="true">
+        <properties key="obj-type" value="port"/>
+        <properties key="inherited" value="false"/>
+        <properties key="item-kind" value="C"/>
+        <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="60" height="60" x="45" y="80">
+          <graphicsAlgorithmChildren xsi:type="al:Rectangle" background="//@colors.1" foreground="//@colors.2" lineWidth="1" transparency="0.0" width="18" height="18" x="21" y="21"/>
+        </graphicsAlgorithm>
+        <link>
+          <businessObjects href="../TcpCommunication.room#Port:TrafficLightInterface$ctrl"/>
+        </link>
+        <anchors xsi:type="pi:ChopboxAnchor" incomingConnections="//@connections.16" referencedGraphicsAlgorithm="//@children.0/@children.9/@children.3/@graphicsAlgorithm/@graphicsAlgorithmChildren.0"/>
+        <children visible="true">
+          <graphicsAlgorithm xsi:type="al:Text" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0" width="60" height="15" y="39" font="//@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="ctrl"/>
+        </children>
+      </children>
+      <children xsi:type="pi:ContainerShape" visible="true" active="true">
+        <properties key="obj-type" value="port"/>
+        <properties key="inherited" value="false"/>
+        <properties key="item-kind" value="C"/>
+        <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="60" height="60" x="113" y="80">
+          <graphicsAlgorithmChildren xsi:type="al:Rectangle" background="//@colors.1" foreground="//@colors.2" lineWidth="1" transparency="0.0" width="18" height="18" x="21" y="21"/>
+        </graphicsAlgorithm>
+        <link>
+          <businessObjects href="../TcpCommunication.room#Port:TrafficLightInterface$payload"/>
+        </link>
+        <anchors xsi:type="pi:ChopboxAnchor" incomingConnections="//@connections.17" referencedGraphicsAlgorithm="//@children.0/@children.9/@children.4/@graphicsAlgorithm/@graphicsAlgorithmChildren.0"/>
+        <children visible="true">
+          <graphicsAlgorithm xsi:type="al:Text" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0" width="60" height="15" y="39" font="//@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="payload"/>
+        </children>
+      </children>
+    </children>
+    <children xsi:type="pi:ContainerShape" visible="true" active="true">
+      <properties key="obj-type" value="ref"/>
+      <properties key="actorref_version" value="2"/>
+      <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="240" height="140" x="69" y="671">
+        <graphicsAlgorithmChildren xsi:type="al:Rectangle" background="//@colors.3" foreground="//@colors.2" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="180" height="80" x="33" y="27">
+          <properties key="actorref_graphic_element" value="replborder"/>
+        </graphicsAlgorithmChildren>
+        <graphicsAlgorithmChildren xsi:type="al:Rectangle" background="//@colors.3" foreground="//@colors.2" lineWidth="1" transparency="0.0" width="180" height="80" x="30" y="30">
+          <properties key="actorref_graphic_element" value="mainborder"/>
+          <graphicsAlgorithmChildren xsi:type="al:Rectangle" foreground="//@colors.2" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="20" height="10" x="150" y="50">
+            <properties key="actorref_graphic_element" value="substructure"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Rectangle" foreground="//@colors.2" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="20" height="10" x="145" y="65">
+            <properties key="actorref_graphic_element" value="substructure"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points y="15"/>
+            <points x="15"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points y="30"/>
+            <points x="30"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points y="45"/>
+            <points x="45"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points y="60"/>
+            <points x="60"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points y="75"/>
+            <points x="75"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="10" y="80"/>
+            <points x="90"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="25" y="80"/>
+            <points x="105"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="40" y="80"/>
+            <points x="120"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="55" y="80"/>
+            <points x="135"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="70" y="80"/>
+            <points x="150"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="85" y="80"/>
+            <points x="165"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="100" y="80"/>
+            <points x="180"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="115" y="80"/>
+            <points x="180" y="15"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="130" y="80"/>
+            <points x="180" y="30"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="145" y="80"/>
+            <points x="180" y="45"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="160" y="80"/>
+            <points x="180" y="60"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="175" y="80"/>
+            <points x="180" y="75"/>
+          </graphicsAlgorithmChildren>
+        </graphicsAlgorithmChildren>
+        <graphicsAlgorithmChildren xsi:type="al:Rectangle" background="//@colors.3" foreground="//@colors.2" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="25" height="25" x="185" y="30">
+          <properties key="actorref_graphic_element" value="sizeframe"/>
+        </graphicsAlgorithmChildren>
+      </graphicsAlgorithm>
+      <link>
+        <businessObjects href="../MineControllerModel.room#ActorRef:TopActor$ref0"/>
+      </link>
+      <anchors xsi:type="pi:ChopboxAnchor" referencedGraphicsAlgorithm="//@children.0/@children.10/@graphicsAlgorithm/@graphicsAlgorithmChildren.1">
+        <properties key="actorref_graphic_element" value="layerconn_anchor"/>
+      </anchors>
+      <children visible="true">
+        <properties key="actorref_graphic_element" value="name_shape"/>
+        <graphicsAlgorithm xsi:type="al:Text" background="//@colors.3" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0" width="180" height="80" x="30" y="30" font="//@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="ref0&#xA;(ATcpClient)"/>
+      </children>
+      <children>
+        <properties key="actorref_graphic_element" value="size_shape"/>
+        <graphicsAlgorithm xsi:type="al:Text" background="//@colors.3" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0" width="25" height="25" x="185" y="30" font="//@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="1"/>
+      </children>
+      <children xsi:type="pi:ContainerShape" visible="true" active="true">
+        <properties key="obj-type" value="port"/>
+        <properties key="inherited" value="false"/>
+        <properties key="item-kind" value=""/>
+        <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="60" height="60" x="119">
+          <graphicsAlgorithmChildren xsi:type="al:Rectangle" background="//@colors.2" foreground="//@colors.2" lineWidth="1" transparency="0.0" width="18" height="18" x="21" y="21"/>
+        </graphicsAlgorithm>
+        <link>
+          <businessObjects href="../../../org.eclipse.etrice.modellib.java/model/etrice/api/tcp.room#Port:ATcpClient$PayloadPort"/>
+        </link>
+        <anchors xsi:type="pi:ChopboxAnchor" outgoingConnections="//@connections.17" referencedGraphicsAlgorithm="//@children.0/@children.10/@children.2/@graphicsAlgorithm/@graphicsAlgorithmChildren.0"/>
+        <children visible="true">
+          <graphicsAlgorithm xsi:type="al:Text" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0" width="60" height="15" y="6" font="//@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="PayloadPort"/>
+        </children>
+      </children>
+      <children xsi:type="pi:ContainerShape" visible="true" active="true">
+        <properties key="obj-type" value="port"/>
+        <properties key="inherited" value="false"/>
+        <properties key="item-kind" value=""/>
+        <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="60" height="60" x="59">
+          <graphicsAlgorithmChildren xsi:type="al:Rectangle" background="//@colors.2" foreground="//@colors.2" lineWidth="1" transparency="0.0" width="18" height="18" x="21" y="21"/>
+        </graphicsAlgorithm>
+        <link>
+          <businessObjects href="../../../org.eclipse.etrice.modellib.java/model/etrice/api/tcp.room#Port:ATcpClient$ControlPort"/>
+        </link>
+        <anchors xsi:type="pi:ChopboxAnchor" outgoingConnections="//@connections.16" referencedGraphicsAlgorithm="//@children.0/@children.10/@children.3/@graphicsAlgorithm/@graphicsAlgorithmChildren.0"/>
+        <children visible="true">
+          <graphicsAlgorithm xsi:type="al:Text" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0" width="60" height="15" y="6" font="//@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="ControlPort"/>
+        </children>
+      </children>
+    </children>
+    <children xsi:type="pi:ContainerShape" visible="true" active="true">
+      <properties key="obj-type" value="ref"/>
+      <properties key="actorref_version" value="2"/>
+      <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="240" height="140" x="634" y="760">
+        <graphicsAlgorithmChildren xsi:type="al:Rectangle" background="//@colors.3" foreground="//@colors.2" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="180" height="80" x="33" y="27">
+          <properties key="actorref_graphic_element" value="replborder"/>
+        </graphicsAlgorithmChildren>
+        <graphicsAlgorithmChildren xsi:type="al:Rectangle" background="//@colors.3" foreground="//@colors.2" lineWidth="1" transparency="0.0" width="180" height="80" x="30" y="30">
+          <properties key="actorref_graphic_element" value="mainborder"/>
+          <graphicsAlgorithmChildren xsi:type="al:Rectangle" foreground="//@colors.2" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="20" height="10" x="150" y="50">
+            <properties key="actorref_graphic_element" value="substructure"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Rectangle" foreground="//@colors.2" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="20" height="10" x="145" y="65">
+            <properties key="actorref_graphic_element" value="substructure"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points y="15"/>
+            <points x="15"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points y="30"/>
+            <points x="30"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points y="45"/>
+            <points x="45"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points y="60"/>
+            <points x="60"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points y="75"/>
+            <points x="75"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="10" y="80"/>
+            <points x="90"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="25" y="80"/>
+            <points x="105"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="40" y="80"/>
+            <points x="120"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="55" y="80"/>
+            <points x="135"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="70" y="80"/>
+            <points x="150"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="85" y="80"/>
+            <points x="165"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="100" y="80"/>
+            <points x="180"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="115" y="80"/>
+            <points x="180" y="15"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="130" y="80"/>
+            <points x="180" y="30"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="145" y="80"/>
+            <points x="180" y="45"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="160" y="80"/>
+            <points x="180" y="60"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="175" y="80"/>
+            <points x="180" y="75"/>
+          </graphicsAlgorithmChildren>
+        </graphicsAlgorithmChildren>
+        <graphicsAlgorithmChildren xsi:type="al:Rectangle" background="//@colors.3" foreground="//@colors.2" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="25" height="25" x="185" y="30">
+          <properties key="actorref_graphic_element" value="sizeframe"/>
+        </graphicsAlgorithmChildren>
+      </graphicsAlgorithm>
+      <link>
+        <businessObjects href="../MineControllerModel.room#ActorRef:TopActor$pumpTcp"/>
+      </link>
+      <anchors xsi:type="pi:ChopboxAnchor" referencedGraphicsAlgorithm="//@children.0/@children.11/@graphicsAlgorithm/@graphicsAlgorithmChildren.1">
+        <properties key="actorref_graphic_element" value="layerconn_anchor"/>
+      </anchors>
+      <children visible="true">
+        <properties key="actorref_graphic_element" value="name_shape"/>
+        <graphicsAlgorithm xsi:type="al:Text" background="//@colors.3" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0" width="180" height="80" x="30" y="30" font="//@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="pumpTcp&#xA;(TrafficLightInterface)"/>
+      </children>
+      <children>
+        <properties key="actorref_graphic_element" value="size_shape"/>
+        <graphicsAlgorithm xsi:type="al:Text" background="//@colors.3" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0" width="25" height="25" x="185" y="30" font="//@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="1"/>
+      </children>
+      <children xsi:type="pi:ContainerShape" visible="true" active="true">
+        <properties key="obj-type" value="port"/>
+        <properties key="inherited" value="false"/>
+        <properties key="item-kind" value="C"/>
+        <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="60" height="60" x="130" y="80">
+          <graphicsAlgorithmChildren xsi:type="al:Rectangle" background="//@colors.1" foreground="//@colors.2" lineWidth="1" transparency="0.0" width="18" height="18" x="21" y="21"/>
+        </graphicsAlgorithm>
+        <link>
+          <businessObjects href="../TcpCommunication.room#Port:TrafficLightInterface$payload"/>
+        </link>
+        <anchors xsi:type="pi:ChopboxAnchor" incomingConnections="//@connections.19" referencedGraphicsAlgorithm="//@children.0/@children.11/@children.2/@graphicsAlgorithm/@graphicsAlgorithmChildren.0"/>
+        <children visible="true">
+          <graphicsAlgorithm xsi:type="al:Text" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0" width="60" height="15" y="39" font="//@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="payload"/>
+        </children>
+      </children>
+      <children xsi:type="pi:ContainerShape" visible="true" active="true">
+        <properties key="obj-type" value="port"/>
+        <properties key="inherited" value="false"/>
+        <properties key="item-kind" value="C"/>
+        <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="60" height="60" x="68" y="80">
+          <graphicsAlgorithmChildren xsi:type="al:Rectangle" background="//@colors.1" foreground="//@colors.2" lineWidth="1" transparency="0.0" width="18" height="18" x="21" y="21"/>
+        </graphicsAlgorithm>
+        <link>
+          <businessObjects href="../TcpCommunication.room#Port:TrafficLightInterface$ctrl"/>
+        </link>
+        <anchors xsi:type="pi:ChopboxAnchor" outgoingConnections="//@connections.20" referencedGraphicsAlgorithm="//@children.0/@children.11/@children.3/@graphicsAlgorithm/@graphicsAlgorithmChildren.0"/>
+        <children visible="true">
+          <graphicsAlgorithm xsi:type="al:Text" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0" width="60" height="15" y="39" font="//@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="ctrl"/>
+        </children>
+      </children>
+      <children xsi:type="pi:ContainerShape" visible="true" active="true">
+        <properties key="obj-type" value="port"/>
+        <properties key="inherited" value="false"/>
+        <properties key="item-kind" value=""/>
+        <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="60" height="60" x="45">
+          <graphicsAlgorithmChildren xsi:type="al:Rectangle" background="//@colors.2" foreground="//@colors.2" lineWidth="1" transparency="0.0" width="18" height="18" x="21" y="21"/>
+        </graphicsAlgorithm>
+        <link>
+          <businessObjects href="../TcpCommunication.room#Port:TrafficLightInterface$fct"/>
+        </link>
+        <anchors xsi:type="pi:ChopboxAnchor" incomingConnections="//@connections.21" referencedGraphicsAlgorithm="//@children.0/@children.11/@children.4/@graphicsAlgorithm/@graphicsAlgorithmChildren.0"/>
+        <children visible="true">
+          <graphicsAlgorithm xsi:type="al:Text" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0" width="60" height="15" y="6" font="//@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="fct"/>
+        </children>
+      </children>
+    </children>
+    <children xsi:type="pi:ContainerShape" visible="true" active="true">
+      <properties key="obj-type" value="ref"/>
+      <properties key="actorref_version" value="2"/>
+      <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="240" height="140" x="642" y="892">
+        <graphicsAlgorithmChildren xsi:type="al:Rectangle" background="//@colors.3" foreground="//@colors.2" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="180" height="80" x="33" y="27">
+          <properties key="actorref_graphic_element" value="replborder"/>
+        </graphicsAlgorithmChildren>
+        <graphicsAlgorithmChildren xsi:type="al:Rectangle" background="//@colors.3" foreground="//@colors.2" lineWidth="1" transparency="0.0" width="180" height="80" x="30" y="30">
+          <properties key="actorref_graphic_element" value="mainborder"/>
+          <graphicsAlgorithmChildren xsi:type="al:Rectangle" foreground="//@colors.2" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="20" height="10" x="150" y="50">
+            <properties key="actorref_graphic_element" value="substructure"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Rectangle" foreground="//@colors.2" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="20" height="10" x="145" y="65">
+            <properties key="actorref_graphic_element" value="substructure"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points y="15"/>
+            <points x="15"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points y="30"/>
+            <points x="30"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points y="45"/>
+            <points x="45"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points y="60"/>
+            <points x="60"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points y="75"/>
+            <points x="75"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="10" y="80"/>
+            <points x="90"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="25" y="80"/>
+            <points x="105"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="40" y="80"/>
+            <points x="120"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="55" y="80"/>
+            <points x="135"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="70" y="80"/>
+            <points x="150"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="85" y="80"/>
+            <points x="165"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="100" y="80"/>
+            <points x="180"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="115" y="80"/>
+            <points x="180" y="15"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="130" y="80"/>
+            <points x="180" y="30"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="145" y="80"/>
+            <points x="180" y="45"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="160" y="80"/>
+            <points x="180" y="60"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="175" y="80"/>
+            <points x="180" y="75"/>
+          </graphicsAlgorithmChildren>
+        </graphicsAlgorithmChildren>
+        <graphicsAlgorithmChildren xsi:type="al:Rectangle" background="//@colors.3" foreground="//@colors.2" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="25" height="25" x="185" y="30">
+          <properties key="actorref_graphic_element" value="sizeframe"/>
+        </graphicsAlgorithmChildren>
+      </graphicsAlgorithm>
+      <link>
+        <businessObjects href="../MineControllerModel.room#ActorRef:TopActor$ref1"/>
+      </link>
+      <anchors xsi:type="pi:ChopboxAnchor" referencedGraphicsAlgorithm="//@children.0/@children.12/@graphicsAlgorithm/@graphicsAlgorithmChildren.1">
+        <properties key="actorref_graphic_element" value="layerconn_anchor"/>
+      </anchors>
+      <children visible="true">
+        <properties key="actorref_graphic_element" value="name_shape"/>
+        <graphicsAlgorithm xsi:type="al:Text" background="//@colors.3" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0" width="180" height="80" x="30" y="30" font="//@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="ref1&#xA;(ATcpClient)"/>
+      </children>
+      <children>
+        <properties key="actorref_graphic_element" value="size_shape"/>
+        <graphicsAlgorithm xsi:type="al:Text" background="//@colors.3" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0" width="25" height="25" x="185" y="30" font="//@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="1"/>
+      </children>
+      <children xsi:type="pi:ContainerShape" visible="true" active="true">
+        <properties key="obj-type" value="port"/>
+        <properties key="inherited" value="false"/>
+        <properties key="item-kind" value=""/>
+        <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="60" height="60" x="114">
+          <graphicsAlgorithmChildren xsi:type="al:Rectangle" background="//@colors.2" foreground="//@colors.2" lineWidth="1" transparency="0.0" width="18" height="18" x="21" y="21"/>
+        </graphicsAlgorithm>
+        <link>
+          <businessObjects href="../../../org.eclipse.etrice.modellib.java/model/etrice/api/tcp.room#Port:ATcpClient$PayloadPort"/>
+        </link>
+        <anchors xsi:type="pi:ChopboxAnchor" outgoingConnections="//@connections.19" referencedGraphicsAlgorithm="//@children.0/@children.12/@children.2/@graphicsAlgorithm/@graphicsAlgorithmChildren.0"/>
+        <children visible="true">
+          <graphicsAlgorithm xsi:type="al:Text" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0" width="60" height="15" y="6" font="//@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="PayloadPort"/>
+        </children>
+      </children>
+      <children xsi:type="pi:ContainerShape" visible="true" active="true">
+        <properties key="obj-type" value="port"/>
+        <properties key="inherited" value="false"/>
+        <properties key="item-kind" value=""/>
+        <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="60" height="60" x="59">
+          <graphicsAlgorithmChildren xsi:type="al:Rectangle" background="//@colors.2" foreground="//@colors.2" lineWidth="1" transparency="0.0" width="18" height="18" x="21" y="21"/>
+        </graphicsAlgorithm>
+        <link>
+          <businessObjects href="../../../org.eclipse.etrice.modellib.java/model/etrice/api/tcp.room#Port:ATcpClient$ControlPort"/>
+        </link>
+        <anchors xsi:type="pi:ChopboxAnchor" incomingConnections="//@connections.20" referencedGraphicsAlgorithm="//@children.0/@children.12/@children.3/@graphicsAlgorithm/@graphicsAlgorithmChildren.0"/>
+        <children visible="true">
+          <graphicsAlgorithm xsi:type="al:Text" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0" width="60" height="15" y="6" font="//@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="ControlPort"/>
+        </children>
+      </children>
+    </children>
+    <children xsi:type="pi:ContainerShape" visible="true" active="true">
+      <properties key="obj-type" value="ref"/>
+      <properties key="actorref_version" value="2"/>
+      <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="240" height="140" x="1187" y="431">
+        <graphicsAlgorithmChildren xsi:type="al:Rectangle" background="//@colors.3" foreground="//@colors.2" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="180" height="80" x="33" y="27">
+          <properties key="actorref_graphic_element" value="replborder"/>
+        </graphicsAlgorithmChildren>
+        <graphicsAlgorithmChildren xsi:type="al:Rectangle" background="//@colors.3" foreground="//@colors.2" lineWidth="1" transparency="0.0" width="180" height="80" x="30" y="30">
+          <properties key="actorref_graphic_element" value="mainborder"/>
+          <graphicsAlgorithmChildren xsi:type="al:Rectangle" foreground="//@colors.2" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="20" height="10" x="150" y="50">
+            <properties key="actorref_graphic_element" value="substructure"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Rectangle" foreground="//@colors.2" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="20" height="10" x="145" y="65">
+            <properties key="actorref_graphic_element" value="substructure"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points y="15"/>
+            <points x="15"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points y="30"/>
+            <points x="30"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points y="45"/>
+            <points x="45"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points y="60"/>
+            <points x="60"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points y="75"/>
+            <points x="75"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="10" y="80"/>
+            <points x="90"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="25" y="80"/>
+            <points x="105"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="40" y="80"/>
+            <points x="120"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="55" y="80"/>
+            <points x="135"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="70" y="80"/>
+            <points x="150"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="85" y="80"/>
+            <points x="165"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="100" y="80"/>
+            <points x="180"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="115" y="80"/>
+            <points x="180" y="15"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="130" y="80"/>
+            <points x="180" y="30"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="145" y="80"/>
+            <points x="180" y="45"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="160" y="80"/>
+            <points x="180" y="60"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="175" y="80"/>
+            <points x="180" y="75"/>
+          </graphicsAlgorithmChildren>
+        </graphicsAlgorithmChildren>
+        <graphicsAlgorithmChildren xsi:type="al:Rectangle" background="//@colors.3" foreground="//@colors.2" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="25" height="25" x="185" y="30">
+          <properties key="actorref_graphic_element" value="sizeframe"/>
+        </graphicsAlgorithmChildren>
+      </graphicsAlgorithm>
+      <link>
+        <businessObjects href="../MineControllerModel.room#ActorRef:TopActor$alarmTcp"/>
+      </link>
+      <anchors xsi:type="pi:ChopboxAnchor" referencedGraphicsAlgorithm="//@children.0/@children.13/@graphicsAlgorithm/@graphicsAlgorithmChildren.1">
+        <properties key="actorref_graphic_element" value="layerconn_anchor"/>
+      </anchors>
+      <children visible="true">
+        <properties key="actorref_graphic_element" value="name_shape"/>
+        <graphicsAlgorithm xsi:type="al:Text" background="//@colors.3" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0" width="180" height="80" x="30" y="30" font="//@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="alarmTcp&#xA;(TrafficLightInterface)"/>
+      </children>
+      <children>
+        <properties key="actorref_graphic_element" value="size_shape"/>
+        <graphicsAlgorithm xsi:type="al:Text" background="//@colors.3" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0" width="25" height="25" x="185" y="30" font="//@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="1"/>
+      </children>
+      <children xsi:type="pi:ContainerShape" visible="true" active="true">
+        <properties key="obj-type" value="port"/>
+        <properties key="inherited" value="false"/>
+        <properties key="item-kind" value=""/>
+        <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="60" height="60" x="45">
+          <graphicsAlgorithmChildren xsi:type="al:Rectangle" background="//@colors.2" foreground="//@colors.2" lineWidth="1" transparency="0.0" width="18" height="18" x="21" y="21"/>
+        </graphicsAlgorithm>
+        <link>
+          <businessObjects href="../TcpCommunication.room#Port:TrafficLightInterface$fct"/>
+        </link>
+        <anchors xsi:type="pi:ChopboxAnchor" outgoingConnections="//@connections.24" referencedGraphicsAlgorithm="//@children.0/@children.13/@children.2/@graphicsAlgorithm/@graphicsAlgorithmChildren.0"/>
+        <children visible="true">
+          <graphicsAlgorithm xsi:type="al:Text" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0" width="60" height="15" y="6" font="//@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="fct"/>
+        </children>
+      </children>
+      <children xsi:type="pi:ContainerShape" visible="true" active="true">
+        <properties key="obj-type" value="port"/>
+        <properties key="inherited" value="false"/>
+        <properties key="item-kind" value="C"/>
+        <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="60" height="60" x="124" y="80">
+          <graphicsAlgorithmChildren xsi:type="al:Rectangle" background="//@colors.1" foreground="//@colors.2" lineWidth="1" transparency="0.0" width="18" height="18" x="21" y="21"/>
+        </graphicsAlgorithm>
+        <link>
+          <businessObjects href="../TcpCommunication.room#Port:TrafficLightInterface$payload"/>
+        </link>
+        <anchors xsi:type="pi:ChopboxAnchor" incomingConnections="//@connections.23" referencedGraphicsAlgorithm="//@children.0/@children.13/@children.3/@graphicsAlgorithm/@graphicsAlgorithmChildren.0"/>
+        <children visible="true">
+          <graphicsAlgorithm xsi:type="al:Text" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0" width="60" height="15" y="39" font="//@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="payload"/>
+        </children>
+      </children>
+      <children xsi:type="pi:ContainerShape" visible="true" active="true">
+        <properties key="obj-type" value="port"/>
+        <properties key="inherited" value="false"/>
+        <properties key="item-kind" value="C"/>
+        <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="60" height="60" x="36" y="80">
+          <graphicsAlgorithmChildren xsi:type="al:Rectangle" background="//@colors.1" foreground="//@colors.2" lineWidth="1" transparency="0.0" width="18" height="18" x="21" y="21"/>
+        </graphicsAlgorithm>
+        <link>
+          <businessObjects href="../TcpCommunication.room#Port:TrafficLightInterface$ctrl"/>
+        </link>
+        <anchors xsi:type="pi:ChopboxAnchor" incomingConnections="//@connections.22" referencedGraphicsAlgorithm="//@children.0/@children.13/@children.4/@graphicsAlgorithm/@graphicsAlgorithmChildren.0"/>
+        <children visible="true">
+          <graphicsAlgorithm xsi:type="al:Text" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0" width="60" height="15" y="39" font="//@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="ctrl"/>
+        </children>
+      </children>
+    </children>
+    <children xsi:type="pi:ContainerShape" visible="true" active="true">
+      <properties key="obj-type" value="ref"/>
+      <properties key="actorref_version" value="2"/>
+      <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="240" height="140" x="1187" y="574">
+        <graphicsAlgorithmChildren xsi:type="al:Rectangle" background="//@colors.3" foreground="//@colors.2" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="180" height="80" x="33" y="27">
+          <properties key="actorref_graphic_element" value="replborder"/>
+        </graphicsAlgorithmChildren>
+        <graphicsAlgorithmChildren xsi:type="al:Rectangle" background="//@colors.3" foreground="//@colors.2" lineWidth="1" transparency="0.0" width="180" height="80" x="30" y="30">
+          <properties key="actorref_graphic_element" value="mainborder"/>
+          <graphicsAlgorithmChildren xsi:type="al:Rectangle" foreground="//@colors.2" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="20" height="10" x="150" y="50">
+            <properties key="actorref_graphic_element" value="substructure"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Rectangle" foreground="//@colors.2" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="20" height="10" x="145" y="65">
+            <properties key="actorref_graphic_element" value="substructure"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points y="15"/>
+            <points x="15"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points y="30"/>
+            <points x="30"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points y="45"/>
+            <points x="45"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points y="60"/>
+            <points x="60"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points y="75"/>
+            <points x="75"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="10" y="80"/>
+            <points x="90"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="25" y="80"/>
+            <points x="105"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="40" y="80"/>
+            <points x="120"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="55" y="80"/>
+            <points x="135"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="70" y="80"/>
+            <points x="150"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="85" y="80"/>
+            <points x="165"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="100" y="80"/>
+            <points x="180"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="115" y="80"/>
+            <points x="180" y="15"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="130" y="80"/>
+            <points x="180" y="30"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="145" y="80"/>
+            <points x="180" y="45"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="160" y="80"/>
+            <points x="180" y="60"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="175" y="80"/>
+            <points x="180" y="75"/>
+          </graphicsAlgorithmChildren>
+        </graphicsAlgorithmChildren>
+        <graphicsAlgorithmChildren xsi:type="al:Rectangle" background="//@colors.3" foreground="//@colors.2" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="25" height="25" x="185" y="30">
+          <properties key="actorref_graphic_element" value="sizeframe"/>
+        </graphicsAlgorithmChildren>
+      </graphicsAlgorithm>
+      <link>
+        <businessObjects href="../MineControllerModel.room#ActorRef:TopActor$ref2"/>
+      </link>
+      <anchors xsi:type="pi:ChopboxAnchor" referencedGraphicsAlgorithm="//@children.0/@children.14/@graphicsAlgorithm/@graphicsAlgorithmChildren.1">
+        <properties key="actorref_graphic_element" value="layerconn_anchor"/>
+      </anchors>
+      <children visible="true">
+        <properties key="actorref_graphic_element" value="name_shape"/>
+        <graphicsAlgorithm xsi:type="al:Text" background="//@colors.3" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0" width="180" height="80" x="30" y="30" font="//@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="ref2&#xA;(ATcpClient)"/>
+      </children>
+      <children>
+        <properties key="actorref_graphic_element" value="size_shape"/>
+        <graphicsAlgorithm xsi:type="al:Text" background="//@colors.3" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0" width="25" height="25" x="185" y="30" font="//@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="1"/>
+      </children>
+      <children xsi:type="pi:ContainerShape" visible="true" active="true">
+        <properties key="obj-type" value="port"/>
+        <properties key="inherited" value="false"/>
+        <properties key="item-kind" value=""/>
+        <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="60" height="60" x="59">
+          <graphicsAlgorithmChildren xsi:type="al:Rectangle" background="//@colors.2" foreground="//@colors.2" lineWidth="1" transparency="0.0" width="18" height="18" x="21" y="21"/>
+        </graphicsAlgorithm>
+        <link>
+          <businessObjects href="../../../org.eclipse.etrice.modellib.java/model/etrice/api/tcp.room#Port:ATcpClient$ControlPort"/>
+        </link>
+        <anchors xsi:type="pi:ChopboxAnchor" outgoingConnections="//@connections.22" referencedGraphicsAlgorithm="//@children.0/@children.14/@children.2/@graphicsAlgorithm/@graphicsAlgorithmChildren.0"/>
+        <children visible="true">
+          <graphicsAlgorithm xsi:type="al:Text" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0" width="60" height="15" y="6" font="//@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="ControlPort"/>
+        </children>
+      </children>
+      <children xsi:type="pi:ContainerShape" visible="true" active="true">
+        <properties key="obj-type" value="port"/>
+        <properties key="inherited" value="false"/>
+        <properties key="item-kind" value=""/>
+        <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="60" height="60" x="119">
+          <graphicsAlgorithmChildren xsi:type="al:Rectangle" background="//@colors.2" foreground="//@colors.2" lineWidth="1" transparency="0.0" width="18" height="18" x="21" y="21"/>
+        </graphicsAlgorithm>
+        <link>
+          <businessObjects href="../../../org.eclipse.etrice.modellib.java/model/etrice/api/tcp.room#Port:ATcpClient$PayloadPort"/>
+        </link>
+        <anchors xsi:type="pi:ChopboxAnchor" outgoingConnections="//@connections.23" referencedGraphicsAlgorithm="//@children.0/@children.14/@children.3/@graphicsAlgorithm/@graphicsAlgorithmChildren.0"/>
+        <children visible="true">
+          <graphicsAlgorithm xsi:type="al:Text" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0" width="60" height="15" y="6" font="//@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="PayloadPort"/>
+        </children>
+      </children>
+    </children>
+    <children xsi:type="pi:ContainerShape" visible="true" active="true">
+      <properties key="obj-type" value="ref"/>
+      <properties key="actorref_version" value="2"/>
+      <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="240" height="140" x="880" y="587">
+        <graphicsAlgorithmChildren xsi:type="al:Rectangle" background="//@colors.3" foreground="//@colors.2" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="180" height="80" x="33" y="27">
+          <properties key="actorref_graphic_element" value="replborder"/>
+        </graphicsAlgorithmChildren>
+        <graphicsAlgorithmChildren xsi:type="al:Rectangle" background="//@colors.3" foreground="//@colors.2" lineWidth="1" transparency="0.0" width="180" height="80" x="30" y="30">
+          <properties key="actorref_graphic_element" value="mainborder"/>
+          <graphicsAlgorithmChildren xsi:type="al:Rectangle" foreground="//@colors.2" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="20" height="10" x="150" y="50">
+            <properties key="actorref_graphic_element" value="substructure"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Rectangle" foreground="//@colors.2" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="20" height="10" x="145" y="65">
+            <properties key="actorref_graphic_element" value="substructure"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points y="15"/>
+            <points x="15"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points y="30"/>
+            <points x="30"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points y="45"/>
+            <points x="45"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points y="60"/>
+            <points x="60"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points y="75"/>
+            <points x="75"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="10" y="80"/>
+            <points x="90"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="25" y="80"/>
+            <points x="105"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="40" y="80"/>
+            <points x="120"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="55" y="80"/>
+            <points x="135"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="70" y="80"/>
+            <points x="150"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="85" y="80"/>
+            <points x="165"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="100" y="80"/>
+            <points x="180"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="115" y="80"/>
+            <points x="180" y="15"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="130" y="80"/>
+            <points x="180" y="30"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="145" y="80"/>
+            <points x="180" y="45"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="160" y="80"/>
+            <points x="180" y="60"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="175" y="80"/>
+            <points x="180" y="75"/>
+          </graphicsAlgorithmChildren>
+        </graphicsAlgorithmChildren>
+        <graphicsAlgorithmChildren xsi:type="al:Rectangle" background="//@colors.3" foreground="//@colors.2" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="25" height="25" x="185" y="30">
+          <properties key="actorref_graphic_element" value="sizeframe"/>
+        </graphicsAlgorithmChildren>
+      </graphicsAlgorithm>
+      <link>
+        <businessObjects href="../MineControllerModel.room#ActorRef:TopActor$environmentTcp"/>
+      </link>
+      <anchors xsi:type="pi:ChopboxAnchor" referencedGraphicsAlgorithm="//@children.0/@children.15/@graphicsAlgorithm/@graphicsAlgorithmChildren.1">
+        <properties key="actorref_graphic_element" value="layerconn_anchor"/>
+      </anchors>
+      <children visible="true">
+        <properties key="actorref_graphic_element" value="name_shape"/>
+        <graphicsAlgorithm xsi:type="al:Text" background="//@colors.3" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0" width="180" height="80" x="30" y="30" font="//@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="environmentTcp&#xA;(TrafficLightInterface)"/>
+      </children>
+      <children>
+        <properties key="actorref_graphic_element" value="size_shape"/>
+        <graphicsAlgorithm xsi:type="al:Text" background="//@colors.3" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0" width="25" height="25" x="185" y="30" font="//@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="1"/>
+      </children>
+      <children xsi:type="pi:ContainerShape" visible="true" active="true">
+        <properties key="obj-type" value="port"/>
+        <properties key="inherited" value="false"/>
+        <properties key="item-kind" value=""/>
+        <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="60" height="60" x="45">
+          <graphicsAlgorithmChildren xsi:type="al:Rectangle" background="//@colors.2" foreground="//@colors.2" lineWidth="1" transparency="0.0" width="18" height="18" x="21" y="21"/>
+        </graphicsAlgorithm>
+        <link>
+          <businessObjects href="../TcpCommunication.room#Port:TrafficLightInterface$fct"/>
+        </link>
+        <anchors xsi:type="pi:ChopboxAnchor" outgoingConnections="//@connections.27" referencedGraphicsAlgorithm="//@children.0/@children.15/@children.2/@graphicsAlgorithm/@graphicsAlgorithmChildren.0"/>
+        <children visible="true">
+          <graphicsAlgorithm xsi:type="al:Text" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0" width="60" height="15" y="6" font="//@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="fct"/>
+        </children>
+      </children>
+      <children xsi:type="pi:ContainerShape" visible="true" active="true">
+        <properties key="obj-type" value="port"/>
+        <properties key="inherited" value="false"/>
+        <properties key="item-kind" value="C"/>
+        <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="60" height="60" x="51" y="80">
+          <graphicsAlgorithmChildren xsi:type="al:Rectangle" background="//@colors.1" foreground="//@colors.2" lineWidth="1" transparency="0.0" width="18" height="18" x="21" y="21"/>
+        </graphicsAlgorithm>
+        <link>
+          <businessObjects href="../TcpCommunication.room#Port:TrafficLightInterface$ctrl"/>
+        </link>
+        <anchors xsi:type="pi:ChopboxAnchor" incomingConnections="//@connections.25" referencedGraphicsAlgorithm="//@children.0/@children.15/@children.3/@graphicsAlgorithm/@graphicsAlgorithmChildren.0"/>
+        <children visible="true">
+          <graphicsAlgorithm xsi:type="al:Text" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0" width="60" height="15" y="39" font="//@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="ctrl"/>
+        </children>
+      </children>
+      <children xsi:type="pi:ContainerShape" visible="true" active="true">
+        <properties key="obj-type" value="port"/>
+        <properties key="inherited" value="false"/>
+        <properties key="item-kind" value="C"/>
+        <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="60" height="60" x="117" y="80">
+          <graphicsAlgorithmChildren xsi:type="al:Rectangle" background="//@colors.1" foreground="//@colors.2" lineWidth="1" transparency="0.0" width="18" height="18" x="21" y="21"/>
+        </graphicsAlgorithm>
+        <link>
+          <businessObjects href="../TcpCommunication.room#Port:TrafficLightInterface$payload"/>
+        </link>
+        <anchors xsi:type="pi:ChopboxAnchor" incomingConnections="//@connections.26" referencedGraphicsAlgorithm="//@children.0/@children.15/@children.4/@graphicsAlgorithm/@graphicsAlgorithmChildren.0"/>
+        <children visible="true">
+          <graphicsAlgorithm xsi:type="al:Text" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0" width="60" height="15" y="39" font="//@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="payload"/>
+        </children>
+      </children>
+    </children>
+    <children xsi:type="pi:ContainerShape" visible="true" active="true">
+      <properties key="obj-type" value="ref"/>
+      <properties key="actorref_version" value="2"/>
+      <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="240" height="140" x="880" y="725">
+        <graphicsAlgorithmChildren xsi:type="al:Rectangle" background="//@colors.3" foreground="//@colors.2" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="180" height="80" x="33" y="27">
+          <properties key="actorref_graphic_element" value="replborder"/>
+        </graphicsAlgorithmChildren>
+        <graphicsAlgorithmChildren xsi:type="al:Rectangle" background="//@colors.3" foreground="//@colors.2" lineWidth="1" transparency="0.0" width="180" height="80" x="30" y="30">
+          <properties key="actorref_graphic_element" value="mainborder"/>
+          <graphicsAlgorithmChildren xsi:type="al:Rectangle" foreground="//@colors.2" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="20" height="10" x="150" y="50">
+            <properties key="actorref_graphic_element" value="substructure"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Rectangle" foreground="//@colors.2" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="20" height="10" x="145" y="65">
+            <properties key="actorref_graphic_element" value="substructure"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points y="15"/>
+            <points x="15"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points y="30"/>
+            <points x="30"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points y="45"/>
+            <points x="45"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points y="60"/>
+            <points x="60"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points y="75"/>
+            <points x="75"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="10" y="80"/>
+            <points x="90"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="25" y="80"/>
+            <points x="105"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="40" y="80"/>
+            <points x="120"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="55" y="80"/>
+            <points x="135"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="70" y="80"/>
+            <points x="150"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="85" y="80"/>
+            <points x="165"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="100" y="80"/>
+            <points x="180"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="115" y="80"/>
+            <points x="180" y="15"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="130" y="80"/>
+            <points x="180" y="30"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="145" y="80"/>
+            <points x="180" y="45"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="160" y="80"/>
+            <points x="180" y="60"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="175" y="80"/>
+            <points x="180" y="75"/>
+          </graphicsAlgorithmChildren>
+        </graphicsAlgorithmChildren>
+        <graphicsAlgorithmChildren xsi:type="al:Rectangle" background="//@colors.3" foreground="//@colors.2" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="25" height="25" x="185" y="30">
+          <properties key="actorref_graphic_element" value="sizeframe"/>
+        </graphicsAlgorithmChildren>
+      </graphicsAlgorithm>
+      <link>
+        <businessObjects href="../MineControllerModel.room#ActorRef:TopActor$ref3"/>
+      </link>
+      <anchors xsi:type="pi:ChopboxAnchor" referencedGraphicsAlgorithm="//@children.0/@children.16/@graphicsAlgorithm/@graphicsAlgorithmChildren.1">
+        <properties key="actorref_graphic_element" value="layerconn_anchor"/>
+      </anchors>
+      <children visible="true">
+        <properties key="actorref_graphic_element" value="name_shape"/>
+        <graphicsAlgorithm xsi:type="al:Text" background="//@colors.3" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0" width="180" height="80" x="30" y="30" font="//@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="ref3&#xA;(ATcpClient)"/>
+      </children>
+      <children>
+        <properties key="actorref_graphic_element" value="size_shape"/>
+        <graphicsAlgorithm xsi:type="al:Text" background="//@colors.3" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0" width="25" height="25" x="185" y="30" font="//@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="1"/>
+      </children>
+      <children xsi:type="pi:ContainerShape" visible="true" active="true">
+        <properties key="obj-type" value="port"/>
+        <properties key="inherited" value="false"/>
+        <properties key="item-kind" value=""/>
+        <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="60" height="60" x="59">
+          <graphicsAlgorithmChildren xsi:type="al:Rectangle" background="//@colors.2" foreground="//@colors.2" lineWidth="1" transparency="0.0" width="18" height="18" x="21" y="21"/>
+        </graphicsAlgorithm>
+        <link>
+          <businessObjects href="../../../org.eclipse.etrice.modellib.java/model/etrice/api/tcp.room#Port:ATcpClient$ControlPort"/>
+        </link>
+        <anchors xsi:type="pi:ChopboxAnchor" outgoingConnections="//@connections.25" referencedGraphicsAlgorithm="//@children.0/@children.16/@children.2/@graphicsAlgorithm/@graphicsAlgorithmChildren.0"/>
+        <children visible="true">
+          <graphicsAlgorithm xsi:type="al:Text" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0" width="60" height="15" y="6" font="//@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="ControlPort"/>
+        </children>
+      </children>
+      <children xsi:type="pi:ContainerShape" visible="true" active="true">
+        <properties key="obj-type" value="port"/>
+        <properties key="inherited" value="false"/>
+        <properties key="item-kind" value=""/>
+        <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="60" height="60" x="119">
+          <graphicsAlgorithmChildren xsi:type="al:Rectangle" background="//@colors.2" foreground="//@colors.2" lineWidth="1" transparency="0.0" width="18" height="18" x="21" y="21"/>
+        </graphicsAlgorithm>
+        <link>
+          <businessObjects href="../../../org.eclipse.etrice.modellib.java/model/etrice/api/tcp.room#Port:ATcpClient$PayloadPort"/>
+        </link>
+        <anchors xsi:type="pi:ChopboxAnchor" outgoingConnections="//@connections.26" referencedGraphicsAlgorithm="//@children.0/@children.16/@children.3/@graphicsAlgorithm/@graphicsAlgorithmChildren.0"/>
+        <children visible="true">
+          <graphicsAlgorithm xsi:type="al:Text" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0" width="60" height="15" y="6" font="//@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="PayloadPort"/>
+        </children>
+      </children>
+    </children>
+    <children xsi:type="pi:ContainerShape" visible="true" active="true">
+      <properties key="obj-type" value="ref"/>
+      <properties key="actorref_version" value="2"/>
+      <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="240" height="140" x="634" y="147">
+        <graphicsAlgorithmChildren xsi:type="al:Rectangle" background="//@colors.3" foreground="//@colors.2" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="180" height="80" x="33" y="27">
+          <properties key="actorref_graphic_element" value="replborder"/>
+        </graphicsAlgorithmChildren>
+        <graphicsAlgorithmChildren xsi:type="al:Rectangle" background="//@colors.3" foreground="//@colors.2" lineWidth="1" transparency="0.0" width="180" height="80" x="30" y="30">
+          <properties key="actorref_graphic_element" value="mainborder"/>
+          <graphicsAlgorithmChildren xsi:type="al:Rectangle" foreground="//@colors.2" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="20" height="10" x="150" y="50">
+            <properties key="actorref_graphic_element" value="substructure"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Rectangle" foreground="//@colors.2" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="20" height="10" x="145" y="65">
+            <properties key="actorref_graphic_element" value="substructure"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points y="15"/>
+            <points x="15"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points y="30"/>
+            <points x="30"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points y="45"/>
+            <points x="45"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points y="60"/>
+            <points x="60"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points y="75"/>
+            <points x="75"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="10" y="80"/>
+            <points x="90"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="25" y="80"/>
+            <points x="105"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="40" y="80"/>
+            <points x="120"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="55" y="80"/>
+            <points x="135"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="70" y="80"/>
+            <points x="150"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="85" y="80"/>
+            <points x="165"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="100" y="80"/>
+            <points x="180"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="115" y="80"/>
+            <points x="180" y="15"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="130" y="80"/>
+            <points x="180" y="30"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="145" y="80"/>
+            <points x="180" y="45"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="160" y="80"/>
+            <points x="180" y="60"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="175" y="80"/>
+            <points x="180" y="75"/>
+          </graphicsAlgorithmChildren>
+        </graphicsAlgorithmChildren>
+        <graphicsAlgorithmChildren xsi:type="al:Rectangle" background="//@colors.3" foreground="//@colors.2" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="25" height="25" x="185" y="30">
+          <properties key="actorref_graphic_element" value="sizeframe"/>
+        </graphicsAlgorithmChildren>
+      </graphicsAlgorithm>
+      <link>
+        <businessObjects href="../MineControllerModel.room#ActorRef:TopActor$tcpPumpControl"/>
+      </link>
+      <anchors xsi:type="pi:ChopboxAnchor" referencedGraphicsAlgorithm="//@children.0/@children.17/@graphicsAlgorithm/@graphicsAlgorithmChildren.1">
+        <properties key="actorref_graphic_element" value="layerconn_anchor"/>
+      </anchors>
+      <children visible="true">
+        <properties key="actorref_graphic_element" value="name_shape"/>
+        <graphicsAlgorithm xsi:type="al:Text" background="//@colors.3" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0" width="180" height="80" x="30" y="30" font="//@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="tcpPumpControl&#xA;(TrafficLightInterface)"/>
+      </children>
+      <children>
+        <properties key="actorref_graphic_element" value="size_shape"/>
+        <graphicsAlgorithm xsi:type="al:Text" background="//@colors.3" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0" width="25" height="25" x="185" y="30" font="//@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="1"/>
+      </children>
+      <children xsi:type="pi:ContainerShape" visible="true" active="true">
+        <properties key="obj-type" value="port"/>
+        <properties key="inherited" value="false"/>
+        <properties key="item-kind" value="C"/>
+        <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="60" height="60" x="59">
+          <graphicsAlgorithmChildren xsi:type="al:Rectangle" background="//@colors.1" foreground="//@colors.2" lineWidth="1" transparency="0.0" width="18" height="18" x="21" y="21"/>
+        </graphicsAlgorithm>
+        <link>
+          <businessObjects href="../TcpCommunication.room#Port:TrafficLightInterface$ctrl"/>
+        </link>
+        <anchors xsi:type="pi:ChopboxAnchor" outgoingConnections="//@connections.29" referencedGraphicsAlgorithm="//@children.0/@children.17/@children.2/@graphicsAlgorithm/@graphicsAlgorithmChildren.0"/>
+        <children visible="true">
+          <graphicsAlgorithm xsi:type="al:Text" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0" width="60" height="15" y="6" font="//@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="ctrl"/>
+        </children>
+      </children>
+      <children xsi:type="pi:ContainerShape" visible="true" active="true">
+        <properties key="obj-type" value="port"/>
+        <properties key="inherited" value="false"/>
+        <properties key="item-kind" value="C"/>
+        <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="60" height="60" x="109">
+          <graphicsAlgorithmChildren xsi:type="al:Rectangle" background="//@colors.1" foreground="//@colors.2" lineWidth="1" transparency="0.0" width="18" height="18" x="21" y="21"/>
+        </graphicsAlgorithm>
+        <link>
+          <businessObjects href="../TcpCommunication.room#Port:TrafficLightInterface$payload"/>
+        </link>
+        <anchors xsi:type="pi:ChopboxAnchor" outgoingConnections="//@connections.28" referencedGraphicsAlgorithm="//@children.0/@children.17/@children.3/@graphicsAlgorithm/@graphicsAlgorithmChildren.0"/>
+        <children visible="true">
+          <graphicsAlgorithm xsi:type="al:Text" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0" width="60" height="15" y="6" font="//@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="payload"/>
+        </children>
+      </children>
+      <children xsi:type="pi:ContainerShape" visible="true" active="true">
+        <properties key="obj-type" value="port"/>
+        <properties key="inherited" value="false"/>
+        <properties key="item-kind" value=""/>
+        <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="60" height="60" x="36" y="80">
+          <graphicsAlgorithmChildren xsi:type="al:Rectangle" background="//@colors.2" foreground="//@colors.2" lineWidth="1" transparency="0.0" width="18" height="18" x="21" y="21"/>
+        </graphicsAlgorithm>
+        <link>
+          <businessObjects href="../TcpCommunication.room#Port:TrafficLightInterface$fct"/>
+        </link>
+        <anchors xsi:type="pi:ChopboxAnchor" incomingConnections="//@connections.30" referencedGraphicsAlgorithm="//@children.0/@children.17/@children.4/@graphicsAlgorithm/@graphicsAlgorithmChildren.0"/>
+        <children visible="true">
+          <graphicsAlgorithm xsi:type="al:Text" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0" width="60" height="15" y="39" font="//@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="fct"/>
+        </children>
+      </children>
+    </children>
+    <children xsi:type="pi:ContainerShape" visible="true" active="true">
+      <properties key="obj-type" value="ref"/>
+      <properties key="actorref_version" value="2"/>
+      <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="240" height="140" x="634" y="19">
+        <graphicsAlgorithmChildren xsi:type="al:Rectangle" background="//@colors.3" foreground="//@colors.2" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="180" height="80" x="33" y="27">
+          <properties key="actorref_graphic_element" value="replborder"/>
+        </graphicsAlgorithmChildren>
+        <graphicsAlgorithmChildren xsi:type="al:Rectangle" background="//@colors.3" foreground="//@colors.2" lineWidth="1" transparency="0.0" width="180" height="80" x="30" y="30">
+          <properties key="actorref_graphic_element" value="mainborder"/>
+          <graphicsAlgorithmChildren xsi:type="al:Rectangle" foreground="//@colors.2" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="20" height="10" x="150" y="50">
+            <properties key="actorref_graphic_element" value="substructure"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Rectangle" foreground="//@colors.2" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="20" height="10" x="145" y="65">
+            <properties key="actorref_graphic_element" value="substructure"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points y="15"/>
+            <points x="15"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points y="30"/>
+            <points x="30"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points y="45"/>
+            <points x="45"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points y="60"/>
+            <points x="60"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points y="75"/>
+            <points x="75"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="10" y="80"/>
+            <points x="90"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="25" y="80"/>
+            <points x="105"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="40" y="80"/>
+            <points x="120"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="55" y="80"/>
+            <points x="135"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="70" y="80"/>
+            <points x="150"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="85" y="80"/>
+            <points x="165"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="100" y="80"/>
+            <points x="180"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="115" y="80"/>
+            <points x="180" y="15"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="130" y="80"/>
+            <points x="180" y="30"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="145" y="80"/>
+            <points x="180" y="45"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="160" y="80"/>
+            <points x="180" y="60"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="175" y="80"/>
+            <points x="180" y="75"/>
+          </graphicsAlgorithmChildren>
+        </graphicsAlgorithmChildren>
+        <graphicsAlgorithmChildren xsi:type="al:Rectangle" background="//@colors.3" foreground="//@colors.2" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="25" height="25" x="185" y="30">
+          <properties key="actorref_graphic_element" value="sizeframe"/>
+        </graphicsAlgorithmChildren>
+      </graphicsAlgorithm>
+      <link>
+        <businessObjects href="../MineControllerModel.room#ActorRef:TopActor$ref4"/>
+      </link>
+      <anchors xsi:type="pi:ChopboxAnchor" referencedGraphicsAlgorithm="//@children.0/@children.18/@graphicsAlgorithm/@graphicsAlgorithmChildren.1">
+        <properties key="actorref_graphic_element" value="layerconn_anchor"/>
+      </anchors>
+      <children visible="true">
+        <properties key="actorref_graphic_element" value="name_shape"/>
+        <graphicsAlgorithm xsi:type="al:Text" background="//@colors.3" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0" width="180" height="80" x="30" y="30" font="//@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="ref4&#xA;(ATcpClient)"/>
+      </children>
+      <children>
+        <properties key="actorref_graphic_element" value="size_shape"/>
+        <graphicsAlgorithm xsi:type="al:Text" background="//@colors.3" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0" width="25" height="25" x="185" y="30" font="//@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="1"/>
+      </children>
+      <children xsi:type="pi:ContainerShape" visible="true" active="true">
+        <properties key="obj-type" value="port"/>
+        <properties key="inherited" value="false"/>
+        <properties key="item-kind" value=""/>
+        <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="60" height="60" x="110" y="80">
+          <graphicsAlgorithmChildren xsi:type="al:Rectangle" background="//@colors.2" foreground="//@colors.2" lineWidth="1" transparency="0.0" width="18" height="18" x="21" y="21"/>
+        </graphicsAlgorithm>
+        <link>
+          <businessObjects href="../../../org.eclipse.etrice.modellib.java/model/etrice/api/tcp.room#Port:ATcpClient$PayloadPort"/>
+        </link>
+        <anchors xsi:type="pi:ChopboxAnchor" incomingConnections="//@connections.28" referencedGraphicsAlgorithm="//@children.0/@children.18/@children.2/@graphicsAlgorithm/@graphicsAlgorithmChildren.0"/>
+        <children visible="true">
+          <graphicsAlgorithm xsi:type="al:Text" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0" width="60" height="15" y="39" font="//@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="PayloadPort"/>
+        </children>
+      </children>
+      <children xsi:type="pi:ContainerShape" visible="true" active="true">
+        <properties key="obj-type" value="port"/>
+        <properties key="inherited" value="false"/>
+        <properties key="item-kind" value=""/>
+        <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="60" height="60" x="58" y="80">
+          <graphicsAlgorithmChildren xsi:type="al:Rectangle" background="//@colors.2" foreground="//@colors.2" lineWidth="1" transparency="0.0" width="18" height="18" x="21" y="21"/>
+        </graphicsAlgorithm>
+        <link>
+          <businessObjects href="../../../org.eclipse.etrice.modellib.java/model/etrice/api/tcp.room#Port:ATcpClient$ControlPort"/>
+        </link>
+        <anchors xsi:type="pi:ChopboxAnchor" incomingConnections="//@connections.29" referencedGraphicsAlgorithm="//@children.0/@children.18/@children.3/@graphicsAlgorithm/@graphicsAlgorithmChildren.0"/>
+        <children visible="true">
+          <graphicsAlgorithm xsi:type="al:Text" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0" width="60" height="15" y="39" font="//@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="ControlPort"/>
+        </children>
+      </children>
+    </children>
+    <children xsi:type="pi:ContainerShape" visible="true" active="true">
+      <properties key="obj-type" value="ref"/>
+      <properties key="actorref_version" value="2"/>
+      <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="240" height="140" x="340" y="892">
+        <graphicsAlgorithmChildren xsi:type="al:Rectangle" background="//@colors.3" foreground="//@colors.2" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="180" height="80" x="33" y="27">
+          <properties key="actorref_graphic_element" value="replborder"/>
+        </graphicsAlgorithmChildren>
+        <graphicsAlgorithmChildren xsi:type="al:Rectangle" background="//@colors.3" foreground="//@colors.2" lineWidth="1" transparency="0.0" width="180" height="80" x="30" y="30">
+          <properties key="actorref_graphic_element" value="mainborder"/>
+          <graphicsAlgorithmChildren xsi:type="al:Rectangle" foreground="//@colors.2" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="20" height="10" x="150" y="50">
+            <properties key="actorref_graphic_element" value="substructure"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Rectangle" foreground="//@colors.2" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="20" height="10" x="145" y="65">
+            <properties key="actorref_graphic_element" value="substructure"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points y="15"/>
+            <points x="15"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points y="30"/>
+            <points x="30"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points y="45"/>
+            <points x="45"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points y="60"/>
+            <points x="60"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points y="75"/>
+            <points x="75"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="10" y="80"/>
+            <points x="90"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="25" y="80"/>
+            <points x="105"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="40" y="80"/>
+            <points x="120"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="55" y="80"/>
+            <points x="135"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="70" y="80"/>
+            <points x="150"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="85" y="80"/>
+            <points x="165"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="100" y="80"/>
+            <points x="180"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="115" y="80"/>
+            <points x="180" y="15"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="130" y="80"/>
+            <points x="180" y="30"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="145" y="80"/>
+            <points x="180" y="45"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="160" y="80"/>
+            <points x="180" y="60"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="175" y="80"/>
+            <points x="180" y="75"/>
+          </graphicsAlgorithmChildren>
+        </graphicsAlgorithmChildren>
+        <graphicsAlgorithmChildren xsi:type="al:Rectangle" background="//@colors.3" foreground="//@colors.2" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="25" height="25" x="185" y="30">
+          <properties key="actorref_graphic_element" value="sizeframe"/>
+        </graphicsAlgorithmChildren>
+      </graphicsAlgorithm>
+      <link>
+        <businessObjects href="../MineControllerModel.room#ActorRef:TopActor$ref5"/>
+      </link>
+      <anchors xsi:type="pi:ChopboxAnchor" referencedGraphicsAlgorithm="//@children.0/@children.19/@graphicsAlgorithm/@graphicsAlgorithmChildren.1">
+        <properties key="actorref_graphic_element" value="layerconn_anchor"/>
+      </anchors>
+      <children visible="true">
+        <properties key="actorref_graphic_element" value="name_shape"/>
+        <graphicsAlgorithm xsi:type="al:Text" background="//@colors.3" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0" width="180" height="80" x="30" y="30" font="//@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="ref5&#xA;(ATcpClient)"/>
+      </children>
+      <children>
+        <properties key="actorref_graphic_element" value="size_shape"/>
+        <graphicsAlgorithm xsi:type="al:Text" background="//@colors.3" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0" width="25" height="25" x="185" y="30" font="//@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="1"/>
+      </children>
+      <children xsi:type="pi:ContainerShape" visible="true" active="true">
+        <properties key="obj-type" value="port"/>
+        <properties key="inherited" value="false"/>
+        <properties key="item-kind" value=""/>
+        <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="60" height="60" x="119">
+          <graphicsAlgorithmChildren xsi:type="al:Rectangle" background="//@colors.2" foreground="//@colors.2" lineWidth="1" transparency="0.0" width="18" height="18" x="21" y="21"/>
+        </graphicsAlgorithm>
+        <link>
+          <businessObjects href="../../../org.eclipse.etrice.modellib.java/model/etrice/api/tcp.room#Port:ATcpClient$PayloadPort"/>
+        </link>
+        <anchors xsi:type="pi:ChopboxAnchor" incomingConnections="//@connections.31" referencedGraphicsAlgorithm="//@children.0/@children.19/@children.2/@graphicsAlgorithm/@graphicsAlgorithmChildren.0"/>
+        <children visible="true">
+          <graphicsAlgorithm xsi:type="al:Text" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0" width="60" height="15" y="6" font="//@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="PayloadPort"/>
+        </children>
+      </children>
+      <children xsi:type="pi:ContainerShape" visible="true" active="true">
+        <properties key="obj-type" value="port"/>
+        <properties key="inherited" value="false"/>
+        <properties key="item-kind" value=""/>
+        <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="60" height="60" x="59">
+          <graphicsAlgorithmChildren xsi:type="al:Rectangle" background="//@colors.2" foreground="//@colors.2" lineWidth="1" transparency="0.0" width="18" height="18" x="21" y="21"/>
+        </graphicsAlgorithm>
+        <link>
+          <businessObjects href="../../../org.eclipse.etrice.modellib.java/model/etrice/api/tcp.room#Port:ATcpClient$ControlPort"/>
+        </link>
+        <anchors xsi:type="pi:ChopboxAnchor" incomingConnections="//@connections.32" referencedGraphicsAlgorithm="//@children.0/@children.19/@children.3/@graphicsAlgorithm/@graphicsAlgorithmChildren.0"/>
+        <children visible="true">
+          <graphicsAlgorithm xsi:type="al:Text" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0" width="60" height="15" y="6" font="//@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="ControlPort"/>
+        </children>
+      </children>
+    </children>
+    <children xsi:type="pi:ContainerShape" visible="true" active="true">
+      <properties key="obj-type" value="ref"/>
+      <properties key="actorref_version" value="2"/>
+      <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="240" height="140" x="356" y="750">
+        <graphicsAlgorithmChildren xsi:type="al:Rectangle" background="//@colors.3" foreground="//@colors.2" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="180" height="80" x="33" y="27">
+          <properties key="actorref_graphic_element" value="replborder"/>
+        </graphicsAlgorithmChildren>
+        <graphicsAlgorithmChildren xsi:type="al:Rectangle" background="//@colors.3" foreground="//@colors.2" lineWidth="1" transparency="0.0" width="180" height="80" x="30" y="30">
+          <properties key="actorref_graphic_element" value="mainborder"/>
+          <graphicsAlgorithmChildren xsi:type="al:Rectangle" foreground="//@colors.2" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="20" height="10" x="150" y="50">
+            <properties key="actorref_graphic_element" value="substructure"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Rectangle" foreground="//@colors.2" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="20" height="10" x="145" y="65">
+            <properties key="actorref_graphic_element" value="substructure"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points y="15"/>
+            <points x="15"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points y="30"/>
+            <points x="30"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points y="45"/>
+            <points x="45"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points y="60"/>
+            <points x="60"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points y="75"/>
+            <points x="75"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="10" y="80"/>
+            <points x="90"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="25" y="80"/>
+            <points x="105"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="40" y="80"/>
+            <points x="120"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="55" y="80"/>
+            <points x="135"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="70" y="80"/>
+            <points x="150"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="85" y="80"/>
+            <points x="165"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="100" y="80"/>
+            <points x="180"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="115" y="80"/>
+            <points x="180" y="15"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="130" y="80"/>
+            <points x="180" y="30"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="145" y="80"/>
+            <points x="180" y="45"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="160" y="80"/>
+            <points x="180" y="60"/>
+          </graphicsAlgorithmChildren>
+          <graphicsAlgorithmChildren xsi:type="al:Polyline" foreground="//@colors.2" lineStyle="UNSPECIFIED" lineVisible="false" transparency="0.4">
+            <properties key="actorref_graphic_element" value="hatched_line"/>
+            <points x="175" y="80"/>
+            <points x="180" y="75"/>
+          </graphicsAlgorithmChildren>
+        </graphicsAlgorithmChildren>
+        <graphicsAlgorithmChildren xsi:type="al:Rectangle" background="//@colors.3" foreground="//@colors.2" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="25" height="25" x="185" y="30">
+          <properties key="actorref_graphic_element" value="sizeframe"/>
+        </graphicsAlgorithmChildren>
+      </graphicsAlgorithm>
+      <link>
+        <businessObjects href="../MineControllerModel.room#ActorRef:TopActor$tcpWaterTunel"/>
+      </link>
+      <anchors xsi:type="pi:ChopboxAnchor" referencedGraphicsAlgorithm="//@children.0/@children.20/@graphicsAlgorithm/@graphicsAlgorithmChildren.1">
+        <properties key="actorref_graphic_element" value="layerconn_anchor"/>
+      </anchors>
+      <children visible="true">
+        <properties key="actorref_graphic_element" value="name_shape"/>
+        <graphicsAlgorithm xsi:type="al:Text" background="//@colors.3" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0" width="180" height="80" x="30" y="30" font="//@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="tcpWaterTunel&#xA;(TrafficLightInterface)"/>
+      </children>
+      <children>
+        <properties key="actorref_graphic_element" value="size_shape"/>
+        <graphicsAlgorithm xsi:type="al:Text" background="//@colors.3" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0" width="25" height="25" x="185" y="30" font="//@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="1"/>
+      </children>
+      <children xsi:type="pi:ContainerShape" visible="true" active="true">
+        <properties key="obj-type" value="port"/>
+        <properties key="inherited" value="false"/>
+        <properties key="item-kind" value="C"/>
+        <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="60" height="60" x="45" y="80">
+          <graphicsAlgorithmChildren xsi:type="al:Rectangle" background="//@colors.1" foreground="//@colors.2" lineWidth="1" transparency="0.0" width="18" height="18" x="21" y="21"/>
+        </graphicsAlgorithm>
+        <link>
+          <businessObjects href="../TcpCommunication.room#Port:TrafficLightInterface$ctrl"/>
+        </link>
+        <anchors xsi:type="pi:ChopboxAnchor" outgoingConnections="//@connections.32" referencedGraphicsAlgorithm="//@children.0/@children.20/@children.2/@graphicsAlgorithm/@graphicsAlgorithmChildren.0"/>
+        <children visible="true">
+          <graphicsAlgorithm xsi:type="al:Text" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0" width="60" height="15" y="39" font="//@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="ctrl"/>
+        </children>
+      </children>
+      <children xsi:type="pi:ContainerShape" visible="true" active="true">
+        <properties key="obj-type" value="port"/>
+        <properties key="inherited" value="false"/>
+        <properties key="item-kind" value=""/>
+        <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="60" height="60" x="45">
+          <graphicsAlgorithmChildren xsi:type="al:Rectangle" background="//@colors.2" foreground="//@colors.2" lineWidth="1" transparency="0.0" width="18" height="18" x="21" y="21"/>
+        </graphicsAlgorithm>
+        <link>
+          <businessObjects href="../TcpCommunication.room#Port:TrafficLightInterface$fct"/>
+        </link>
+        <anchors xsi:type="pi:ChopboxAnchor" incomingConnections="//@connections.33" referencedGraphicsAlgorithm="//@children.0/@children.20/@children.3/@graphicsAlgorithm/@graphicsAlgorithmChildren.0"/>
+        <children visible="true">
+          <graphicsAlgorithm xsi:type="al:Text" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0" width="60" height="15" y="6" font="//@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="fct"/>
+        </children>
+      </children>
+      <children xsi:type="pi:ContainerShape" visible="true" active="true">
+        <properties key="obj-type" value="port"/>
+        <properties key="inherited" value="false"/>
+        <properties key="item-kind" value="C"/>
+        <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="60" height="60" x="104" y="80">
+          <graphicsAlgorithmChildren xsi:type="al:Rectangle" background="//@colors.1" foreground="//@colors.2" lineWidth="1" transparency="0.0" width="18" height="18" x="21" y="21"/>
+        </graphicsAlgorithm>
+        <link>
+          <businessObjects href="../TcpCommunication.room#Port:TrafficLightInterface$payload"/>
+        </link>
+        <anchors xsi:type="pi:ChopboxAnchor" outgoingConnections="//@connections.31" referencedGraphicsAlgorithm="//@children.0/@children.20/@children.4/@graphicsAlgorithm/@graphicsAlgorithmChildren.0"/>
+        <children visible="true">
+          <graphicsAlgorithm xsi:type="al:Text" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0" width="60" height="15" y="39" font="//@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="payload"/>
         </children>
       </children>
     </children>
@@ -1636,8 +3450,8 @@
     <link>
       <businessObjects href="../MineControllerModel.room#Binding:TopActor$lowWaterLevel!waterTank-inputEvent!lowWaterSensor"/>
     </link>
-    <bendpoints x="259" y="435"/>
-    <bendpoints x="259" y="212"/>
+    <bendpoints x="259" y="488"/>
+    <bendpoints x="259" y="265"/>
   </connections>
   <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="//@children.0/@children.6/@children.2/@anchors.0" end="//@children.0/@children.0/@children.2/@anchors.0">
     <properties key="obj-type" value="bind"/>
@@ -1652,9 +3466,9 @@
     <link>
       <businessObjects href="../MineControllerModel.room#Binding:TopActor$wateflowSensor!waterPumpTunnel-poolingSensorSample!waterFlowSensor"/>
     </link>
-    <bendpoints x="407" y="496"/>
-    <bendpoints x="497" y="496"/>
-    <bendpoints x="497" y="429"/>
+    <bendpoints x="407" y="549"/>
+    <bendpoints x="497" y="549"/>
+    <bendpoints x="497" y="482"/>
   </connections>
   <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="//@children.0/@children.7/@children.3/@anchors.0" end="//@children.0/@children.6/@children.4/@anchors.0">
     <properties key="obj-type" value="bind"/>
@@ -1669,8 +3483,7 @@
     <link>
       <businessObjects href="../MineControllerModel.room#Binding:TopActor$sendAlarm!environmentMonitoringStation-alarmReceiver!Alarm"/>
     </link>
-    <bendpoints x="994" y="340"/>
-    <bendpoints x="1218" y="340"/>
+    <bendpoints x="942" y="256"/>
   </connections>
   <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="//@children.0/@children.7/@children.4/@anchors.0" end="//@children.0/@children.3/@children.2/@anchors.0">
     <properties key="obj-type" value="bind"/>
@@ -1679,41 +3492,25 @@
       <businessObjects href="../MineControllerModel.room#Binding:TopActor$waterTenkPump!waterPumpTunnel-drainWater!pumpMotor"/>
     </link>
   </connections>
-  <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="//@children.0/@children.4/@children.4/@anchors.0" end="//@children.0/@children.9/@children.2/@anchors.0">
-    <properties key="obj-type" value="bind"/>
-    <graphicsAlgorithm xsi:type="al:Polyline" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0"/>
-    <link>
-      <businessObjects href="../MineControllerModel.room#Binding:TopActor$sendToConsole!environmentMonitoringStation-receiveMessage!console"/>
-    </link>
-    <bendpoints x="1097" y="442"/>
-    <bendpoints x="1097" y="558"/>
-    <bendpoints x="1373" y="558"/>
-    <bendpoints x="1373" y="256"/>
-    <bendpoints x="1098" y="256"/>
-    <bendpoints x="1098" y="170"/>
-  </connections>
   <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="//@children.0/@children.1/@children.3/@anchors.0" end="//@children.0/@children.5/@children.3/@anchors.0">
     <properties key="obj-type" value="bind"/>
     <graphicsAlgorithm xsi:type="al:Polyline" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0"/>
     <link>
       <businessObjects href="../MineControllerModel.room#Binding:TopActor$outputEvent!lowWaterSensor-lowWaterSensor!pumpControlStation"/>
     </link>
-    <bendpoints x="342" y="122"/>
-    <bendpoints x="493" y="122"/>
-    <bendpoints x="493" y="204"/>
+    <bendpoints x="342" y="175"/>
+    <bendpoints x="493" y="175"/>
+    <bendpoints x="493" y="257"/>
   </connections>
-  <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="//@children.0/@children.8/@children.2/@anchors.0" end="//@children.0/@children.5/@children.6/@anchors.0">
+  <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="//@children.0/@children.8/@children.2/@anchors.0" end="//@children.0/@children.5/@children.5/@anchors.0">
     <properties key="obj-type" value="bind"/>
     <graphicsAlgorithm xsi:type="al:Polyline" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0"/>
     <link>
       <businessObjects href="../MineControllerModel.room#Binding:TopActor$alarmReceiver!Alarm-alarmSender!pumpControlStation"/>
     </link>
-    <bendpoints x="1217" y="299"/>
-    <bendpoints x="1043" y="299"/>
-    <bendpoints x="893" y="299"/>
-    <bendpoints x="893" y="203"/>
+    <bendpoints x="902" y="257"/>
   </connections>
-  <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="//@children.0/@children.5/@children.7/@anchors.0" end="//@children.0/@children.2/@children.2/@anchors.0">
+  <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="//@children.0/@children.5/@children.6/@anchors.0" end="//@children.0/@children.2/@children.2/@anchors.0">
     <properties key="obj-type" value="bind"/>
     <graphicsAlgorithm xsi:type="al:Polyline" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0"/>
     <link>
@@ -1727,35 +3524,155 @@
       <businessObjects href="../MineControllerModel.room#Binding:TopActor$controlMotor!pumpControlStation-controlMotor!pumpMotor"/>
     </link>
   </connections>
-  <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="//@children.0/@children.5/@children.4/@anchors.0" end="//@children.0/@children.9/@children.2/@anchors.0">
-    <properties key="obj-type" value="bind"/>
-    <graphicsAlgorithm xsi:type="al:Polyline" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0"/>
-    <link>
-      <businessObjects href="../MineControllerModel.room#Binding:TopActor$messageSender!pumpControlStation-receiveMessage!console"/>
-    </link>
-  </connections>
-  <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="//@children.0/@children.0/@children.3/@anchors.0" end="//@children.0/@children.5/@children.8/@anchors.0">
+  <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="//@children.0/@children.0/@children.3/@anchors.0" end="//@children.0/@children.5/@children.7/@anchors.0">
     <properties key="obj-type" value="bind"/>
     <graphicsAlgorithm xsi:type="al:Polyline" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0"/>
     <link>
       <businessObjects href="../MineControllerModel.room#Binding:TopActor$outputEvent!highWaterSensor-highWaterSensor!pumpControlStation"/>
     </link>
-    <bendpoints x="341" y="265"/>
-    <bendpoints x="341" y="249"/>
-    <bendpoints x="523" y="249"/>
-    <bendpoints x="523" y="166"/>
+    <bendpoints x="341" y="318"/>
+    <bendpoints x="341" y="302"/>
+    <bendpoints x="523" y="302"/>
+    <bendpoints x="523" y="219"/>
   </connections>
-  <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="//@children.0/@children.4/@children.2/@anchors.0" end="//@children.0/@children.5/@children.5/@anchors.0">
+  <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="//@children.0/@children.4/@children.2/@anchors.0" end="//@children.0/@children.5/@children.4/@anchors.0">
     <properties key="obj-type" value="bind"/>
     <graphicsAlgorithm xsi:type="al:Polyline" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0"/>
     <link>
       <businessObjects href="../MineControllerModel.room#Binding:TopActor$supstanceLevel!environmentMonitoringStation-methaneLevel!pumpControlStation"/>
     </link>
-    <bendpoints x="918" y="353"/>
-    <bendpoints x="862" y="353"/>
-    <bendpoints x="709" y="353"/>
-    <bendpoints x="709" y="314"/>
-    <bendpoints x="709" y="265"/>
+    <bendpoints x="864" y="298"/>
+    <bendpoints x="756" y="298"/>
+    <bendpoints x="709" y="298"/>
+  </connections>
+  <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="//@children.0/@children.10/@children.3/@anchors.0" end="//@children.0/@children.9/@children.3/@anchors.0">
+    <properties key="obj-type" value="bind"/>
+    <graphicsAlgorithm xsi:type="al:Polyline" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0"/>
+    <link>
+      <businessObjects href="../MineControllerModel.room#Binding:TopActor$ControlPort!ref0-ctrl!waterTenk"/>
+    </link>
+  </connections>
+  <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="//@children.0/@children.10/@children.2/@anchors.0" end="//@children.0/@children.9/@children.4/@anchors.0">
+    <properties key="obj-type" value="bind"/>
+    <graphicsAlgorithm xsi:type="al:Polyline" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0"/>
+    <link>
+      <businessObjects href="../MineControllerModel.room#Binding:TopActor$PayloadPort!ref0-payload!waterTenk"/>
+    </link>
+  </connections>
+  <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="//@children.0/@children.9/@children.2/@anchors.0" end="//@children.0/@children.6/@children.5/@anchors.0">
+    <properties key="obj-type" value="bind"/>
+    <graphicsAlgorithm xsi:type="al:Polyline" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0"/>
+    <link>
+      <businessObjects href="../MineControllerModel.room#Binding:TopActor$fct!waterTenk-tcpWaterTenk!waterTank"/>
+    </link>
+    <bendpoints x="47" y="407"/>
+    <bendpoints x="205" y="405"/>
+    <bendpoints x="204" y="433"/>
+  </connections>
+  <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="//@children.0/@children.12/@children.2/@anchors.0" end="//@children.0/@children.11/@children.2/@anchors.0">
+    <properties key="obj-type" value="bind"/>
+    <graphicsAlgorithm xsi:type="al:Polyline" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0"/>
+    <link>
+      <businessObjects href="../MineControllerModel.room#Binding:TopActor$PayloadPort!ref1-payload!pumpTcp"/>
+    </link>
+  </connections>
+  <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="//@children.0/@children.11/@children.3/@anchors.0" end="//@children.0/@children.12/@children.3/@anchors.0">
+    <properties key="obj-type" value="bind"/>
+    <graphicsAlgorithm xsi:type="al:Polyline" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0"/>
+    <link>
+      <businessObjects href="../MineControllerModel.room#Binding:TopActor$ctrl!pumpTcp-ControlPort!ref1"/>
+    </link>
+  </connections>
+  <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="//@children.0/@children.3/@children.4/@anchors.0" end="//@children.0/@children.11/@children.4/@anchors.0">
+    <properties key="obj-type" value="bind"/>
+    <graphicsAlgorithm xsi:type="al:Polyline" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0"/>
+    <link>
+      <businessObjects href="../MineControllerModel.room#Binding:TopActor$pump!pumpMotor-fct!pumpTcp"/>
+    </link>
+  </connections>
+  <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="//@children.0/@children.14/@children.2/@anchors.0" end="//@children.0/@children.13/@children.4/@anchors.0">
+    <properties key="obj-type" value="bind"/>
+    <graphicsAlgorithm xsi:type="al:Polyline" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0"/>
+    <link>
+      <businessObjects href="../MineControllerModel.room#Binding:TopActor$ControlPort!ref2-ctrl!alarmTcp"/>
+    </link>
+  </connections>
+  <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="//@children.0/@children.14/@children.3/@anchors.0" end="//@children.0/@children.13/@children.3/@anchors.0">
+    <properties key="obj-type" value="bind"/>
+    <graphicsAlgorithm xsi:type="al:Polyline" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0"/>
+    <link>
+      <businessObjects href="../MineControllerModel.room#Binding:TopActor$PayloadPort!ref2-payload!alarmTcp"/>
+    </link>
+  </connections>
+  <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="//@children.0/@children.13/@children.2/@anchors.0" end="//@children.0/@children.8/@children.3/@anchors.0">
+    <properties key="obj-type" value="bind"/>
+    <graphicsAlgorithm xsi:type="al:Polyline" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0"/>
+    <link>
+      <businessObjects href="../MineControllerModel.room#Binding:TopActor$fct!alarmTcp-p0!Alarm"/>
+    </link>
+  </connections>
+  <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="//@children.0/@children.16/@children.2/@anchors.0" end="//@children.0/@children.15/@children.3/@anchors.0">
+    <properties key="obj-type" value="bind"/>
+    <graphicsAlgorithm xsi:type="al:Polyline" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0"/>
+    <link>
+      <businessObjects href="../MineControllerModel.room#Binding:TopActor$ControlPort!ref3-ctrl!environmentTcp"/>
+    </link>
+  </connections>
+  <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="//@children.0/@children.16/@children.3/@anchors.0" end="//@children.0/@children.15/@children.4/@anchors.0">
+    <properties key="obj-type" value="bind"/>
+    <graphicsAlgorithm xsi:type="al:Polyline" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0"/>
+    <link>
+      <businessObjects href="../MineControllerModel.room#Binding:TopActor$PayloadPort!ref3-payload!environmentTcp"/>
+    </link>
+  </connections>
+  <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="//@children.0/@children.15/@children.2/@anchors.0" end="//@children.0/@children.4/@children.4/@anchors.0">
+    <properties key="obj-type" value="bind"/>
+    <graphicsAlgorithm xsi:type="al:Polyline" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0"/>
+    <link>
+      <businessObjects href="../MineControllerModel.room#Binding:TopActor$fct!environmentTcp-tcpEnvironmet!environmentMonitoringStation"/>
+    </link>
+  </connections>
+  <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="//@children.0/@children.17/@children.3/@anchors.0" end="//@children.0/@children.18/@children.2/@anchors.0">
+    <properties key="obj-type" value="bind"/>
+    <graphicsAlgorithm xsi:type="al:Polyline" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0"/>
+    <link>
+      <businessObjects href="../MineControllerModel.room#Binding:TopActor$payload!tcpPumpControl-PayloadPort!ref4"/>
+    </link>
+  </connections>
+  <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="//@children.0/@children.17/@children.2/@anchors.0" end="//@children.0/@children.18/@children.3/@anchors.0">
+    <properties key="obj-type" value="bind"/>
+    <graphicsAlgorithm xsi:type="al:Polyline" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0"/>
+    <link>
+      <businessObjects href="../MineControllerModel.room#Binding:TopActor$ctrl!tcpPumpControl-ControlPort!ref4"/>
+    </link>
+  </connections>
+  <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="//@children.0/@children.5/@children.8/@anchors.0" end="//@children.0/@children.17/@children.4/@anchors.0">
+    <properties key="obj-type" value="bind"/>
+    <graphicsAlgorithm xsi:type="al:Polyline" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0"/>
+    <link>
+      <businessObjects href="../MineControllerModel.room#Binding:TopActor$tcpPumpControll!pumpControlStation-fct!tcpPumpControl"/>
+    </link>
+  </connections>
+  <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="//@children.0/@children.20/@children.4/@anchors.0" end="//@children.0/@children.19/@children.2/@anchors.0">
+    <properties key="obj-type" value="bind"/>
+    <graphicsAlgorithm xsi:type="al:Polyline" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0"/>
+    <link>
+      <businessObjects href="../MineControllerModel.room#Binding:TopActor$payload!tcpWaterTunel-PayloadPort!ref5"/>
+    </link>
+  </connections>
+  <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="//@children.0/@children.20/@children.2/@anchors.0" end="//@children.0/@children.19/@children.3/@anchors.0">
+    <properties key="obj-type" value="bind"/>
+    <graphicsAlgorithm xsi:type="al:Polyline" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0"/>
+    <link>
+      <businessObjects href="../MineControllerModel.room#Binding:TopActor$ctrl!tcpWaterTunel-ControlPort!ref5"/>
+    </link>
+  </connections>
+  <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="//@children.0/@children.7/@children.5/@anchors.0" end="//@children.0/@children.20/@children.3/@anchors.0">
+    <properties key="obj-type" value="bind"/>
+    <graphicsAlgorithm xsi:type="al:Polyline" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0"/>
+    <link>
+      <businessObjects href="../MineControllerModel.room#Binding:TopActor$tcpPumpTunel!waterPumpTunnel-fct!tcpWaterTunel"/>
+    </link>
   </connections>
   <colors red="227" green="238" blue="249"/>
   <colors red="255" green="255" blue="255"/>

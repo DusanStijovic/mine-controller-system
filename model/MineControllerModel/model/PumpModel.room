@@ -15,7 +15,7 @@ RoomModel PumpModel {
 			Port waterFlowSensor: PoolingSensorCommands
 			conjugated Port methaneLevel: supstanceLevelEvent
 			conjugated Port alarmSender: AlarmModel.AlarmSender
-			conjugated Port messageSender: ConsoleModel.MessagingProtocol
+			conjugated Port tcpPumpControll: TcpCommunication.PTrafficLightInterface
 		}
 		Structure {
 			usercode1 '''
@@ -36,9 +36,11 @@ RoomModel PumpModel {
 				private  boolean highMethaneDetected = false;
 				private boolean inProcess = false;
 				private long waterSensorActivationInMs = 0;
+				private long worstExecutionTimeInMs = 0;
+				private long currentExecutionInMs = 0;
 				
 				private int calculateWaitTime(long nextActivationInMs){
-					long waitTime = nextActivationInMs - Calendar.getInstance().getTimeInMillis();
+					long waitTime = nextActivationInMs - System.currentTimeMillis();
 					waitTime = Math.max(waitTime, 1);
 					return (int)waitTime;
 				}
@@ -51,71 +53,80 @@ RoomModel PumpModel {
 			SAP timingService: PTimer
 			external Port methaneLevel
 			external Port alarmSender
-			external Port messageSender
+			external Port tcpPumpControll
 		}
 		Behavior {
 			StateMachine {
 				State startCheckingPumpState {
 					entry '''
-						waterSensorActivationInMs += PERIOD_OF_ACTIVATION_MS;
-						if (!inProcess){
-						    if (highDetected){
-						        highDetected = false;
-						        inProcess = true;
-						        System.out.println("Usao high nakon provere");
-						        inProcess = true;
-						        controlMotor.turnOnPump();
-						        isPumpActive = true;
-						        numberOfSameMeasure = 0;
-						        shouldGetFlow = false;
-						        timingService.kill();
-						        timingService.startTimeout(calculateWaitTime(waterSensorActivationInMs));
-						    } else if (lowDetected){
-						        lowDetected = false;
-						        inProcess = true;
-						        System.out.println("Usao low nakon provere");
-						        controlMotor.turnOffPump();
-						        isPumpActive = false;
-						        numberOfSameMeasure = 0;
-						        shouldGetFlow = false;
-						        timingService.kill();
-						        timingService.startTimeout(calculateWaitTime(waterSensorActivationInMs));
-						    } else if (highMethaneDetected){
-						        highMethaneDetected = false;
-						        inProcess = true;
-						        System.out.println("Usao high metan nakon provere");
-						        controlMotor.turnOffPump();
-						        isPumpActive = false;
-						        numberOfSameMeasure = 0;
-						        shouldGetFlow = false;
-						        timingService.kill();
-						        timingService.startTimeout(calculateWaitTime(waterSensorActivationInMs));
-						    } else {
-						        inProcess = true;
-						        // System.out.println("Normalna provera");
-						        shouldGetFlow = true;
-						        timingService.kill();
-						        waterFlowSensor.startADConverstion();
-						        timingService.startTimeout(calculateWaitTime(waterSensorActivationInMs));
-						        // System.out.println("Posalji status odbirka");
-						    }
-						} else {              
-						    if (numberOfSameMeasure <= NUM_OF_NEEDED_MEASURE){
-						        shouldGetFlow = false;
-						        numberOfSameMeasure++;
-						        timingService.kill();
-						        timingService.startTimeout(calculateWaitTime(waterSensorActivationInMs));
-						       // System.out.println("ne racunaj jos uvek");
-						    } else {
-						        System.out.println("Usao u proveru");
-						        numberOfSameMeasure = 0;
-						        shouldGetFlow = true;
-						        timingService.kill();
-						        waterFlowSensor.startADConverstion();
-						        timingService.startTimeout(calculateWaitTime(waterSensorActivationInMs));
-						        System.out.println("Posalji status odbirka");
-						    }
-						}
+												long timeStart = System.currentTimeMillis();
+												waterSensorActivationInMs += PERIOD_OF_ACTIVATION_MS;
+												if (!inProcess){
+												    if (highDetected && !highMethaneDetected){
+												        highDetected = false;
+												        inProcess = true;
+												        System.out.println("Usao high nakon provere");
+												        inProcess = true;
+												        controlMotor.turnOnPump();
+												        isPumpActive = true;
+												        numberOfSameMeasure = 0;
+												        shouldGetFlow = false;
+												        timingService.kill();
+												        timingService.startTimeout(calculateWaitTime(waterSensorActivationInMs));
+												    } else if (lowDetected){
+												        lowDetected = false;
+												        inProcess = true;
+												        System.out.println("Usao low nakon provere");
+												        controlMotor.turnOffPump();
+												        isPumpActive = false;
+												        numberOfSameMeasure = 0;
+												        shouldGetFlow = false;
+												        timingService.kill();
+												        timingService.startTimeout(calculateWaitTime(waterSensorActivationInMs));
+												    } else if (highMethaneDetected){
+												        highMethaneDetected = false;
+												        inProcess = true;
+												        System.out.println("Usao high metan nakon provere");
+												        controlMotor.turnOffPump();
+												        isPumpActive = false;
+												        numberOfSameMeasure = 0;
+												        shouldGetFlow = false;
+												        timingService.kill();
+												        timingService.startTimeout(calculateWaitTime(waterSensorActivationInMs));
+												    } else {
+												        inProcess = true;
+												        // System.out.println("Normalna provera");
+												        shouldGetFlow = true;
+												        timingService.kill();
+												        waterFlowSensor.startADConverstion();
+												        timingService.startTimeout(calculateWaitTime(waterSensorActivationInMs));
+												        // System.out.println("Posalji status odbirka");
+												    }
+												} else {              
+												    if (numberOfSameMeasure <= NUM_OF_NEEDED_MEASURE){
+												        shouldGetFlow = false;
+												        numberOfSameMeasure++;
+												        timingService.kill();
+												        timingService.startTimeout(calculateWaitTime(waterSensorActivationInMs));
+												       // System.out.println("ne racunaj jos uvek");
+												    } else {
+												        System.out.println("Usao u proveru");
+												        numberOfSameMeasure = 0;
+												        shouldGetFlow = true;
+												        timingService.kill();
+												        waterFlowSensor.startADConverstion();
+												        timingService.startTimeout(calculateWaitTime(waterSensorActivationInMs));
+												        System.out.println("Posalji status odbirka");
+												    }
+												}
+												long timeEnd = System.currentTimeMillis();
+												currentExecutionInMs += timeEnd - timeStart;
+						//						System.out.println("Duration pump monitoring: " + currentExecutionInMs);
+												if (currentExecutionInMs > worstExecutionTimeInMs){
+													worstExecutionTimeInMs = currentExecutionInMs;
+													System.out.println("WCET pump monitoring: " + worstExecutionTimeInMs);
+												}
+												currentExecutionInMs = 0;
 					'''
 				}
 
@@ -142,27 +153,30 @@ RoomModel PumpModel {
 						<sendStatus: waterFlowSensor>
 					}
 					action '''
-						int status = transitionData;
-						System.out.println("Dobijanje statusa");
-						
-						if (status == PoolingSensorCommands.Status.NOT_READY.ordinal()){
-								timingService.startTimeout(PERIOD_OF_CHECKING_DEVICE);
-								System.out.println("Not ready");
-						}
-						if (status == PoolingSensorCommands.Status.ERROR.ordinal()){
-							System.out.println("Error while geting water flow");
-							errorCount++;
-							if (errorCount >= MAX_ERROR_COUNT){
-								System.out.println("Too mutch errors while getting flow");
-								errorCount = 0;
-								alarmSender.alarmErrorReadingWaterFlow();
-							}
-							waterFlowSensor.readErrorRegister();	
-						}
-						if (status == PoolingSensorCommands.Status.READY.ordinal()){
-							errorCount = 0;
-						 	waterFlowSensor.readValueRegister();
-						}
+												long timeStart = System.currentTimeMillis();
+												int status = transitionData;
+												System.out.println("Dobijanje statusa");
+												
+						//						if (status == PoolingSensorCommands.Status.NOT_READY.ordinal()){
+						//								timingService.startTimeout(PERIOD_OF_CHECKING_DEVICE);
+						//								System.out.println("Not ready");
+						//						}
+												if (status == PoolingSensorCommands.Status.ERROR.ordinal()){
+													System.out.println("Error while geting water flow");
+													errorCount++;
+													if (errorCount >= MAX_ERROR_COUNT){
+														System.out.println("Too mutch errors while getting flow");
+														errorCount = 0;
+														alarmSender.alarmErrorReadingWaterFlow();
+													}
+													waterFlowSensor.readErrorRegister();	
+												}
+												if (status == PoolingSensorCommands.Status.READY.ordinal()){
+													errorCount = 0;
+												 	waterFlowSensor.readValueRegister();
+												}
+												long timeEnd = System.currentTimeMillis();
+												currentExecutionInMs += timeEnd - timeStart;
 					'''
 				}
 				Transition tr0: statusGet -> askForStatus {
@@ -175,20 +189,35 @@ RoomModel PumpModel {
 					triggers {
 						<eventHappened: lowWaterSensor>
 					}
-					action '''lowDetected = true;'''
+					action '''
+						long timeStart = System.currentTimeMillis();
+						lowDetected = true;
+						long timeEnd = System.currentTimeMillis();
+						currentExecutionInMs += timeEnd - timeStart;
+					'''
 				}
 
 				Transition tr8: startCheckingPumpState -> startCheckingPumpState {
 					triggers {
 						<eventHappened: highWaterSensor>
 					}
-					action '''highDetected = true;'''
+					action '''
+						long timeStart = System.currentTimeMillis();
+						highDetected = true;
+						long timeEnd = System.currentTimeMillis();
+						currentExecutionInMs += timeEnd - timeStart;
+					'''
 				}
 				Transition tr9: startCheckingPumpState -> startCheckingPumpState {
 					triggers {
 						<highLevel: methaneLevel>
 					}
-					action '''highMethaneDetected = true;'''
+					action '''
+						long timeStart = System.currentTimeMillis();
+						highMethaneDetected = true;
+						long timeEnd = System.currentTimeMillis();
+						currentExecutionInMs += timeEnd - timeStart;
+					'''
 				}
 
 				Transition tr11: statusGet -> startCheckingPumpState {
@@ -196,6 +225,7 @@ RoomModel PumpModel {
 						<sendValueRegister: waterFlowSensor>
 					}
 					action '''
+						long timeStart = System.currentTimeMillis();
 						double waterFlow = transitionData;
 						System.out.println("WaterFlow: " + waterFlow);
 						if (isPumpActive && waterFlow == 0){
@@ -212,21 +242,44 @@ RoomModel PumpModel {
 						if (!isPumpActive && waterFlow == 0){
 						    System.out.println("Pumpa ne radi  i nema protoka");
 						}
-						inProcess = false;'''
+						inProcess = false;
+						long timeEnd = System.currentTimeMillis();
+						currentExecutionInMs += timeEnd - timeStart;
+					'''
 				}
 				Transition tr2: statusGet -> startCheckingPumpState {
 					triggers {
 						<sendErrorRegister: waterFlowSensor>
 					}
-					action '''inProcess = false;'''
+					action '''
+						long timeStart = System.currentTimeMillis();
+						inProcess = false;
+						long timeEnd = System.currentTimeMillis();
+						currentExecutionInMs += timeEnd - timeStart;
+					'''
 				}
 				Transition tr3: startCheckingPumpState -> startCheckingPumpState {
 					triggers {
 						<normalLevel: methaneLevel>
 					}
-					action '''highMethaneDetected = false;'''
+					action '''
+						long timeStart = System.currentTimeMillis();
+						highMethaneDetected = false;
+						long timeEnd = System.currentTimeMillis();
+						currentExecutionInMs += timeEnd - timeStart;
+					'''
 				}
-				Transition init0: initial -> startCheckingPumpState {
+				Transition init0: connect -> startCheckingPumpState {
+					triggers {
+						<connected: tcpPumpControll>
+					}
+					action '''
+						waterSensorActivationInMs = System.currentTimeMillis();
+					'''
+				}
+				State connect
+				Transition init1: initial -> connect {
+					action '''tcpPumpControll.connect(4020);'''
 				}
 			}
 		}
@@ -237,18 +290,19 @@ RoomModel PumpModel {
 		Interface {
 			conjugated Port controlMotor: PumpMotorControll
 			Port drainWater: DrainWater
+			conjugated Port pump: TcpCommunication.PTrafficLightInterface
 		}
 		Structure {
 			usercode2 '''
-				private static double WATER_DRAIN_ML_PER_MS = 10;
+				private static double WATER_DRAIN_ML = 20;
 				private static int MOTOR_CHANGE_MODE_TIME_MS = 900;
-				private static int SLEEEP_TIME_IN_MS = 10;
+				private static int SLEEEP_TIME_IN_MS = 100;
 				private int timeElapsedToTurnOf = 0;
 				private boolean shouldChangeToTurnOff = false;
 				
 				
 				private boolean shouldIgnoreCommand(){
-					boolean ignore =  Math.random() > 0.7;
+					boolean ignore =  Math.random() > 0.75;
 					if (ignore){
 						System.out.println("Ignorisana komanda");
 					}
@@ -258,19 +312,23 @@ RoomModel PumpModel {
 			external Port controlMotor
 			external Port drainWater
 			SAP timingService: PTimer
+			external Port pump
 		}
 		Behavior {
 			StateMachine {
 				State initState {
-					entry '''					'''
+					entry '''pump.setPumpState(false);    '''
 				}
-				State motorTurnOn
+				State motorTurnOn {
+					entry '''pump.setPumpState(true);'''
+				}
 				State motorTurnOff {
 					entry '''
-						//					System.out.println("Motor se iskljucuje");
+						//                  System.out.println("Motor se iskljucuje");
+						pump.setPumpState(false);
 					'''
 				}
-				Transition init0: initial -> initState
+
 				Transition tr0: initState -> motorTurnOn {
 					triggers {
 						<turnOnPump: controlMotor>
@@ -314,7 +372,7 @@ RoomModel PumpModel {
 						<timeout: timingService>
 					}
 					action '''
-						drainWater.drainWater(WATER_DRAIN_ML_PER_MS * SLEEEP_TIME_IN_MS);
+						drainWater.drainWater(WATER_DRAIN_ML);
 						timingService.kill();
 						timingService.startTimeout(SLEEEP_TIME_IN_MS);
 					'''
@@ -328,7 +386,7 @@ RoomModel PumpModel {
 						timingService.kill();
 						timingService.startTimeout(SLEEEP_TIME_IN_MS);
 						timeElapsedToTurnOf += SLEEEP_TIME_IN_MS;
-						drainWater.drainWater(WATER_DRAIN_ML_PER_MS * SLEEEP_TIME_IN_MS);
+						drainWater.drainWater(WATER_DRAIN_ML);
 						if (timeElapsedToTurnOf == MOTOR_CHANGE_MODE_TIME_MS){
 							shouldChangeToTurnOff = true;
 						}
@@ -346,6 +404,84 @@ RoomModel PumpModel {
 					action '''
 						timingService.kill();
 						timingService.startTimeout(MOTOR_CHANGE_MODE_TIME_MS);
+					'''
+				}
+				State connect
+				Transition init0: connect -> initState {
+					triggers {
+						<connected: pump>
+					}
+				}
+				Transition init1: initial -> connect {
+					action '''pump.connect(4023);'''
+				}
+				Transition tr8: motorTurnOn -> changeModeFromOnToOff {
+					triggers {
+						<turnOffPump: pump>
+					}
+					action '''
+						timeElapsedToTurnOf = 0;
+						shouldChangeToTurnOff = false;
+						timingService.kill();
+						timingService.startTimeout(SLEEEP_TIME_IN_MS);
+					'''
+				}
+				Transition tr9: motorTurnOff -> motorTurnOn {
+					triggers {
+						<turnOnPump: pump>
+					}
+					action '''
+						timingService.kill();
+						timingService.startTimeout(MOTOR_CHANGE_MODE_TIME_MS);'''
+				}
+				Transition tr10: initState -> motorTurnOff {
+					triggers {
+						<turnOffPump: pump>
+					}
+					action '''
+						timingService.kill();
+						timingService.startTimeout(MOTOR_CHANGE_MODE_TIME_MS);'''
+				}
+				Transition tr11: initState -> motorTurnOn {
+					triggers {
+						<turnOnPump: pump>
+					}
+				}
+				Transition tr12: initState -> initState {
+					triggers {
+						<setPumpFlow: pump>
+					}
+					action 
+					'''
+						WATER_DRAIN_ML = transitionData;
+						System.out.println("Promenjeno na: " + transitionData);
+					'''
+				}
+				Transition tr13: motorTurnOff -> motorTurnOff {
+					triggers {
+						<setPumpFlow: pump>
+					}
+					action '''
+						WATER_DRAIN_ML = transitionData;
+						System.out.println("Promenjeno na: " + transitionData);
+					'''
+				}
+				Transition tr14: changeModeFromOnToOff -> changeModeFromOnToOff {
+					triggers {
+						<setPumpFlow: pump>
+					}
+					action '''
+						WATER_DRAIN_ML = transitionData;
+						System.out.println("Promenjeno na: " + transitionData);
+					'''
+				}
+				Transition tr15: motorTurnOn -> motorTurnOn {
+					triggers {
+						<setPumpFlow: pump>
+					}
+					action '''
+						WATER_DRAIN_ML = transitionData;
+						System.out.println("Promenjeno na: " + transitionData);
 					'''
 				}
 			}

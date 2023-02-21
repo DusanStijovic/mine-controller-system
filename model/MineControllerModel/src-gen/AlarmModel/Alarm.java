@@ -6,17 +6,19 @@ import org.eclipse.etrice.runtime.java.debugging.*;
 
 import static org.eclipse.etrice.runtime.java.etunit.EtUnit.*;
 
+import TcpCommunication.*;
 import AlarmModel.AlarmSender.*;
+import TcpCommunication.PTrafficLightInterface.*;
 
 
 
 public class Alarm extends ActorClassBase {
 
 	/*--------------------- begin user code ---------------------*/
-	
 	private void printMessage(String message){
 	System.out.println("#################ALARM#########################");
 	System.out.println(message);
+	p0.setAlarm(message + "\n");
 	System.out.println("###############################################");
 	}
 	
@@ -24,6 +26,7 @@ public class Alarm extends ActorClassBase {
 
 	//--------------------- ports
 	protected AlarmSenderReplPort alarmReceiver = null;
+	protected PTrafficLightInterfaceConjPort p0 = null;
 
 	//--------------------- saps
 
@@ -33,6 +36,7 @@ public class Alarm extends ActorClassBase {
 
 	//--------------------- interface item IDs
 	public static final int IFITEM_alarmReceiver = 1;
+	public static final int IFITEM_p0 = 2;
 
 	/*--------------------- attributes ---------------------*/
 
@@ -48,6 +52,7 @@ public class Alarm extends ActorClassBase {
 
 		// own ports
 		alarmReceiver = new AlarmSenderReplPort(this, "alarmReceiver", IFITEM_alarmReceiver);
+		p0 = new PTrafficLightInterfaceConjPort(this, "p0", IFITEM_p0);
 
 		// own saps
 
@@ -69,6 +74,9 @@ public class Alarm extends ActorClassBase {
 	public AlarmSenderReplPort getAlarmReceiver (){
 		return this.alarmReceiver;
 	}
+	public PTrafficLightInterfaceConjPort getP0 (){
+		return this.p0;
+	}
 
 	//--------------------- lifecycle functions
 	public void stop(){
@@ -83,19 +91,21 @@ public class Alarm extends ActorClassBase {
 
 	/* state IDs */
 	public static final int STATE_initialState = 2;
-	public static final int STATE_MAX = 3;
+	public static final int STATE_connect = 3;
+	public static final int STATE_MAX = 4;
 	
 	/* transition chains */
-	public static final int CHAIN_TRANS_INITIAL_TO__initialState = 1;
-	public static final int CHAIN_TRANS_hghMethane_FROM_initialState_TO_initialState_BY_alarmHighMethaneLevelalarmReceiver_hghMethane = 2;
-	public static final int CHAIN_TRANS_lowAirFlow_FROM_initialState_TO_initialState_BY_alarmLowAirFlowalarmReceiver_lowAirFlow = 3;
-	public static final int CHAIN_TRANS_highCarbonMonoxyde_FROM_initialState_TO_initialState_BY_alarmHighCarbonMonoxydeLevelalarmReceiver_highCarbonMonoxyde = 4;
-	public static final int CHAIN_TRANS_errorReadingMethane_FROM_initialState_TO_initialState_BY_alarmErrorReadingMethanealarmReceiver_errorReadingMethane = 5;
-	public static final int CHAIN_TRANS_errorReadingAirFlow_FROM_initialState_TO_initialState_BY_alarmErrorReadingAirFlowalarmReceiver_errorReadingAirFlow = 6;
-	public static final int CHAIN_TRANS_errorReadingCarbonMonoxyde_FROM_initialState_TO_initialState_BY_alarmErrorReadingCarbonMonoxydealarmReceiver_errorReadingCarbonMonoxyde = 7;
-	public static final int CHAIN_TRANS_errorStartingPump_FROM_initialState_TO_initialState_BY_alarmErrorStartingPumpalarmReceiver_errorStartingPump = 8;
-	public static final int CHAIN_TRANS_errorStoppingPump_FROM_initialState_TO_initialState_BY_alarmErrorStoppingPumpalarmReceiver_errorStoppingPump = 9;
-	public static final int CHAIN_TRANS_errorReadingWaterFlow_FROM_initialState_TO_initialState_BY_alarmErrorReadingWaterFlowalarmReceiver_errorReadingWaterFlow = 10;
+	public static final int CHAIN_TRANS_hghMethane_FROM_initialState_TO_initialState_BY_alarmHighMethaneLevelalarmReceiver_hghMethane = 1;
+	public static final int CHAIN_TRANS_lowAirFlow_FROM_initialState_TO_initialState_BY_alarmLowAirFlowalarmReceiver_lowAirFlow = 2;
+	public static final int CHAIN_TRANS_highCarbonMonoxyde_FROM_initialState_TO_initialState_BY_alarmHighCarbonMonoxydeLevelalarmReceiver_highCarbonMonoxyde = 3;
+	public static final int CHAIN_TRANS_errorReadingMethane_FROM_initialState_TO_initialState_BY_alarmErrorReadingMethanealarmReceiver_errorReadingMethane = 4;
+	public static final int CHAIN_TRANS_errorReadingAirFlow_FROM_initialState_TO_initialState_BY_alarmErrorReadingAirFlowalarmReceiver_errorReadingAirFlow = 5;
+	public static final int CHAIN_TRANS_errorReadingCarbonMonoxyde_FROM_initialState_TO_initialState_BY_alarmErrorReadingCarbonMonoxydealarmReceiver_errorReadingCarbonMonoxyde = 6;
+	public static final int CHAIN_TRANS_errorStartingPump_FROM_initialState_TO_initialState_BY_alarmErrorStartingPumpalarmReceiver_errorStartingPump = 7;
+	public static final int CHAIN_TRANS_errorStoppingPump_FROM_initialState_TO_initialState_BY_alarmErrorStoppingPumpalarmReceiver_errorStoppingPump = 8;
+	public static final int CHAIN_TRANS_errorReadingWaterFlow_FROM_initialState_TO_initialState_BY_alarmErrorReadingWaterFlowalarmReceiver_errorReadingWaterFlow = 9;
+	public static final int CHAIN_TRANS_init0_FROM_connect_TO_initialState_BY_connectedp0 = 10;
+	public static final int CHAIN_TRANS_INITIAL_TO__connect = 11;
 	
 	/* triggers */
 	public static final int POLLING = 0;
@@ -108,16 +118,22 @@ public class Alarm extends ActorClassBase {
 	public static final int TRIG_alarmReceiver__alarmErrorStartingPump = IFITEM_alarmReceiver + EVT_SHIFT*AlarmSender.IN_alarmErrorStartingPump;
 	public static final int TRIG_alarmReceiver__alarmErrorStoppingPump = IFITEM_alarmReceiver + EVT_SHIFT*AlarmSender.IN_alarmErrorStoppingPump;
 	public static final int TRIG_alarmReceiver__alarmErrorReadingWaterFlow = IFITEM_alarmReceiver + EVT_SHIFT*AlarmSender.IN_alarmErrorReadingWaterFlow;
+	public static final int TRIG_p0__connected = IFITEM_p0 + EVT_SHIFT*PTrafficLightInterface.OUT_connected;
+	public static final int TRIG_p0__setPumpFlow = IFITEM_p0 + EVT_SHIFT*PTrafficLightInterface.OUT_setPumpFlow;
+	public static final int TRIG_p0__setWaterTenkFlow = IFITEM_p0 + EVT_SHIFT*PTrafficLightInterface.OUT_setWaterTenkFlow;
+	public static final int TRIG_p0__turnOnPump = IFITEM_p0 + EVT_SHIFT*PTrafficLightInterface.OUT_turnOnPump;
+	public static final int TRIG_p0__turnOffPump = IFITEM_p0 + EVT_SHIFT*PTrafficLightInterface.OUT_turnOffPump;
 	
 	// state names
 	protected static final String stateStrings[] = {
 		"<no state>",
 		"<top>",
-		"initialState"
+		"initialState",
+		"connect"
 	};
 	
 	// history
-	protected int history[] = {NO_STATE, NO_STATE, NO_STATE};
+	protected int history[] = {NO_STATE, NO_STATE, NO_STATE, NO_STATE};
 	
 	private void setState(int new_state) {
 		DebuggingService.getInstance().addActorState(this,stateStrings[new_state]);
@@ -154,6 +170,9 @@ public class Alarm extends ActorClassBase {
 	protected void action_TRANS_errorReadingWaterFlow_FROM_initialState_TO_initialState_BY_alarmErrorReadingWaterFlowalarmReceiver_errorReadingWaterFlow(InterfaceItemBase ifitem) {
 		printMessage("Dve greske prilikom citanja protoka vode");
 	}
+	protected void action_TRANS_INITIAL_TO__connect() {
+		p0.connect(4020);
+	}
 	
 	/* State Switch Methods */
 	/**
@@ -165,6 +184,10 @@ public class Alarm extends ActorClassBase {
 	private void exitTo(int current__et, int to) {
 		while (current__et!=to) {
 			switch (current__et) {
+				case STATE_connect:
+					this.history[STATE_TOP] = STATE_connect;
+					current__et = STATE_TOP;
+					break;
 				case STATE_initialState:
 					this.history[STATE_TOP] = STATE_initialState;
 					current__et = STATE_TOP;
@@ -185,9 +208,10 @@ public class Alarm extends ActorClassBase {
 	 */
 	private int executeTransitionChain(int chain__et, InterfaceItemBase ifitem, Object generic_data__et) {
 		switch (chain__et) {
-			case Alarm.CHAIN_TRANS_INITIAL_TO__initialState:
+			case Alarm.CHAIN_TRANS_INITIAL_TO__connect:
 			{
-				return STATE_initialState;
+				action_TRANS_INITIAL_TO__connect();
+				return STATE_connect;
 			}
 			case Alarm.CHAIN_TRANS_errorReadingAirFlow_FROM_initialState_TO_initialState_BY_alarmErrorReadingAirFlowalarmReceiver_errorReadingAirFlow:
 			{
@@ -229,6 +253,10 @@ public class Alarm extends ActorClassBase {
 				action_TRANS_highCarbonMonoxyde_FROM_initialState_TO_initialState_BY_alarmHighCarbonMonoxydeLevelalarmReceiver_highCarbonMonoxyde(ifitem);
 				return STATE_initialState;
 			}
+			case Alarm.CHAIN_TRANS_init0_FROM_connect_TO_initialState_BY_connectedp0:
+			{
+				return STATE_initialState;
+			}
 			case Alarm.CHAIN_TRANS_lowAirFlow_FROM_initialState_TO_initialState_BY_alarmLowAirFlowalarmReceiver_lowAirFlow:
 			{
 				action_TRANS_lowAirFlow_FROM_initialState_TO_initialState_BY_alarmLowAirFlowalarmReceiver_lowAirFlow(ifitem);
@@ -252,6 +280,9 @@ public class Alarm extends ActorClassBase {
 		}
 		while (true) {
 			switch (state__et) {
+				case STATE_connect:
+					/* in leaf state: return state id */
+					return STATE_connect;
 				case STATE_initialState:
 					/* in leaf state: return state id */
 					return STATE_initialState;
@@ -267,7 +298,7 @@ public class Alarm extends ActorClassBase {
 	}
 	
 	public void executeInitTransition() {
-		int chain__et = Alarm.CHAIN_TRANS_INITIAL_TO__initialState;
+		int chain__et = Alarm.CHAIN_TRANS_INITIAL_TO__connect;
 		int next__et = executeTransitionChain(chain__et, null, null);
 		next__et = enterHistory(next__et);
 		setState(next__et);
@@ -281,6 +312,19 @@ public class Alarm extends ActorClassBase {
 	
 		if (!handleSystemEvent(ifitem, evt, generic_data__et)) {
 			switch (getState()) {
+				case STATE_connect:
+					switch(trigger__et) {
+						case TRIG_p0__connected:
+							{
+								chain__et = Alarm.CHAIN_TRANS_init0_FROM_connect_TO_initialState_BY_connectedp0;
+								catching_state__et = STATE_TOP;
+							}
+						break;
+						default:
+							/* should not occur */
+							break;
+					}
+					break;
 				case STATE_initialState:
 					switch(trigger__et) {
 						case TRIG_alarmReceiver__alarmErrorReadingAirFlow:

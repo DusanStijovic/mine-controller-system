@@ -3,22 +3,24 @@ RoomModel AlarmModel {
 	ActorClass Alarm {
 		Interface {
 			Port alarmReceiver [*]: AlarmSender
+			conjugated Port p0: TcpCommunication.PTrafficLightInterface
 		}
 		Structure {
 			usercode2 '''
-				
 				private void printMessage(String message){
 				System.out.println("#################ALARM#########################");
 				System.out.println(message);
+				p0.setAlarm(message + "\n");
 				System.out.println("###############################################");
 				}
 			'''
 			external Port alarmReceiver
+			external Port p0
 		}
 		Behavior {
 			StateMachine {
 				State initialState
-				Transition init0: initial -> initialState
+
 				Transition hghMethane: initialState -> initialState {
 					triggers {
 						<alarmHighMethaneLevel: alarmReceiver>
@@ -90,6 +92,15 @@ RoomModel AlarmModel {
 					action '''
 						printMessage("Dve greske prilikom citanja protoka vode");
 					'''
+				}
+				State connect
+				Transition init0: connect -> initialState {
+					triggers {
+						<connected: p0>
+					}
+				}
+				Transition init1: initial -> connect {
+					action '''p0.connect(4020);'''
 				}
 			}
 		}

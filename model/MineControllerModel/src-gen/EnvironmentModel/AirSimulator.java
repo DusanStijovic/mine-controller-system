@@ -11,27 +11,35 @@ import etrice.api.timer.*;
 import etrice.api.timer.PTimer.*;
 import PoolingSensorModel.PoolingSensorSample.*;
 
+/*--------------------- begin user code ---------------------*/
+import  java.util.Random;
+
+/*--------------------- end user code ---------------------*/
 
 
 public class AirSimulator extends ActorClassBase {
 
 	/*--------------------- begin user code ---------------------*/
-	private static final int CALCULATION_PERIOD_IN_MS =  5 * 1000;
+	private static final int CALCULATION_PERIOD_IN_MS =  50;
 	private static final double MAX_SAMPLE_LEVEL = 10;
 	private double airFlowLevel = 0;
 	private double methaneLevel = 0;
 	private double carbonMonoxydeLevel = 0;
 	
+	private Random airFlowRandom = new Random(System.currentTimeMillis());
+	private Random methaneRandom = new Random(System.currentTimeMillis());
+	private Random carbonMonoxyedRandom = new Random(System.currentTimeMillis());
+	
 	
 	private void calculateAirFlow(){
-		airFlowLevel = Math.random() * MAX_SAMPLE_LEVEL;
+		airFlowLevel = airFlowRandom.nextDouble() * MAX_SAMPLE_LEVEL;
 	}
 	private void calculateMethane(){
-		methaneLevel = Math.random() * MAX_SAMPLE_LEVEL;
+		methaneLevel = methaneRandom.nextDouble() * MAX_SAMPLE_LEVEL;
 	}
 	
 	private void calculateCarbonMonoxyde(){
-		carbonMonoxydeLevel = Math.random() * MAX_SAMPLE_LEVEL;
+		carbonMonoxydeLevel = carbonMonoxyedRandom.nextDouble() * MAX_SAMPLE_LEVEL;
 	}
 	
 	
@@ -145,14 +153,14 @@ public class AirSimulator extends ActorClassBase {
 	
 	/* Entry and Exit Codes */
 	protected void entry_initialState() {
-		calculateAirFlow();
-		calculateMethane();
-		calculateCarbonMonoxyde();
-		methaneSample.sendSample(airFlowLevel);
-		airflowSample.sendSample(methaneLevel);
-		caarbonMonoxydeSample.sendSample(carbonMonoxydeLevel);
-		System.out.println("Racunanje i slanje novih uzoraka: air: " + airFlowLevel + ", methane:" + methaneLevel + ", carbonMonoxydeLeve: " + carbonMonoxydeLevel);
-		timingService.startTimeout(CALCULATION_PERIOD_IN_MS);			
+								calculateAirFlow();
+								calculateMethane();
+								calculateCarbonMonoxyde();
+								methaneSample.sendSample(airFlowLevel);
+								airflowSample.sendSample(methaneLevel);
+								caarbonMonoxydeSample.sendSample(carbonMonoxydeLevel);
+		//						System.out.println("Racunanje i slanje novih uzoraka: air: " + airFlowLevel + ", methane:" + methaneLevel + ", carbonMonoxydeLeve: " + carbonMonoxydeLevel);
+								timingService.startTimeout(CALCULATION_PERIOD_IN_MS);			
 	}
 	
 	/* Action Codes */

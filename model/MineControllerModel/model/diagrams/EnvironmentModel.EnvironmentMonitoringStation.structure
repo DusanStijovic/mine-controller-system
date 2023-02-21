@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="ASCII"?>
-<pi:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:al="http://eclipse.org/graphiti/mm/algorithms" xmlns:pi="http://eclipse.org/graphiti/mm/pictograms" visible="true" gridUnit="10" diagramTypeId="room.structure" name="EnvironmentMonitoringStation Structure" pictogramLinks="//@link //@children.0/@link //@children.0/@children.0/@link //@children.0/@children.1/@link //@children.0/@children.2/@link //@children.0/@children.2/@children.2/@link //@children.0/@children.2/@children.3/@link //@children.0/@children.2/@children.4/@link //@children.0/@children.3/@link //@children.0/@children.4/@link //@children.0/@children.5/@link //@children.0/@children.0/@children.2/@link //@children.0/@children.0/@children.3/@link //@children.0/@children.1/@children.2/@link //@children.0/@children.1/@children.3/@link //@children.0/@children.3/@children.2/@link //@children.0/@children.3/@children.3/@link //@connections.0/@link //@connections.1/@link //@connections.2/@link //@children.0/@children.2/@children.5/@link //@children.0/@children.6/@link //@connections.3/@link //@children.0/@children.7/@link //@children.0/@children.4/@children.2/@link //@children.0/@children.4/@children.3/@link //@children.0/@children.4/@children.4/@link //@connections.4/@link //@connections.5/@link //@connections.6/@link //@children.0/@children.2/@children.6/@link //@connections.7/@link" verticalGridUnit="10" version="0.18.0">
+<pi:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:al="http://eclipse.org/graphiti/mm/algorithms" xmlns:pi="http://eclipse.org/graphiti/mm/pictograms" visible="true" gridUnit="10" diagramTypeId="room.structure" name="EnvironmentMonitoringStation Structure" pictogramLinks="//@link //@children.0/@link //@children.0/@children.0/@link //@children.0/@children.1/@link //@children.0/@children.2/@link //@children.0/@children.2/@children.2/@link //@children.0/@children.2/@children.3/@link //@children.0/@children.2/@children.4/@link //@children.0/@children.3/@link //@children.0/@children.4/@link //@children.0/@children.5/@link //@children.0/@children.0/@children.2/@link //@children.0/@children.0/@children.3/@link //@children.0/@children.1/@children.2/@link //@children.0/@children.1/@children.3/@link //@children.0/@children.3/@children.2/@link //@children.0/@children.3/@children.3/@link //@connections.0/@link //@connections.1/@link //@connections.2/@link //@children.0/@children.2/@children.5/@link //@children.0/@children.6/@link //@connections.3/@link //@children.0/@children.4/@children.2/@link //@children.0/@children.4/@children.3/@link //@children.0/@children.4/@children.4/@link //@connections.4/@link //@connections.5/@link //@connections.6/@link //@children.0/@children.2/@children.6/@link //@connections.7/@link //@children.0/@children.7/@link //@children.0/@children.2/@children.7/@link //@connections.8/@link" verticalGridUnit="10" version="0.18.0">
   <graphicsAlgorithm xsi:type="al:Rectangle" background="//@colors.1" foreground="//@colors.0" lineWidth="1" transparency="0.0" width="1000" height="1000"/>
   <link>
     <businessObjects href="../EnvironmentModel.room#ActorClass:EnvironmentMonitoringStation"/>
   </link>
   <children xsi:type="pi:ContainerShape" visible="true" active="true">
     <properties key="obj-type" value="cls"/>
-    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="880" height="580" x="47" y="40">
+    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="880" height="580" x="65" y="40">
       <graphicsAlgorithmChildren xsi:type="al:Rectangle" background="//@colors.1" foreground="//@colors.2" lineWidth="1" lineVisible="false" transparency="0.5" width="800" height="500" x="40" y="40"/>
       <graphicsAlgorithmChildren xsi:type="al:Rectangle" foreground="//@colors.2" lineWidth="4" filled="false" transparency="0.0" width="800" height="500" x="40" y="40"/>
     </graphicsAlgorithm>
@@ -532,6 +532,21 @@
           <graphicsAlgorithm xsi:type="al:Text" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0" width="60" height="15" y="6" font="//@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="methaneLevel"/>
         </children>
       </children>
+      <children xsi:type="pi:ContainerShape" visible="true" active="true">
+        <properties key="obj-type" value="port"/>
+        <properties key="inherited" value="false"/>
+        <properties key="item-kind" value="C"/>
+        <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="60" height="60" x="155">
+          <graphicsAlgorithmChildren xsi:type="al:Rectangle" background="//@colors.1" foreground="//@colors.2" lineWidth="1" transparency="0.0" width="18" height="18" x="21" y="21"/>
+        </graphicsAlgorithm>
+        <link>
+          <businessObjects href="../EnvironmentModel.room#Port:EnvironmentPooling$tcpEnvironment"/>
+        </link>
+        <anchors xsi:type="pi:ChopboxAnchor" incomingConnections="//@connections.8" referencedGraphicsAlgorithm="//@children.0/@children.2/@children.7/@graphicsAlgorithm/@graphicsAlgorithmChildren.0"/>
+        <children visible="true">
+          <graphicsAlgorithm xsi:type="al:Text" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0" width="60" height="15" y="6" font="//@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="tcpEnvironment"/>
+        </children>
+      </children>
     </children>
     <children xsi:type="pi:ContainerShape" visible="true" active="true">
       <properties key="obj-type" value="ref"/>
@@ -882,17 +897,17 @@
     <children xsi:type="pi:ContainerShape" visible="true" active="true">
       <properties key="obj-type" value="port"/>
       <properties key="inherited" value="false"/>
-      <properties key="item-kind" value="C"/>
-      <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="80" height="80" x="800" y="392">
+      <properties key="item-kind" value="CR"/>
+      <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="80" height="80" x="448">
         <graphicsAlgorithmChildren xsi:type="al:Rectangle" background="//@colors.1" foreground="//@colors.2" lineWidth="2" transparency="0.0" width="40" height="40" x="20" y="20"/>
-        <graphicsAlgorithmChildren xsi:type="al:Ellipse" background="//@colors.2" foreground="//@colors.2" lineWidth="2" transparency="0.0" width="20" height="20" x="30" y="30"/>
+        <graphicsAlgorithmChildren xsi:type="al:Rectangle" background="//@colors.2" foreground="//@colors.2" lineWidth="2" transparency="0.0" width="20" height="20" x="30" y="30"/>
       </graphicsAlgorithm>
       <link>
-        <businessObjects href="../EnvironmentModel.room#Port:EnvironmentMonitoringStation$sendToConsole"/>
+        <businessObjects href="../EnvironmentModel.room#Port:EnvironmentMonitoringStation$tcpEnvironmet"/>
       </link>
-      <anchors xsi:type="pi:ChopboxAnchor" referencedGraphicsAlgorithm="//@children.0/@children.7/@graphicsAlgorithm/@graphicsAlgorithmChildren.0"/>
+      <anchors xsi:type="pi:ChopboxAnchor" outgoingConnections="//@connections.8" referencedGraphicsAlgorithm="//@children.0/@children.7/@graphicsAlgorithm/@graphicsAlgorithmChildren.0"/>
       <children visible="true">
-        <graphicsAlgorithm xsi:type="al:Text" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0" width="80" height="20" y="60" font="//@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="sendToConsole"/>
+        <graphicsAlgorithm xsi:type="al:Text" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0" width="80" height="20" font="//@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="tcpEnvironmet"/>
       </children>
     </children>
   </children>
@@ -902,7 +917,7 @@
     <link>
       <businessObjects href="../EnvironmentModel.room#Binding:EnvironmentMonitoringStation$poolingAirFlow!environmentPooling-poolingSensorCommands!airFlowSensor"/>
     </link>
-    <bendpoints x="169" y="187"/>
+    <bendpoints x="187" y="187"/>
   </connections>
   <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="//@children.0/@children.3/@children.2/@anchors.0" end="//@children.0/@children.2/@children.2/@anchors.0">
     <properties key="obj-type" value="bind"/>
@@ -917,7 +932,7 @@
     <link>
       <businessObjects href="../EnvironmentModel.room#Binding:EnvironmentMonitoringStation$poolingCarbonMonohyde!environmentPooling-poolingSensorCommands!carboniteMonoxideSensor"/>
     </link>
-    <bendpoints x="691" y="234"/>
+    <bendpoints x="709" y="234"/>
   </connections>
   <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="//@children.0/@children.2/@children.5/@anchors.0" end="//@children.0/@children.6/@anchors.0">
     <properties key="obj-type" value="bind"/>
@@ -932,10 +947,10 @@
     <link>
       <businessObjects href="../EnvironmentModel.room#Binding:EnvironmentMonitoringStation$caarbonMonoxydeSample!airSimulator-poolingSensorSample!carboniteMonoxideSensor"/>
     </link>
-    <bendpoints x="546" y="444"/>
-    <bendpoints x="851" y="444"/>
-    <bendpoints x="851" y="273"/>
-    <bendpoints x="751" y="273"/>
+    <bendpoints x="564" y="444"/>
+    <bendpoints x="869" y="444"/>
+    <bendpoints x="869" y="273"/>
+    <bendpoints x="769" y="273"/>
   </connections>
   <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="//@children.0/@children.4/@children.2/@anchors.0" end="//@children.0/@children.1/@children.3/@anchors.0">
     <properties key="obj-type" value="bind"/>
@@ -943,10 +958,10 @@
     <link>
       <businessObjects href="../EnvironmentModel.room#Binding:EnvironmentMonitoringStation$airflowSample!airSimulator-poolingSensorSample!airFlowSensor"/>
     </link>
-    <bendpoints x="409" y="450"/>
-    <bendpoints x="312" y="450"/>
-    <bendpoints x="312" y="204"/>
-    <bendpoints x="229" y="204"/>
+    <bendpoints x="427" y="450"/>
+    <bendpoints x="330" y="450"/>
+    <bendpoints x="330" y="204"/>
+    <bendpoints x="247" y="204"/>
   </connections>
   <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="//@children.0/@children.4/@children.3/@anchors.0" end="//@children.0/@children.3/@children.3/@anchors.0">
     <properties key="obj-type" value="bind"/>
@@ -960,6 +975,13 @@
     <graphicsAlgorithm xsi:type="al:Polyline" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0"/>
     <link>
       <businessObjects href="../EnvironmentModel.room#Binding:EnvironmentMonitoringStation$methaneLevel!environmentPooling-supstanceLevel!."/>
+    </link>
+  </connections>
+  <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="//@children.0/@children.7/@anchors.0" end="//@children.0/@children.2/@children.7/@anchors.0">
+    <properties key="obj-type" value="bind"/>
+    <graphicsAlgorithm xsi:type="al:Polyline" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0"/>
+    <link>
+      <businessObjects href="../EnvironmentModel.room#Binding:EnvironmentMonitoringStation$tcpEnvironmet!.-tcpEnvironment!environmentPooling"/>
     </link>
   </connections>
   <colors red="227" green="238" blue="249"/>

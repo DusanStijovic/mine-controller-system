@@ -1,0 +1,171 @@
+RoomModel TcpCommunication {
+
+	import etrice.api.types.*
+	import etrice.api.tcp.PTcpControl
+	import etrice.api.tcp.PTcpPayload
+
+	ActorClass TrafficLightInterface {
+		Interface {
+			Port fct: PTrafficLightInterface
+			conjugated Port ctrl: PTcpControl
+			conjugated Port payload: PTcpPayload
+		}
+		Structure {
+			external Port fct
+			external Port ctrl
+			external Port payload
+		}
+		Behavior {
+			Operation sendPayloadString(data: string) '''
+								DTcpPayload tcpPackage = new DTcpPayload();
+								data += "\n";
+								tcpPackage.setData(data.getBytes());
+								tcpPackage.setLength(data.length());
+				//				System.out.println(data);
+								payload.send(tcpPackage);
+			'''
+			Operation sendOnOffCommand(message: string ref, status: boolean) '''
+								DTcpPayload tcpPackage = new DTcpPayload();
+								String finalMessage = message;
+								if (!status){
+									finalMessage += "=off\n";
+								}
+								else {
+									finalMessage += "=on\n";
+								}
+								tcpPackage.setData(finalMessage.getBytes());
+								tcpPackage.setLength(finalMessage.length());
+				//				System.out.println("package=" + tcpPackage.getData());
+								payload.send(tcpPackage);
+			'''
+			StateMachine {
+				Transition init: initial -> Disconnected
+				Transition tr0: Connected -> Connected {
+					triggers {
+						<setPumpState: fct>
+					}
+					action '''sendOnOffCommand("setPumpState", transitionData);'''
+				}
+				Transition tr1: Connecting -> Connected {
+					triggers {
+						<established: ctrl>
+					}
+					action '''fct.connected();'''
+				}
+				Transition tr2: Disconnected -> Connecting {
+					triggers {
+						<connect: fct>
+					}
+					action '''
+						System.out.println("tli: connecting to port " + (int)transitionData);
+						DTcpControl config = new DTcpControl("localhost", transitionData);
+						ctrl.open(config);
+					'''
+				}
+				Transition tr3: Connected -> Connected {
+					triggers {
+						<setAlarm: fct>
+					}
+					action '''sendPayloadString("setAlarm=" + transitionData);'''
+				}
+				Transition tr4: Connected -> Connected {
+					triggers {
+						<setPumpFlow: fct>
+					}
+					action '''sendPayloadString("setPumpFlow=" + transitionData);'''
+				}
+				Transition tr5: Connected -> Connected {
+					triggers {
+						<setWaterLevel: fct>
+					}
+					action '''
+						sendPayloadString("setWaterLevel=" + transitionData);
+					'''
+				}
+				State Connecting
+				State Connected
+				State Disconnected
+				Transition tr6: Connected -> Connected {
+					triggers {
+						<error: ctrl>
+					}
+					action '''
+						System.out.println("Greska:");
+					'''
+				}
+				Transition tr7: Connected -> Connected {
+					triggers {
+						<setMethaneLevel: fct>
+					}
+					action '''sendOnOffCommand("setMethaneLevel", transitionData);'''
+				}
+				Transition tr8: Connected -> Connected {
+					triggers {
+						<setCarbonLevel: fct>
+					}
+					action '''sendOnOffCommand("setCarbonLevel", transitionData);'''
+				}
+				Transition tr9: Connected -> Connected {
+					triggers {
+						<setAirFlowLevel: fct>
+					}
+					action '''sendOnOffCommand("setAirFlowLevel", transitionData);'''
+				}
+				Transition tr10: Connected -> Connected {
+					triggers {
+						<setLowWaterLevel: fct>
+					}
+					action '''sendOnOffCommand("setLowWaterLevel", transitionData);'''
+				}
+				Transition tr11: Connected -> Connected {
+					triggers {
+						<setHighWaterLevel: fct>
+					}
+					action '''sendOnOffCommand("setHighWaterLevel", transitionData);'''
+				}
+				Transition tr12: Connected -> Connected {
+					triggers {
+						<receive: payload>
+					}
+					action '''
+						String data = new String(transitionData.getData());
+						if (data.startsWith("setPumpFlow=")) {
+							double newPumpFlow = Double.parseDouble(data.split("=")[1]);
+							fct.setPumpFlow(newPumpFlow);
+						} else if (data.startsWith("setWaterTenkFlow=")) {
+							double newWaterFlow = Double.parseDouble(data.split("=")[1]);
+							fct.setWaterTenkFlow(newWaterFlow);
+						} else if (data.startsWith("turnOnPump")){
+							fct.turnOnPump();
+						} else if (data.startsWith("turnOffPump")){
+							fct.turnOffPump();	
+						}
+					'''
+				}
+			}
+		}
+	}
+
+	ProtocolClass PTrafficLightInterface {
+		incoming {
+			Message connect(int32)
+			Message setPumpState(boolean)
+			Message setPumpFlow(float64)
+			Message setAlarm(string)
+			Message setWaterLevel(float64)
+			Message setMethaneLevel(boolean)
+			Message setCarbonLevel(boolean)
+			Message setAirFlowLevel(boolean)
+			Message setHighWaterLevel(boolean)
+			Message setLowWaterLevel(boolean)
+		}
+		outgoing {
+			Message connected()
+			Message setPumpFlow(float64)
+			Message setWaterTenkFlow(float64)
+			Message turnOnPump()
+			Message turnOffPump()
+//			Message pressedRequestButton()
+		}
+	}
+}

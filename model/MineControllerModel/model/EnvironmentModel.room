@@ -11,7 +11,7 @@ RoomModel EnvironmentModel {
 		Interface {
 			Port supstanceLevel: supstanceLevelEvent
 			conjugated Port sendAlarm: AlarmModel.AlarmSender
-			conjugated Port sendToConsole: ConsoleModel.MessagingProtocol
+			conjugated Port tcpEnvironmet: TcpCommunication.PTrafficLightInterface
 		}
 		Structure {
 			Binding environmentPooling.poolingAirFlow and airFlowSensor.poolingSensorCommands
@@ -31,14 +31,8 @@ RoomModel EnvironmentModel {
 			ActorRef airSimulator: AirSimulator
 			Binding environmentPooling.methaneLevel and supstanceLevel
 			Binding environmentPooling.sendAlarm and sendAlarm
-			external Port sendToConsole
-		}
 
-		Behavior {
-			StateMachine {
-				State InitialState
-				Transition init0: initial -> InitialState
-			}
+			Binding tcpEnvironmet and environmentPooling.tcpEnvironment
 		}
 	}
 
@@ -50,23 +44,30 @@ RoomModel EnvironmentModel {
 			conjugated Port airflowSample: PoolingSensorSample
 		}
 		Structure {
+			usercode1 '''
+				import  java.util.Random;
+			'''
 			usercode2 '''
-				private static final int CALCULATION_PERIOD_IN_MS =  5 * 1000;
+				private static final int CALCULATION_PERIOD_IN_MS =  50;
 				private static final double MAX_SAMPLE_LEVEL = 10;
 				private double airFlowLevel = 0;
 				private double methaneLevel = 0;
 				private double carbonMonoxydeLevel = 0;
 				
+				private Random airFlowRandom = new Random(System.currentTimeMillis());
+				private Random methaneRandom = new Random(System.currentTimeMillis());
+				private Random carbonMonoxyedRandom = new Random(System.currentTimeMillis());
+				
 				
 				private void calculateAirFlow(){
-					airFlowLevel = Math.random() * MAX_SAMPLE_LEVEL;
+					airFlowLevel = airFlowRandom.nextDouble() * MAX_SAMPLE_LEVEL;
 				}
 				private void calculateMethane(){
-					methaneLevel = Math.random() * MAX_SAMPLE_LEVEL;
+					methaneLevel = methaneRandom.nextDouble() * MAX_SAMPLE_LEVEL;
 				}
 				
 				private void calculateCarbonMonoxyde(){
-					carbonMonoxydeLevel = Math.random() * MAX_SAMPLE_LEVEL;
+					carbonMonoxydeLevel = carbonMonoxyedRandom.nextDouble() * MAX_SAMPLE_LEVEL;
 				}
 				
 			'''
@@ -79,14 +80,14 @@ RoomModel EnvironmentModel {
 			StateMachine {
 				State initialState {
 					entry '''
-						calculateAirFlow();
-						calculateMethane();
-						calculateCarbonMonoxyde();
-						methaneSample.sendSample(airFlowLevel);
-						airflowSample.sendSample(methaneLevel);
-						caarbonMonoxydeSample.sendSample(carbonMonoxydeLevel);
-						System.out.println("Racunanje i slanje novih uzoraka: air: " + airFlowLevel + ", methane:" + methaneLevel + ", carbonMonoxydeLeve: " + carbonMonoxydeLevel);
-						timingService.startTimeout(CALCULATION_PERIOD_IN_MS);			
+												calculateAirFlow();
+												calculateMethane();
+												calculateCarbonMonoxyde();
+												methaneSample.sendSample(airFlowLevel);
+												airflowSample.sendSample(methaneLevel);
+												caarbonMonoxydeSample.sendSample(carbonMonoxydeLevel);
+						//						System.out.println("Racunanje i slanje novih uzoraka: air: " + airFlowLevel + ", methane:" + methaneLevel + ", carbonMonoxydeLeve: " + carbonMonoxydeLevel);
+												timingService.startTimeout(CALCULATION_PERIOD_IN_MS);			
 					'''
 				}
 				Transition init0: initial -> initialState {
@@ -108,6 +109,7 @@ RoomModel EnvironmentModel {
 
 			Port methaneLevel: supstanceLevelEvent
 			conjugated Port sendAlarm: AlarmModel.AlarmSender
+			conjugated Port tcpEnvironment: TcpCommunication.PTrafficLightInterface
 		}
 		Structure {
 			usercode1 '''
@@ -115,28 +117,71 @@ RoomModel EnvironmentModel {
 				import java.util.Calendar;
 			'''
 			usercode2 '''
-				private static final int PERIOD_OF_ACTIVATION = 100;
-				private static final int PERIOD_OF_CHECKING_DEVICE = 50;
-				private static final int MAX_ERROR_COUNT = 2;
-				
-				private int currentCarbonMonoxydeErrorCount = 0;
-				private int currentMethaneErrorCount = 0;
-				private int currentAirFlowErrorCount = 0;
-				
-				private long methaneNextActivationInMs = 0;
-				private long airFlowNextActivationInMs = 0;
-				private long carbonNextActivationInMs = 0;
-				
-				private static final double METHANE_HIGH_LEVEL = 7;
-				private static final double AIRFLOW_LOW_LEVEL = 2;
-				private static final double CARBON_MONOXYDE_HIGH_LEVEL = 7;
-				
-				private int calculateWaitTime(long nextActivationInMs){
-					long waitTime = nextActivationInMs - Calendar.getInstance().getTimeInMillis();
-					waitTime = Math.max(waitTime, 0);
-					return (int)waitTime;
-				}
-				
+								private static final int PERIOD_OF_ACTIVATION = 100;
+								private static final int PERIOD_OF_CHECKING_DEVICE = 50;
+								private static final int MAX_ERROR_COUNT = 2;
+								
+								private int currentCarbonMonoxydeErrorCount = 0;
+								private int currentMethaneErrorCount = 0;
+								private int currentAirFlowErrorCount = 0;
+								
+								private long methaneNextActivationInMs = 0;
+								private long airFlowNextActivationInMs = 0;
+								private long carbonNextActivationInMs = 0;
+								private long calculatedParts = 0;
+								
+								private static final double METHANE_HIGH_LEVEL = 9.4;
+								private static final double AIRFLOW_LOW_LEVEL = 0.5;
+								private static final double CARBON_MONOXYDE_HIGH_LEVEL = 9.4;
+								
+								private long worstExecutionTimeInMs = 0;
+								private long currentMethaneExecutionTimeInMs = 0;
+								private long currentAirFlowExecutionTimeInMs = 0;
+								private long currentCarbonExecutionTimeInMs = 0;			
+								private long readStatusTime = 0;	
+								
+								private int calculateWaitTime(long nextActivationInMs){
+									long waitTime = nextActivationInMs - System.currentTimeMillis();
+									waitTime = Math.max(waitTime, 0);
+									return (int)waitTime;
+								}
+								
+								private void calculateExecutionTime(){
+										calculatedParts++;
+										if (calculatedParts == 3){
+											long duration = currentMethaneExecutionTimeInMs + currentAirFlowExecutionTimeInMs + currentCarbonExecutionTimeInMs;
+											duration += readStatusTime;
+				//							System.out.println("Duration environment monitoring: " + duration);
+											if (duration > worstExecutionTimeInMs){
+												worstExecutionTimeInMs = duration;
+												System.out.println("WCET environment monitoring: " + worstExecutionTimeInMs);
+											}
+											currentMethaneExecutionTimeInMs = currentAirFlowExecutionTimeInMs = currentCarbonExecutionTimeInMs = 0;
+											calculatedParts = 0;
+											readStatusTime = 0;
+										}
+								}
+								private Boolean lastSendMethane = null;
+								private Boolean lastSendCarbon = null;
+								private Boolean lastSendAirFlow = null;
+								private void sendMethane(boolean isHigh){
+									if (lastSendMethane == null || isHigh != lastSendMethane){
+										lastSendMethane = isHigh;
+										tcpEnvironment.setMethaneLevel(isHigh);
+									}
+								}
+								private void sendCarbon(boolean isHigh){
+									if (lastSendCarbon == null || isHigh != lastSendCarbon){
+										lastSendCarbon = isHigh;
+										tcpEnvironment.setCarbonLevel(isHigh);
+									}
+								}
+								private void sendAirFlow(boolean isHigh){
+									if (lastSendAirFlow == null || isHigh != lastSendAirFlow){
+										lastSendAirFlow = isHigh;
+										tcpEnvironment.setAirFlowLevel(isHigh);
+									}
+								}
 			'''
 			external Port poolingAirFlow
 			external Port poolingMethane
@@ -145,29 +190,23 @@ RoomModel EnvironmentModel {
 			SAP timingService: PTimer
 			external Port methaneLevel
 			external Port sendAlarm
+			external Port tcpEnvironment
 		}
 		Behavior {
 			StateMachine {
 				State processChecking
-				Transition init0: initial -> processChecking {
-					action '''
-						methaneNextActivationInMs = Calendar.getInstance().getTimeInMillis() + PERIOD_OF_ACTIVATION;
-						airFlowNextActivationInMs = methaneNextActivationInMs;
-						carbonNextActivationInMs = methaneNextActivationInMs;
-						poolingMethane.startADConverstion();
-						poolingAirFlow.startADConverstion();
-						poolingCarbonMonohyde.startADConverstion();
-						timingService.startTimeout(calculateWaitTime(methaneNextActivationInMs));
-					'''
-				}
+
 				Transition tr0: processChecking -> processChecking {
 					triggers {
 						<timeout: timingService>
 					}
 					action '''
-						poolingAirFlow.readStatus();
-						poolingMethane.readStatus();
-						poolingCarbonMonohyde.readStatus();'''
+						long timeStart = System.currentTimeMillis();
+							poolingAirFlow.readStatus();
+							poolingMethane.readStatus();
+							poolingCarbonMonohyde.readStatus();
+							long timeEnd = System.currentTimeMillis();
+							readStatusTime = timeEnd - timeStart;'''
 				}
 
 				Transition tr2: processChecking -> processChecking {
@@ -175,25 +214,26 @@ RoomModel EnvironmentModel {
 						<sendStatus: poolingMethane>
 					}
 					action '''
+						long timeStart = System.currentTimeMillis();
 						methaneNextActivationInMs += PERIOD_OF_ACTIVATION;
 						int status = transitionData;               
-						if (status == PoolingSensorCommands.Status.NOT_READY.ordinal()){
-						       	timingService.kill();
-						        timingService.startTimeout(PERIOD_OF_CHECKING_DEVICE);            
-						}
 						if (status == PoolingSensorCommands.Status.ERROR.ordinal()){
 						    System.out.println("Error while geting methane level");
 						    currentMethaneErrorCount++;
 						    if (currentMethaneErrorCount >= MAX_ERROR_COUNT){
 						        currentMethaneErrorCount = 0;
 						  		sendAlarm.alarmErrorReadingMethane();
-						        poolingMethane.startADConverstion();
-						        timingService.kill();
-						        timingService.startTimeout(calculateWaitTime(methaneNextActivationInMs));
-						    }       
-						}
-						if (status == PoolingSensorCommands.Status.READY.ordinal()){
-						     poolingMethane.readValueRegister();
+						    }
+						    poolingMethane.startADConverstion();
+						    timingService.kill();
+						    timingService.startTimeout(calculateWaitTime(methaneNextActivationInMs));
+							calculateExecutionTime();
+						} else {
+							if (status == PoolingSensorCommands.Status.READY.ordinal()){
+							     poolingMethane.readValueRegister();
+							}
+							long timeEnd = System.currentTimeMillis();
+							currentMethaneExecutionTimeInMs += timeEnd - timeStart;
 						}
 					'''
 				}
@@ -202,6 +242,7 @@ RoomModel EnvironmentModel {
 						<sendStatus: poolingCarbonMonohyde>
 					}
 					action '''
+						long timeStart = System.currentTimeMillis();
 						carbonNextActivationInMs += PERIOD_OF_ACTIVATION;
 						int status = transitionData;               
 						if (status == PoolingSensorCommands.Status.NOT_READY.ordinal()){
@@ -214,12 +255,19 @@ RoomModel EnvironmentModel {
 						    if (currentCarbonMonoxydeErrorCount >= MAX_ERROR_COUNT){
 						        currentCarbonMonoxydeErrorCount = 0;
 						        sendAlarm.alarmErrorReadingCarbonMonoxyde();
-						        poolingCarbonMonohyde.startADConverstion();
-						        timingService.kill();
-						        timingService.startTimeout(calculateWaitTime(carbonNextActivationInMs));						    }       
-						}
-						if (status == PoolingSensorCommands.Status.READY.ordinal()){
-						     poolingCarbonMonohyde.readValueRegister();
+						     }
+						    poolingCarbonMonohyde.startADConverstion();
+						    timingService.kill();
+						    timingService.startTimeout(calculateWaitTime(carbonNextActivationInMs));
+						    long timeEnd = System.currentTimeMillis();
+							currentMethaneExecutionTimeInMs += timeEnd - timeStart;
+							calculateExecutionTime();
+						} else {
+							if (status == PoolingSensorCommands.Status.READY.ordinal()){
+							     poolingCarbonMonohyde.readValueRegister();
+							}
+							long timeEnd = System.currentTimeMillis();
+							currentCarbonExecutionTimeInMs += timeEnd - timeStart;
 						}
 					'''
 				}
@@ -228,25 +276,31 @@ RoomModel EnvironmentModel {
 						<sendStatus: poolingAirFlow>
 					}
 					action '''
-						airFlowNextActivationInMs += PERIOD_OF_ACTIVATION;
-						int status = transitionData;               
-						if (status == PoolingSensorCommands.Status.NOT_READY.ordinal()){
-						     	timingService.kill();
-						        timingService.startTimeout(PERIOD_OF_CHECKING_DEVICE);      
-						}
-						if (status == PoolingSensorCommands.Status.ERROR.ordinal()){
-						    System.out.println("Error while geting airflow level");
-						    currentAirFlowErrorCount++;
-						    if (currentAirFlowErrorCount >= MAX_ERROR_COUNT){
-						        currentAirFlowErrorCount = 0;
-						        sendAlarm.alarmErrorReadingAirFlow();
-						        poolingAirFlow.startADConverstion();
-						        timingService.kill();
-						        timingService.startTimeout(calculateWaitTime(airFlowNextActivationInMs));						    }       
-						}
-						if (status == PoolingSensorCommands.Status.READY.ordinal()){
-						     poolingAirFlow.readValueRegister();
-						}
+						long timeStart = System.currentTimeMillis();
+							airFlowNextActivationInMs += PERIOD_OF_ACTIVATION;
+							int status = transitionData;               
+							if (status == PoolingSensorCommands.Status.NOT_READY.ordinal()){
+							     	timingService.kill();
+							        timingService.startTimeout(PERIOD_OF_CHECKING_DEVICE);      
+							}
+							if (status == PoolingSensorCommands.Status.ERROR.ordinal()){
+							    System.out.println("Error while geting airflow level");
+							    currentAirFlowErrorCount++;
+							    if (currentAirFlowErrorCount >= MAX_ERROR_COUNT){
+							        currentAirFlowErrorCount = 0;
+							        sendAlarm.alarmErrorReadingAirFlow();
+						        }
+							    poolingAirFlow.startADConverstion();
+							    timingService.kill();
+							    timingService.startTimeout(calculateWaitTime(airFlowNextActivationInMs));     
+								calculateExecutionTime();
+							} else {
+								if (status == PoolingSensorCommands.Status.READY.ordinal()){
+								     poolingAirFlow.readValueRegister();
+								}
+								long timeEnd = System.currentTimeMillis();
+								currentAirFlowExecutionTimeInMs += timeEnd - timeStart;
+							}
 					'''
 				}
 				Transition tr4: processChecking -> processChecking {
@@ -254,16 +308,24 @@ RoomModel EnvironmentModel {
 						<sendValueRegister: poolingAirFlow>
 					}
 					action '''
-						airFlowNextActivationInMs += PERIOD_OF_ACTIVATION;
-						System.out.println("Izmeren airflow: " + transitionData);
-						double value = transitionData;
-						if (value <= AIRFLOW_LOW_LEVEL){
-							sendAlarm.alarmLowAirFlow();
-						}
-						poolingAirFlow.startADConverstion();
-						timingService.kill();
-						timingService.startTimeout(calculateWaitTime(airFlowNextActivationInMs));
-						currentAirFlowErrorCount = 0;
+												long timeStart = System.currentTimeMillis();
+												airFlowNextActivationInMs += PERIOD_OF_ACTIVATION;
+						//						System.out.println("Izmeren airflow: " + transitionData);
+												double value = transitionData;
+												if (value <= AIRFLOW_LOW_LEVEL){
+													sendAlarm.alarmLowAirFlow();
+													sendAirFlow(true);
+													
+												} else {
+													sendAirFlow(false);
+												}
+												poolingAirFlow.startADConverstion();
+												timingService.kill();
+												timingService.startTimeout(calculateWaitTime(airFlowNextActivationInMs));
+												currentAirFlowErrorCount = 0;
+												long timeEnd = System.currentTimeMillis();
+												currentAirFlowExecutionTimeInMs += timeEnd - timeStart;
+												calculateExecutionTime();
 					'''
 				}
 				Transition tr5: processChecking -> processChecking {
@@ -271,19 +333,25 @@ RoomModel EnvironmentModel {
 						<sendValueRegister: poolingMethane>
 					}
 					action '''
-						methaneNextActivationInMs += PERIOD_OF_ACTIVATION;
-						System.out.println("Izmeren metan: " + transitionData);
-						double value = transitionData;
-						if (value >= METHANE_HIGH_LEVEL){
-							sendAlarm.alarmHighMethaneLevel();
-							methaneLevel.highLevel();
-						} else {
-							methaneLevel.normalLevel();
-						}
-						currentMethaneErrorCount = 0;
-						timingService.startTimeout(calculateWaitTime(methaneNextActivationInMs));
-						timingService.kill();
-						 timingService.startTimeout(PERIOD_OF_ACTIVATION);
+												long timeStart = System.currentTimeMillis();
+												methaneNextActivationInMs += PERIOD_OF_ACTIVATION;
+						//						System.out.println("Izmeren metan: " + transitionData);
+												double value = transitionData;
+												if (value >= METHANE_HIGH_LEVEL){
+													sendAlarm.alarmHighMethaneLevel();
+													methaneLevel.highLevel();
+													sendMethane(true);
+												} else {
+													methaneLevel.normalLevel();
+													sendMethane(false);
+												}
+												currentMethaneErrorCount = 0;
+												timingService.startTimeout(calculateWaitTime(methaneNextActivationInMs));
+												timingService.kill();
+												timingService.startTimeout(PERIOD_OF_ACTIVATION);
+												long timeEnd = System.currentTimeMillis();
+												currentMethaneExecutionTimeInMs += timeEnd - timeStart;
+												calculateExecutionTime();
 					'''
 				}
 				Transition tr6: processChecking -> processChecking {
@@ -291,17 +359,50 @@ RoomModel EnvironmentModel {
 						<sendValueRegister: poolingCarbonMonohyde>
 					}
 					action '''
-						carbonNextActivationInMs += PERIOD_OF_ACTIVATION;
-						System.out.println("Izmeren carbon monohyde: " + transitionData);
-						double value = transitionData;
-						if (value >= CARBON_MONOXYDE_HIGH_LEVEL){
-							sendAlarm.alarmHighCarbonMonoxydeLevel();
-						}
-						poolingCarbonMonohyde.startADConverstion();
-						timingService.kill();
-						currentCarbonMonoxydeErrorCount = 0;
-						timingService.startTimeout(calculateWaitTime(carbonNextActivationInMs));
+												long timeStart = System.currentTimeMillis();
+												carbonNextActivationInMs += PERIOD_OF_ACTIVATION;
+						//						System.out.println("Izmeren carbon monohyde: " + transitionData);
+												double value = transitionData;
+												if (value >= CARBON_MONOXYDE_HIGH_LEVEL){
+													sendAlarm.alarmHighCarbonMonoxydeLevel();
+													sendCarbon(true);
+												} else {
+													sendCarbon(false);
+												}
+												poolingCarbonMonohyde.startADConverstion();
+												timingService.kill();
+												currentCarbonMonoxydeErrorCount = 0;
+												timingService.startTimeout(calculateWaitTime(carbonNextActivationInMs));
+												long timeEnd = System.currentTimeMillis();
+												currentCarbonExecutionTimeInMs += timeEnd - timeStart;
+												calculateExecutionTime();
 					'''
+				}
+				State connect
+				Transition init0: connect -> processChecking {
+					triggers {
+						<connected: tcpEnvironment>
+					}
+					action '''
+												long timeStart = System.currentTimeMillis();
+												methaneNextActivationInMs = timeStart + PERIOD_OF_ACTIVATION;
+												airFlowNextActivationInMs = methaneNextActivationInMs;
+												carbonNextActivationInMs = methaneNextActivationInMs;
+												poolingMethane.startADConverstion();
+												poolingAirFlow.startADConverstion();
+												poolingCarbonMonohyde.startADConverstion();
+												timingService.startTimeout(calculateWaitTime(methaneNextActivationInMs));
+												long timeEnd = System.currentTimeMillis();
+												long duration = timeEnd - timeStart;
+						//						System.out.println("Duration environment monitoring: " + duration);
+												if (duration > worstExecutionTimeInMs){
+													worstExecutionTimeInMs = duration;
+													System.out.println("WCET environment monitoring: " + worstExecutionTimeInMs);
+												}
+					'''
+				}
+				Transition init1: initial -> connect {
+					action '''tcpEnvironment.connect(4020);'''
 				}
 			}
 		}

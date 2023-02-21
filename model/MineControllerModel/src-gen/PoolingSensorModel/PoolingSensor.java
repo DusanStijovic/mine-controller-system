@@ -18,7 +18,7 @@ public class PoolingSensor extends ActorClassBase {
 	/*--------------------- begin user code ---------------------*/
 	private static final int SLEEP_IF_CONVERSION_NOT_DONE_MS = 10;
 	private static final int MAX_TIME_FOR_CONVERSION_MS = 50;
-	private static final int MIN_TIME_FOR_CONVERSION_MS = 20;
+	private static final int MIN_TIME_FOR_CONVERSION_MS = 10;
 	private int neededTimeMsForConversion;
 	private boolean conversionInProgress;
 	private PoolingSensorCommands.Status status;
@@ -31,7 +31,7 @@ public class PoolingSensor extends ActorClassBase {
 	}
 	
 	private boolean shouldBeError(){
-		return Math.random()>= 0.85;
+		return Math.random()>= 9;
 	}
 	
 	/*--------------------- end user code ---------------------*/

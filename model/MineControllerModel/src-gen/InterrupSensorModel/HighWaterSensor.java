@@ -10,6 +10,11 @@ import etrice.api.timer.*;
 import InterrupSensorModel.EventHappened.*;
 import etrice.api.timer.PTimer.*;
 
+/*--------------------- begin user code ---------------------*/
+import java.util.Date;
+import java.util.Calendar;
+
+/*--------------------- end user code ---------------------*/
 
 
 public class HighWaterSensor extends InterruptSensor {

@@ -7,21 +7,23 @@ import org.eclipse.etrice.runtime.java.debugging.*;
 import static org.eclipse.etrice.runtime.java.etunit.EtUnit.*;
 
 import InterrupSensorModel.*;
+import TcpCommunication.*;
 import etrice.api.timer.*;
 import WaterTankModel.DrainWater.*;
 import InterrupSensorModel.EventHappened.*;
 import etrice.api.timer.PTimer.*;
+import TcpCommunication.PTrafficLightInterface.*;
 
 
 
 public class WaterTank extends ActorClassBase {
 
 	/*--------------------- begin user code ---------------------*/
-	private static final double WATER_LEVEL_INCREASE_ML_PER_MS = 5;
-	private static final int SLEEP_TIME_IN_MS = 2;
-	private static final double WATER_TANK_CAPACITY_IN_ML = 5000;
-	private static final double HIGH_WATER_LIMIT_PERCENTAGE = 80;
-	private static final double LOW_WATER_LIMIT_PERCENTAGE = 20;
+	private static double WATER_LEVEL_INCREASE = 5;
+	private static final int SLEEP_TIME_IN_MS = 100;
+	private static final double WATER_TANK_CAPACITY_IN_ML = 400;
+	private static final double HIGH_WATER_LIMIT_PERCENTAGE = 70;
+	private static final double LOW_WATER_LIMIT_PERCENTAGE = 30;
 	private double waterLevel;
 	private boolean  isWaterLevelHigh(){
 		return waterLevel >= HIGH_WATER_LIMIT_PERCENTAGE * WATER_TANK_CAPACITY_IN_ML / 100.0;
@@ -30,6 +32,23 @@ public class WaterTank extends ActorClassBase {
 	private boolean  isWaterLevelLow(){
 		return waterLevel <= LOW_WATER_LIMIT_PERCENTAGE * WATER_TANK_CAPACITY_IN_ML / 100.0;
 	}
+	private double sentWaterLevel = 0;
+	
+	private Boolean sentIsLow = null;
+	private Boolean sentIsHigh = null;
+	
+	private void sendHighLevel(boolean isHigh){
+		if (sentIsHigh == null || sentIsHigh != isHigh){
+			sentIsHigh = isHigh;
+			tcpWaterTenk.setHighWaterLevel(isHigh);
+		}
+	}
+	private void sendLowLevel(boolean isLow){
+		if (sentIsLow == null || sentIsLow != isLow){
+			sentIsLow = isLow;
+			tcpWaterTenk.setLowWaterLevel(isLow);
+		}
+	}
 	
 	/*--------------------- end user code ---------------------*/
 
@@ -37,6 +56,7 @@ public class WaterTank extends ActorClassBase {
 	protected EventHappenedPort highWaterLevel = null;
 	protected EventHappenedPort lowWaterLevel = null;
 	protected DrainWaterConjPort drainWater = null;
+	protected PTrafficLightInterfaceConjPort tcpWaterTenk = null;
 
 	//--------------------- saps
 	protected PTimerConjPort timingService = null;
@@ -49,7 +69,8 @@ public class WaterTank extends ActorClassBase {
 	public static final int IFITEM_highWaterLevel = 1;
 	public static final int IFITEM_lowWaterLevel = 2;
 	public static final int IFITEM_drainWater = 3;
-	public static final int IFITEM_timingService = 4;
+	public static final int IFITEM_tcpWaterTenk = 4;
+	public static final int IFITEM_timingService = 5;
 
 	/*--------------------- attributes ---------------------*/
 
@@ -67,6 +88,7 @@ public class WaterTank extends ActorClassBase {
 		highWaterLevel = new EventHappenedPort(this, "highWaterLevel", IFITEM_highWaterLevel);
 		lowWaterLevel = new EventHappenedPort(this, "lowWaterLevel", IFITEM_lowWaterLevel);
 		drainWater = new DrainWaterConjPort(this, "drainWater", IFITEM_drainWater);
+		tcpWaterTenk = new PTrafficLightInterfaceConjPort(this, "tcpWaterTenk", IFITEM_tcpWaterTenk);
 
 		// own saps
 		timingService = new PTimerConjPort(this, "timingService", IFITEM_timingService, 0);
@@ -95,6 +117,9 @@ public class WaterTank extends ActorClassBase {
 	public DrainWaterConjPort getDrainWater (){
 		return this.drainWater;
 	}
+	public PTrafficLightInterfaceConjPort getTcpWaterTenk (){
+		return this.tcpWaterTenk;
+	}
 	public PTimerConjPort getTimingService (){
 		return this.timingService;
 	}
@@ -112,16 +137,24 @@ public class WaterTank extends ActorClassBase {
 
 	/* state IDs */
 	public static final int STATE_SimulacijaVode = 2;
-	public static final int STATE_MAX = 3;
+	public static final int STATE_connect = 3;
+	public static final int STATE_MAX = 4;
 	
 	/* transition chains */
-	public static final int CHAIN_TRANS_INITIAL_TO__SimulacijaVode = 1;
+	public static final int CHAIN_TRANS_INITIAL_TO__connect = 1;
 	public static final int CHAIN_TRANS_napuniVodu_FROM_SimulacijaVode_TO_SimulacijaVode_BY_timeouttimingService_napuniVodu = 2;
 	public static final int CHAIN_TRANS_tr0_FROM_SimulacijaVode_TO_SimulacijaVode_BY_drainWaterdrainWater_tr0 = 3;
+	public static final int CHAIN_TRANS_tr1_FROM_connect_TO_SimulacijaVode_BY_connectedtcpWaterTenk = 4;
+	public static final int CHAIN_TRANS_tr2_FROM_SimulacijaVode_TO_SimulacijaVode_BY_setWaterTenkFlowtcpWaterTenk_tr2 = 5;
 	
 	/* triggers */
 	public static final int POLLING = 0;
 	public static final int TRIG_drainWater__drainWater = IFITEM_drainWater + EVT_SHIFT*DrainWater.OUT_drainWater;
+	public static final int TRIG_tcpWaterTenk__connected = IFITEM_tcpWaterTenk + EVT_SHIFT*PTrafficLightInterface.OUT_connected;
+	public static final int TRIG_tcpWaterTenk__setPumpFlow = IFITEM_tcpWaterTenk + EVT_SHIFT*PTrafficLightInterface.OUT_setPumpFlow;
+	public static final int TRIG_tcpWaterTenk__setWaterTenkFlow = IFITEM_tcpWaterTenk + EVT_SHIFT*PTrafficLightInterface.OUT_setWaterTenkFlow;
+	public static final int TRIG_tcpWaterTenk__turnOnPump = IFITEM_tcpWaterTenk + EVT_SHIFT*PTrafficLightInterface.OUT_turnOnPump;
+	public static final int TRIG_tcpWaterTenk__turnOffPump = IFITEM_tcpWaterTenk + EVT_SHIFT*PTrafficLightInterface.OUT_turnOffPump;
 	public static final int TRIG_timingService__timeout = IFITEM_timingService + EVT_SHIFT*PTimer.OUT_timeout;
 	public static final int TRIG_timingService__internalTimer = IFITEM_timingService + EVT_SHIFT*PTimer.OUT_internalTimer;
 	public static final int TRIG_timingService__internalTimeout = IFITEM_timingService + EVT_SHIFT*PTimer.OUT_internalTimeout;
@@ -130,11 +163,12 @@ public class WaterTank extends ActorClassBase {
 	protected static final String stateStrings[] = {
 		"<no state>",
 		"<top>",
-		"SimulacijaVode"
+		"SimulacijaVode",
+		"connect"
 	};
 	
 	// history
-	protected int history[] = {NO_STATE, NO_STATE, NO_STATE};
+	protected int history[] = {NO_STATE, NO_STATE, NO_STATE, NO_STATE};
 	
 	private void setState(int new_state) {
 		DebuggingService.getInstance().addActorState(this,stateStrings[new_state]);
@@ -143,37 +177,57 @@ public class WaterTank extends ActorClassBase {
 	
 	/* Entry and Exit Codes */
 	protected void entry_SimulacijaVode() {
-														if (isWaterLevelHigh()){
-								//								System.out.println("HIGH");
-								//								System.out.println("Water Level: " + waterLevel);
-																highWaterLevel.eventHappened();
-														}
-														if (isWaterLevelLow()){
-		//														System.out.println("LOW");
-								//								System.out.println("Water Level: " + waterLevel);
-																lowWaterLevel.eventHappened();
-														}
+		if (isWaterLevelHigh()){
+			//System.out.println("HIGH");
+			//System.out.println("Water Level: " + waterLevel);
+			highWaterLevel.eventHappened();
+			sendHighLevel(true);
+		} else {
+			sendHighLevel(false);
+		}
+		if (isWaterLevelLow()){
+			//System.out.println("LOW");
+			//System.out.println("Water Level: " + waterLevel);
+			lowWaterLevel.eventHappened();
+			sendLowLevel(true);
+		} else {
+			sendLowLevel(false);
+		}
 	}
 	
 	/* Action Codes */
-	protected void action_TRANS_INITIAL_TO__SimulacijaVode() {
-		timingService.kill();
-		timingService.startTimeout(SLEEP_TIME_IN_MS);
+	protected void action_TRANS_INITIAL_TO__connect() {
+		tcpWaterTenk.connect(4022);
 	}
 	protected void action_TRANS_napuniVodu_FROM_SimulacijaVode_TO_SimulacijaVode_BY_timeouttimingService_napuniVodu(InterfaceItemBase ifitem) {
-								double increaseValue = WATER_LEVEL_INCREASE_ML_PER_MS * SLEEP_TIME_IN_MS;
+								double increaseValue = WATER_LEVEL_INCREASE;
 		//						System.out.println("Puni se za: " + increaseValue);
 								waterLevel += increaseValue;
-								waterLevel = Math.min(waterLevel, WATER_TANK_CAPACITY_IN_ML);
+								if (waterLevel != sentWaterLevel){
+									tcpWaterTenk.setWaterLevel(waterLevel);
+									sentWaterLevel = waterLevel;
+								}
 								timingService.kill();
 								timingService.startTimeout(SLEEP_TIME_IN_MS);
 	}
 	protected void action_TRANS_tr0_FROM_SimulacijaVode_TO_SimulacijaVode_BY_drainWaterdrainWater_tr0(InterfaceItemBase ifitem, double transitionData) {
 		//						System.out.println("Umanjenje za: " + transitionData);
 								waterLevel -= transitionData;
-								if (waterLevel < 0){
+								if (waterLevel <= 0){
 									waterLevel = 0;
 								}
+								if (waterLevel != sentWaterLevel){
+									tcpWaterTenk.setWaterLevel(waterLevel);
+									sentWaterLevel = waterLevel;
+								}
+	}
+	protected void action_TRANS_tr1_FROM_connect_TO_SimulacijaVode_BY_connectedtcpWaterTenk(InterfaceItemBase ifitem) {
+		timingService.kill();
+		timingService.startTimeout(SLEEP_TIME_IN_MS);
+	}
+	protected void action_TRANS_tr2_FROM_SimulacijaVode_TO_SimulacijaVode_BY_setWaterTenkFlowtcpWaterTenk_tr2(InterfaceItemBase ifitem, double transitionData) {
+		System.out.println("Porstavljen water tank flow na: " + transitionData);
+		WATER_LEVEL_INCREASE = transitionData;
 	}
 	
 	/* State Switch Methods */
@@ -188,6 +242,10 @@ public class WaterTank extends ActorClassBase {
 			switch (current__et) {
 				case STATE_SimulacijaVode:
 					this.history[STATE_TOP] = STATE_SimulacijaVode;
+					current__et = STATE_TOP;
+					break;
+				case STATE_connect:
+					this.history[STATE_TOP] = STATE_connect;
 					current__et = STATE_TOP;
 					break;
 				default:
@@ -206,10 +264,10 @@ public class WaterTank extends ActorClassBase {
 	 */
 	private int executeTransitionChain(int chain__et, InterfaceItemBase ifitem, Object generic_data__et) {
 		switch (chain__et) {
-			case WaterTank.CHAIN_TRANS_INITIAL_TO__SimulacijaVode:
+			case WaterTank.CHAIN_TRANS_INITIAL_TO__connect:
 			{
-				action_TRANS_INITIAL_TO__SimulacijaVode();
-				return STATE_SimulacijaVode;
+				action_TRANS_INITIAL_TO__connect();
+				return STATE_connect;
 			}
 			case WaterTank.CHAIN_TRANS_napuniVodu_FROM_SimulacijaVode_TO_SimulacijaVode_BY_timeouttimingService_napuniVodu:
 			{
@@ -220,6 +278,17 @@ public class WaterTank extends ActorClassBase {
 			{
 				double transitionData = (Double) generic_data__et;
 				action_TRANS_tr0_FROM_SimulacijaVode_TO_SimulacijaVode_BY_drainWaterdrainWater_tr0(ifitem, transitionData);
+				return STATE_SimulacijaVode;
+			}
+			case WaterTank.CHAIN_TRANS_tr1_FROM_connect_TO_SimulacijaVode_BY_connectedtcpWaterTenk:
+			{
+				action_TRANS_tr1_FROM_connect_TO_SimulacijaVode_BY_connectedtcpWaterTenk(ifitem);
+				return STATE_SimulacijaVode;
+			}
+			case WaterTank.CHAIN_TRANS_tr2_FROM_SimulacijaVode_TO_SimulacijaVode_BY_setWaterTenkFlowtcpWaterTenk_tr2:
+			{
+				double transitionData = (Double) generic_data__et;
+				action_TRANS_tr2_FROM_SimulacijaVode_TO_SimulacijaVode_BY_setWaterTenkFlowtcpWaterTenk_tr2(ifitem, transitionData);
 				return STATE_SimulacijaVode;
 			}
 				default:
@@ -246,6 +315,9 @@ public class WaterTank extends ActorClassBase {
 					if (!(skip_entry__et)) entry_SimulacijaVode();
 					/* in leaf state: return state id */
 					return STATE_SimulacijaVode;
+				case STATE_connect:
+					/* in leaf state: return state id */
+					return STATE_connect;
 				case STATE_TOP:
 					state__et = this.history[STATE_TOP];
 					break;
@@ -259,7 +331,7 @@ public class WaterTank extends ActorClassBase {
 	}
 	
 	public void executeInitTransition() {
-		int chain__et = WaterTank.CHAIN_TRANS_INITIAL_TO__SimulacijaVode;
+		int chain__et = WaterTank.CHAIN_TRANS_INITIAL_TO__connect;
 		int next__et = executeTransitionChain(chain__et, null, null);
 		next__et = enterHistory(next__et);
 		setState(next__et);
@@ -281,9 +353,28 @@ public class WaterTank extends ActorClassBase {
 								catching_state__et = STATE_TOP;
 							}
 						break;
+						case TRIG_tcpWaterTenk__setWaterTenkFlow:
+							{
+								chain__et = WaterTank.CHAIN_TRANS_tr2_FROM_SimulacijaVode_TO_SimulacijaVode_BY_setWaterTenkFlowtcpWaterTenk_tr2;
+								catching_state__et = STATE_TOP;
+							}
+						break;
 						case TRIG_timingService__timeout:
 							{
 								chain__et = WaterTank.CHAIN_TRANS_napuniVodu_FROM_SimulacijaVode_TO_SimulacijaVode_BY_timeouttimingService_napuniVodu;
+								catching_state__et = STATE_TOP;
+							}
+						break;
+						default:
+							/* should not occur */
+							break;
+					}
+					break;
+				case STATE_connect:
+					switch(trigger__et) {
+						case TRIG_tcpWaterTenk__connected:
+							{
+								chain__et = WaterTank.CHAIN_TRANS_tr1_FROM_connect_TO_SimulacijaVode_BY_connectedtcpWaterTenk;
 								catching_state__et = STATE_TOP;
 							}
 						break;
