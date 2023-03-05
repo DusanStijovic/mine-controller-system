@@ -11,7 +11,7 @@ RoomModel EnvironmentModel {
 		Interface {
 			Port supstanceLevel: supstanceLevelEvent
 			conjugated Port sendAlarm: AlarmModel.AlarmSender
-			conjugated Port tcpEnvironmet: TcpCommunication.PTrafficLightInterface
+			conjugated Port tcpEnvironmet: TcpCommunication.PGuiCommunicationInterface
 		}
 		Structure {
 			Binding environmentPooling.poolingAirFlow and airFlowSensor.poolingSensorCommands
@@ -109,7 +109,7 @@ RoomModel EnvironmentModel {
 
 			Port methaneLevel: supstanceLevelEvent
 			conjugated Port sendAlarm: AlarmModel.AlarmSender
-			conjugated Port tcpEnvironment: TcpCommunication.PTrafficLightInterface
+			conjugated Port tcpEnvironment: TcpCommunication.PGuiCommunicationInterface
 		}
 		Structure {
 			usercode1 '''

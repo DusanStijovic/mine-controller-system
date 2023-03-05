@@ -3,7 +3,7 @@ RoomModel AlarmModel {
 	ActorClass Alarm {
 		Interface {
 			Port alarmReceiver [*]: AlarmSender
-			conjugated Port p0: TcpCommunication.PTrafficLightInterface
+			conjugated Port p0: TcpCommunication.PGuiCommunicationInterface
 		}
 		Structure {
 			usercode2 '''

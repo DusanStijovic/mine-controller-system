@@ -10,8 +10,8 @@ import TcpCommunication.*;
 import WaterTankModel.*;
 import etrice.api.timer.*;
 import WaterTankModel.DrainWater.*;
+import TcpCommunication.PGuiCommunicationInterface.*;
 import etrice.api.timer.PTimer.*;
-import TcpCommunication.PTrafficLightInterface.*;
 import PumpModel.PumpMotorControll.*;
 
 
@@ -39,7 +39,7 @@ public class PumpMotor extends ActorClassBase {
 	//--------------------- ports
 	protected PumpMotorControllConjPort controlMotor = null;
 	protected DrainWaterPort drainWater = null;
-	protected PTrafficLightInterfaceConjPort pump = null;
+	protected PGuiCommunicationInterfaceConjPort pump = null;
 
 	//--------------------- saps
 	protected PTimerConjPort timingService = null;
@@ -69,7 +69,7 @@ public class PumpMotor extends ActorClassBase {
 		// own ports
 		controlMotor = new PumpMotorControllConjPort(this, "controlMotor", IFITEM_controlMotor);
 		drainWater = new DrainWaterPort(this, "drainWater", IFITEM_drainWater);
-		pump = new PTrafficLightInterfaceConjPort(this, "pump", IFITEM_pump);
+		pump = new PGuiCommunicationInterfaceConjPort(this, "pump", IFITEM_pump);
 
 		// own saps
 		timingService = new PTimerConjPort(this, "timingService", IFITEM_timingService, 0);
@@ -95,7 +95,7 @@ public class PumpMotor extends ActorClassBase {
 	public DrainWaterPort getDrainWater (){
 		return this.drainWater;
 	}
-	public PTrafficLightInterfaceConjPort getPump (){
+	public PGuiCommunicationInterfaceConjPort getPump (){
 		return this.pump;
 	}
 	public PTimerConjPort getTimingService (){
@@ -145,11 +145,11 @@ public class PumpMotor extends ActorClassBase {
 	public static final int POLLING = 0;
 	public static final int TRIG_controlMotor__turnOnPump = IFITEM_controlMotor + EVT_SHIFT*PumpMotorControll.OUT_turnOnPump;
 	public static final int TRIG_controlMotor__turnOffPump = IFITEM_controlMotor + EVT_SHIFT*PumpMotorControll.OUT_turnOffPump;
-	public static final int TRIG_pump__connected = IFITEM_pump + EVT_SHIFT*PTrafficLightInterface.OUT_connected;
-	public static final int TRIG_pump__setPumpFlow = IFITEM_pump + EVT_SHIFT*PTrafficLightInterface.OUT_setPumpFlow;
-	public static final int TRIG_pump__setWaterTenkFlow = IFITEM_pump + EVT_SHIFT*PTrafficLightInterface.OUT_setWaterTenkFlow;
-	public static final int TRIG_pump__turnOnPump = IFITEM_pump + EVT_SHIFT*PTrafficLightInterface.OUT_turnOnPump;
-	public static final int TRIG_pump__turnOffPump = IFITEM_pump + EVT_SHIFT*PTrafficLightInterface.OUT_turnOffPump;
+	public static final int TRIG_pump__connected = IFITEM_pump + EVT_SHIFT*PGuiCommunicationInterface.OUT_connected;
+	public static final int TRIG_pump__setPumpFlow = IFITEM_pump + EVT_SHIFT*PGuiCommunicationInterface.OUT_setPumpFlow;
+	public static final int TRIG_pump__setWaterTenkFlow = IFITEM_pump + EVT_SHIFT*PGuiCommunicationInterface.OUT_setWaterTenkFlow;
+	public static final int TRIG_pump__turnOnPump = IFITEM_pump + EVT_SHIFT*PGuiCommunicationInterface.OUT_turnOnPump;
+	public static final int TRIG_pump__turnOffPump = IFITEM_pump + EVT_SHIFT*PGuiCommunicationInterface.OUT_turnOffPump;
 	public static final int TRIG_timingService__timeout = IFITEM_timingService + EVT_SHIFT*PTimer.OUT_timeout;
 	public static final int TRIG_timingService__internalTimer = IFITEM_timingService + EVT_SHIFT*PTimer.OUT_internalTimer;
 	public static final int TRIG_timingService__internalTimeout = IFITEM_timingService + EVT_SHIFT*PTimer.OUT_internalTimeout;

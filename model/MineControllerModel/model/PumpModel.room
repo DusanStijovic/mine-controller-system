@@ -15,7 +15,7 @@ RoomModel PumpModel {
 			Port waterFlowSensor: PoolingSensorCommands
 			conjugated Port methaneLevel: supstanceLevelEvent
 			conjugated Port alarmSender: AlarmModel.AlarmSender
-			conjugated Port tcpPumpControll: TcpCommunication.PTrafficLightInterface
+			conjugated Port tcpPumpControll: TcpCommunication.PGuiCommunicationInterface
 		}
 		Structure {
 			usercode1 '''
@@ -290,7 +290,7 @@ RoomModel PumpModel {
 		Interface {
 			conjugated Port controlMotor: PumpMotorControll
 			Port drainWater: DrainWater
-			conjugated Port pump: TcpCommunication.PTrafficLightInterface
+			conjugated Port pump: TcpCommunication.PGuiCommunicationInterface
 		}
 		Structure {
 			usercode2 '''

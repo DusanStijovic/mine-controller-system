@@ -2,7 +2,7 @@
 <pi:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:al="http://eclipse.org/graphiti/mm/algorithms" xmlns:pi="http://eclipse.org/graphiti/mm/pictograms" visible="true" gridUnit="10" diagramTypeId="room.behavior" name="TrafficLightInterface Behavior" pictogramLinks="//@link //@children.0/@link //@children.0/@children.1/@link //@children.0/@children.2/@link //@children.0/@children.3/@link //@children.0/@children.4/@link //@connections.0/@link //@connections.1/@link //@connections.2/@link //@connections.3/@link //@connections.4/@link //@connections.5/@link //@connections.6/@link //@connections.7/@link //@connections.8/@link //@connections.9/@link //@connections.10/@link //@connections.11/@link //@connections.12/@link //@connections.13/@link" verticalGridUnit="10" version="0.18.0">
   <graphicsAlgorithm xsi:type="al:Rectangle" background="//@colors.1" foreground="//@colors.0" lineWidth="1" transparency="0.0" width="1000" height="1000"/>
   <link>
-    <businessObjects href="../TcpCommunication.room#ActorClass:TrafficLightInterface"/>
+    <businessObjects href="../TcpCommunication.room#ActorClass:GuiCommuncitaion"/>
   </link>
   <children xsi:type="pi:ContainerShape" visible="true" active="true">
     <properties key="obj-type" value="sg"/>
@@ -11,7 +11,7 @@
       <graphicsAlgorithmChildren xsi:type="al:RoundedRectangle" foreground="//@colors.2" lineWidth="4" filled="false" transparency="0.0" width="889" height="544" x="40" y="40" cornerHeight="20" cornerWidth="20"/>
     </graphicsAlgorithm>
     <link>
-      <businessObjects href="../TcpCommunication.room#StateGraph:TrafficLightInterface$sg"/>
+      <businessObjects href="../TcpCommunication.room#StateGraph:GuiCommuncitaion$sg"/>
     </link>
     <children visible="true">
       <graphicsAlgorithm xsi:type="al:Text" background="//@colors.2" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0" width="889" height="80" y="40" font="//@fonts.1" horizontalAlignment="ALIGNMENT_RIGHT" verticalAlignment="ALIGNMENT_TOP" value="/"/>
@@ -22,7 +22,7 @@
         <graphicsAlgorithmChildren xsi:type="al:Ellipse" background="//@colors.1" foreground="//@colors.2" lineWidth="2" transparency="0.0" width="20" height="20" x="10" y="10"/>
       </graphicsAlgorithm>
       <link>
-        <businessObjects href="../TcpCommunication.room#StateGraph:TrafficLightInterface$sg"/>
+        <businessObjects href="../TcpCommunication.room#StateGraph:GuiCommuncitaion$sg"/>
       </link>
       <anchors xsi:type="pi:ChopboxAnchor" outgoingConnections="//@connections.0"/>
       <children visible="true">
@@ -53,7 +53,7 @@
         </graphicsAlgorithmChildren>
       </graphicsAlgorithm>
       <link>
-        <businessObjects href="../TcpCommunication.room#SimpleState:TrafficLightInterface$Connecting"/>
+        <businessObjects href="../TcpCommunication.room#SimpleState:GuiCommuncitaion$Connecting"/>
       </link>
       <anchors xsi:type="pi:ChopboxAnchor" outgoingConnections="//@connections.2" incomingConnections="//@connections.3" referencedGraphicsAlgorithm="//@children.0/@children.2/@graphicsAlgorithm/@graphicsAlgorithmChildren.0"/>
       <children visible="true">
@@ -84,7 +84,7 @@
         </graphicsAlgorithmChildren>
       </graphicsAlgorithm>
       <link>
-        <businessObjects href="../TcpCommunication.room#SimpleState:TrafficLightInterface$Connected"/>
+        <businessObjects href="../TcpCommunication.room#SimpleState:GuiCommuncitaion$Connected"/>
       </link>
       <anchors xsi:type="pi:ChopboxAnchor" outgoingConnections="//@connections.1 //@connections.4 //@connections.5 //@connections.6 //@connections.7 //@connections.8 //@connections.9 //@connections.10 //@connections.11 //@connections.12 //@connections.13" incomingConnections="//@connections.1 //@connections.2 //@connections.4 //@connections.5 //@connections.6 //@connections.7 //@connections.8 //@connections.9 //@connections.10 //@connections.11 //@connections.12 //@connections.13" referencedGraphicsAlgorithm="//@children.0/@children.3/@graphicsAlgorithm/@graphicsAlgorithmChildren.0"/>
       <children visible="true">
@@ -115,7 +115,7 @@
         </graphicsAlgorithmChildren>
       </graphicsAlgorithm>
       <link>
-        <businessObjects href="../TcpCommunication.room#SimpleState:TrafficLightInterface$Disconnected"/>
+        <businessObjects href="../TcpCommunication.room#SimpleState:GuiCommuncitaion$Disconnected"/>
       </link>
       <anchors xsi:type="pi:ChopboxAnchor" outgoingConnections="//@connections.3" incomingConnections="//@connections.0" referencedGraphicsAlgorithm="//@children.0/@children.4/@graphicsAlgorithm/@graphicsAlgorithmChildren.0"/>
       <children visible="true">
@@ -127,7 +127,7 @@
     <properties key="obj-type" value="trans"/>
     <graphicsAlgorithm xsi:type="al:Polyline" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0"/>
     <link>
-      <businessObjects href="../TcpCommunication.room#InitialTransition:TrafficLightInterface$initial"/>
+      <businessObjects href="../TcpCommunication.room#InitialTransition:GuiCommuncitaion$initial"/>
     </link>
     <connectionDecorators visible="true" locationRelative="true" location="1.0">
       <graphicsAlgorithm xsi:type="al:Polygon" background="//@colors.1" foreground="//@colors.2" lineWidth="1" filled="true" transparency="0.0">
@@ -144,7 +144,7 @@
     <properties key="obj-type" value="trans"/>
     <graphicsAlgorithm xsi:type="al:Polyline" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0"/>
     <link>
-      <businessObjects href="../TcpCommunication.room#TriggeredTransition:TrafficLightInterface$tr0"/>
+      <businessObjects href="../TcpCommunication.room#TriggeredTransition:GuiCommuncitaion$tr0"/>
     </link>
     <connectionDecorators visible="true" locationRelative="true" location="1.0">
       <graphicsAlgorithm xsi:type="al:Polygon" background="//@colors.2" foreground="//@colors.2" lineWidth="1" filled="true" transparency="0.0">
@@ -162,7 +162,7 @@
     <properties key="obj-type" value="trans"/>
     <graphicsAlgorithm xsi:type="al:Polyline" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0"/>
     <link>
-      <businessObjects href="../TcpCommunication.room#TriggeredTransition:TrafficLightInterface$tr1"/>
+      <businessObjects href="../TcpCommunication.room#TriggeredTransition:GuiCommuncitaion$tr1"/>
     </link>
     <connectionDecorators visible="true" locationRelative="true" location="1.0">
       <graphicsAlgorithm xsi:type="al:Polygon" background="//@colors.2" foreground="//@colors.2" lineWidth="1" filled="true" transparency="0.0">
@@ -179,7 +179,7 @@
     <properties key="obj-type" value="trans"/>
     <graphicsAlgorithm xsi:type="al:Polyline" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0"/>
     <link>
-      <businessObjects href="../TcpCommunication.room#TriggeredTransition:TrafficLightInterface$tr2"/>
+      <businessObjects href="../TcpCommunication.room#TriggeredTransition:GuiCommuncitaion$tr2"/>
     </link>
     <connectionDecorators visible="true" locationRelative="true" location="1.0">
       <graphicsAlgorithm xsi:type="al:Polygon" background="//@colors.2" foreground="//@colors.2" lineWidth="1" filled="true" transparency="0.0">
@@ -197,7 +197,7 @@
     <properties key="obj-type" value="trans"/>
     <graphicsAlgorithm xsi:type="al:Polyline" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0"/>
     <link>
-      <businessObjects href="../TcpCommunication.room#TriggeredTransition:TrafficLightInterface$tr3"/>
+      <businessObjects href="../TcpCommunication.room#TriggeredTransition:GuiCommuncitaion$tr3"/>
     </link>
     <connectionDecorators visible="true" locationRelative="true" location="1.0">
       <graphicsAlgorithm xsi:type="al:Polygon" background="//@colors.2" foreground="//@colors.2" lineWidth="1" filled="true" transparency="0.0">
@@ -215,7 +215,7 @@
     <properties key="obj-type" value="trans"/>
     <graphicsAlgorithm xsi:type="al:Polyline" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0"/>
     <link>
-      <businessObjects href="../TcpCommunication.room#TriggeredTransition:TrafficLightInterface$tr4"/>
+      <businessObjects href="../TcpCommunication.room#TriggeredTransition:GuiCommuncitaion$tr4"/>
     </link>
     <connectionDecorators visible="true" locationRelative="true" location="1.0">
       <graphicsAlgorithm xsi:type="al:Polygon" background="//@colors.2" foreground="//@colors.2" lineWidth="1" filled="true" transparency="0.0">
@@ -233,7 +233,7 @@
     <properties key="obj-type" value="trans"/>
     <graphicsAlgorithm xsi:type="al:Polyline" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0"/>
     <link>
-      <businessObjects href="../TcpCommunication.room#TriggeredTransition:TrafficLightInterface$tr5"/>
+      <businessObjects href="../TcpCommunication.room#TriggeredTransition:GuiCommuncitaion$tr5"/>
     </link>
     <connectionDecorators visible="true" locationRelative="true" location="1.0">
       <graphicsAlgorithm xsi:type="al:Polygon" background="//@colors.2" foreground="//@colors.2" lineWidth="1" filled="true" transparency="0.0">
@@ -251,7 +251,7 @@
     <properties key="obj-type" value="trans"/>
     <graphicsAlgorithm xsi:type="al:Polyline" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0"/>
     <link>
-      <businessObjects href="../TcpCommunication.room#TriggeredTransition:TrafficLightInterface$tr6"/>
+      <businessObjects href="../TcpCommunication.room#TriggeredTransition:GuiCommuncitaion$tr6"/>
     </link>
     <connectionDecorators visible="true" locationRelative="true" location="1.0">
       <graphicsAlgorithm xsi:type="al:Polygon" background="//@colors.2" foreground="//@colors.2" lineWidth="1" filled="true" transparency="0.0">
@@ -269,7 +269,7 @@
     <properties key="obj-type" value="trans"/>
     <graphicsAlgorithm xsi:type="al:Polyline" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0"/>
     <link>
-      <businessObjects href="../TcpCommunication.room#TriggeredTransition:TrafficLightInterface$tr7"/>
+      <businessObjects href="../TcpCommunication.room#TriggeredTransition:GuiCommuncitaion$tr7"/>
     </link>
     <connectionDecorators visible="true" locationRelative="true" location="1.0">
       <graphicsAlgorithm xsi:type="al:Polygon" background="//@colors.2" foreground="//@colors.2" lineWidth="1" filled="true" transparency="0.0">
@@ -287,7 +287,7 @@
     <properties key="obj-type" value="trans"/>
     <graphicsAlgorithm xsi:type="al:Polyline" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0"/>
     <link>
-      <businessObjects href="../TcpCommunication.room#TriggeredTransition:TrafficLightInterface$tr8"/>
+      <businessObjects href="../TcpCommunication.room#TriggeredTransition:GuiCommuncitaion$tr8"/>
     </link>
     <connectionDecorators visible="true" locationRelative="true" location="1.0">
       <graphicsAlgorithm xsi:type="al:Polygon" background="//@colors.2" foreground="//@colors.2" lineWidth="1" filled="true" transparency="0.0">
@@ -305,7 +305,7 @@
     <properties key="obj-type" value="trans"/>
     <graphicsAlgorithm xsi:type="al:Polyline" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0"/>
     <link>
-      <businessObjects href="../TcpCommunication.room#TriggeredTransition:TrafficLightInterface$tr9"/>
+      <businessObjects href="../TcpCommunication.room#TriggeredTransition:GuiCommuncitaion$tr9"/>
     </link>
     <connectionDecorators visible="true" locationRelative="true" location="1.0">
       <graphicsAlgorithm xsi:type="al:Polygon" background="//@colors.2" foreground="//@colors.2" lineWidth="1" filled="true" transparency="0.0">
@@ -323,7 +323,7 @@
     <properties key="obj-type" value="trans"/>
     <graphicsAlgorithm xsi:type="al:Polyline" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0"/>
     <link>
-      <businessObjects href="../TcpCommunication.room#TriggeredTransition:TrafficLightInterface$tr10"/>
+      <businessObjects href="../TcpCommunication.room#TriggeredTransition:GuiCommuncitaion$tr10"/>
     </link>
     <connectionDecorators visible="true" locationRelative="true" location="1.0">
       <graphicsAlgorithm xsi:type="al:Polygon" background="//@colors.2" foreground="//@colors.2" lineWidth="1" filled="true" transparency="0.0">
@@ -341,7 +341,7 @@
     <properties key="obj-type" value="trans"/>
     <graphicsAlgorithm xsi:type="al:Polyline" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0"/>
     <link>
-      <businessObjects href="../TcpCommunication.room#TriggeredTransition:TrafficLightInterface$tr11"/>
+      <businessObjects href="../TcpCommunication.room#TriggeredTransition:GuiCommuncitaion$tr11"/>
     </link>
     <connectionDecorators visible="true" locationRelative="true" location="1.0">
       <graphicsAlgorithm xsi:type="al:Polygon" background="//@colors.2" foreground="//@colors.2" lineWidth="1" filled="true" transparency="0.0">
@@ -359,7 +359,7 @@
     <properties key="obj-type" value="trans"/>
     <graphicsAlgorithm xsi:type="al:Polyline" foreground="//@colors.2" lineWidth="1" filled="false" transparency="0.0"/>
     <link>
-      <businessObjects href="../TcpCommunication.room#TriggeredTransition:TrafficLightInterface$tr12"/>
+      <businessObjects href="../TcpCommunication.room#TriggeredTransition:GuiCommuncitaion$tr12"/>
     </link>
     <connectionDecorators visible="true" locationRelative="true" location="1.0">
       <graphicsAlgorithm xsi:type="al:Polygon" background="//@colors.2" foreground="//@colors.2" lineWidth="1" filled="true" transparency="0.0">

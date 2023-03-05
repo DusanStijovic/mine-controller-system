@@ -11,8 +11,8 @@ import TcpCommunication.*;
 import etrice.api.timer.*;
 import WaterTankModel.DrainWater.*;
 import InterrupSensorModel.EventHappened.*;
+import TcpCommunication.PGuiCommunicationInterface.*;
 import etrice.api.timer.PTimer.*;
-import TcpCommunication.PTrafficLightInterface.*;
 
 
 
@@ -56,7 +56,7 @@ public class WaterTank extends ActorClassBase {
 	protected EventHappenedPort highWaterLevel = null;
 	protected EventHappenedPort lowWaterLevel = null;
 	protected DrainWaterConjPort drainWater = null;
-	protected PTrafficLightInterfaceConjPort tcpWaterTenk = null;
+	protected PGuiCommunicationInterfaceConjPort tcpWaterTenk = null;
 
 	//--------------------- saps
 	protected PTimerConjPort timingService = null;
@@ -88,7 +88,7 @@ public class WaterTank extends ActorClassBase {
 		highWaterLevel = new EventHappenedPort(this, "highWaterLevel", IFITEM_highWaterLevel);
 		lowWaterLevel = new EventHappenedPort(this, "lowWaterLevel", IFITEM_lowWaterLevel);
 		drainWater = new DrainWaterConjPort(this, "drainWater", IFITEM_drainWater);
-		tcpWaterTenk = new PTrafficLightInterfaceConjPort(this, "tcpWaterTenk", IFITEM_tcpWaterTenk);
+		tcpWaterTenk = new PGuiCommunicationInterfaceConjPort(this, "tcpWaterTenk", IFITEM_tcpWaterTenk);
 
 		// own saps
 		timingService = new PTimerConjPort(this, "timingService", IFITEM_timingService, 0);
@@ -117,7 +117,7 @@ public class WaterTank extends ActorClassBase {
 	public DrainWaterConjPort getDrainWater (){
 		return this.drainWater;
 	}
-	public PTrafficLightInterfaceConjPort getTcpWaterTenk (){
+	public PGuiCommunicationInterfaceConjPort getTcpWaterTenk (){
 		return this.tcpWaterTenk;
 	}
 	public PTimerConjPort getTimingService (){
@@ -150,11 +150,11 @@ public class WaterTank extends ActorClassBase {
 	/* triggers */
 	public static final int POLLING = 0;
 	public static final int TRIG_drainWater__drainWater = IFITEM_drainWater + EVT_SHIFT*DrainWater.OUT_drainWater;
-	public static final int TRIG_tcpWaterTenk__connected = IFITEM_tcpWaterTenk + EVT_SHIFT*PTrafficLightInterface.OUT_connected;
-	public static final int TRIG_tcpWaterTenk__setPumpFlow = IFITEM_tcpWaterTenk + EVT_SHIFT*PTrafficLightInterface.OUT_setPumpFlow;
-	public static final int TRIG_tcpWaterTenk__setWaterTenkFlow = IFITEM_tcpWaterTenk + EVT_SHIFT*PTrafficLightInterface.OUT_setWaterTenkFlow;
-	public static final int TRIG_tcpWaterTenk__turnOnPump = IFITEM_tcpWaterTenk + EVT_SHIFT*PTrafficLightInterface.OUT_turnOnPump;
-	public static final int TRIG_tcpWaterTenk__turnOffPump = IFITEM_tcpWaterTenk + EVT_SHIFT*PTrafficLightInterface.OUT_turnOffPump;
+	public static final int TRIG_tcpWaterTenk__connected = IFITEM_tcpWaterTenk + EVT_SHIFT*PGuiCommunicationInterface.OUT_connected;
+	public static final int TRIG_tcpWaterTenk__setPumpFlow = IFITEM_tcpWaterTenk + EVT_SHIFT*PGuiCommunicationInterface.OUT_setPumpFlow;
+	public static final int TRIG_tcpWaterTenk__setWaterTenkFlow = IFITEM_tcpWaterTenk + EVT_SHIFT*PGuiCommunicationInterface.OUT_setWaterTenkFlow;
+	public static final int TRIG_tcpWaterTenk__turnOnPump = IFITEM_tcpWaterTenk + EVT_SHIFT*PGuiCommunicationInterface.OUT_turnOnPump;
+	public static final int TRIG_tcpWaterTenk__turnOffPump = IFITEM_tcpWaterTenk + EVT_SHIFT*PGuiCommunicationInterface.OUT_turnOffPump;
 	public static final int TRIG_timingService__timeout = IFITEM_timingService + EVT_SHIFT*PTimer.OUT_timeout;
 	public static final int TRIG_timingService__internalTimer = IFITEM_timingService + EVT_SHIFT*PTimer.OUT_internalTimer;
 	public static final int TRIG_timingService__internalTimeout = IFITEM_timingService + EVT_SHIFT*PTimer.OUT_internalTimeout;

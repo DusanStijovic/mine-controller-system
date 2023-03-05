@@ -8,7 +8,7 @@ import static org.eclipse.etrice.runtime.java.etunit.EtUnit.*;
 
 import TcpCommunication.*;
 import AlarmModel.AlarmSender.*;
-import TcpCommunication.PTrafficLightInterface.*;
+import TcpCommunication.PGuiCommunicationInterface.*;
 
 
 
@@ -26,7 +26,7 @@ public class Alarm extends ActorClassBase {
 
 	//--------------------- ports
 	protected AlarmSenderReplPort alarmReceiver = null;
-	protected PTrafficLightInterfaceConjPort p0 = null;
+	protected PGuiCommunicationInterfaceConjPort p0 = null;
 
 	//--------------------- saps
 
@@ -52,7 +52,7 @@ public class Alarm extends ActorClassBase {
 
 		// own ports
 		alarmReceiver = new AlarmSenderReplPort(this, "alarmReceiver", IFITEM_alarmReceiver);
-		p0 = new PTrafficLightInterfaceConjPort(this, "p0", IFITEM_p0);
+		p0 = new PGuiCommunicationInterfaceConjPort(this, "p0", IFITEM_p0);
 
 		// own saps
 
@@ -74,7 +74,7 @@ public class Alarm extends ActorClassBase {
 	public AlarmSenderReplPort getAlarmReceiver (){
 		return this.alarmReceiver;
 	}
-	public PTrafficLightInterfaceConjPort getP0 (){
+	public PGuiCommunicationInterfaceConjPort getP0 (){
 		return this.p0;
 	}
 
@@ -118,11 +118,11 @@ public class Alarm extends ActorClassBase {
 	public static final int TRIG_alarmReceiver__alarmErrorStartingPump = IFITEM_alarmReceiver + EVT_SHIFT*AlarmSender.IN_alarmErrorStartingPump;
 	public static final int TRIG_alarmReceiver__alarmErrorStoppingPump = IFITEM_alarmReceiver + EVT_SHIFT*AlarmSender.IN_alarmErrorStoppingPump;
 	public static final int TRIG_alarmReceiver__alarmErrorReadingWaterFlow = IFITEM_alarmReceiver + EVT_SHIFT*AlarmSender.IN_alarmErrorReadingWaterFlow;
-	public static final int TRIG_p0__connected = IFITEM_p0 + EVT_SHIFT*PTrafficLightInterface.OUT_connected;
-	public static final int TRIG_p0__setPumpFlow = IFITEM_p0 + EVT_SHIFT*PTrafficLightInterface.OUT_setPumpFlow;
-	public static final int TRIG_p0__setWaterTenkFlow = IFITEM_p0 + EVT_SHIFT*PTrafficLightInterface.OUT_setWaterTenkFlow;
-	public static final int TRIG_p0__turnOnPump = IFITEM_p0 + EVT_SHIFT*PTrafficLightInterface.OUT_turnOnPump;
-	public static final int TRIG_p0__turnOffPump = IFITEM_p0 + EVT_SHIFT*PTrafficLightInterface.OUT_turnOffPump;
+	public static final int TRIG_p0__connected = IFITEM_p0 + EVT_SHIFT*PGuiCommunicationInterface.OUT_connected;
+	public static final int TRIG_p0__setPumpFlow = IFITEM_p0 + EVT_SHIFT*PGuiCommunicationInterface.OUT_setPumpFlow;
+	public static final int TRIG_p0__setWaterTenkFlow = IFITEM_p0 + EVT_SHIFT*PGuiCommunicationInterface.OUT_setWaterTenkFlow;
+	public static final int TRIG_p0__turnOnPump = IFITEM_p0 + EVT_SHIFT*PGuiCommunicationInterface.OUT_turnOnPump;
+	public static final int TRIG_p0__turnOffPump = IFITEM_p0 + EVT_SHIFT*PGuiCommunicationInterface.OUT_turnOffPump;
 	
 	// state names
 	protected static final String stateStrings[] = {

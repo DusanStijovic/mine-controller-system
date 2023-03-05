@@ -12,7 +12,7 @@ import static org.eclipse.etrice.runtime.java.etunit.EtUnit.*;
 
 
 
-public class PTrafficLightInterface {
+public class PGuiCommunicationInterface {
 	// message IDs
 	public static final int MSG_MIN = 0;
 	public static final int OUT_connected = 1;
@@ -47,12 +47,12 @@ public class PTrafficLightInterface {
 
 	
 	// port class
-	static public class PTrafficLightInterfacePort extends PortBase {
+	static public class PGuiCommunicationInterfacePort extends PortBase {
 		// constructors
-		public PTrafficLightInterfacePort(IInterfaceItemOwner actor, String name, int localId) {
+		public PGuiCommunicationInterfacePort(IInterfaceItemOwner actor, String name, int localId) {
 			this(actor, name, localId, 0);
 		}
-		public PTrafficLightInterfacePort(IInterfaceItemOwner actor, String name, int localId, int idx) {
+		public PGuiCommunicationInterfacePort(IInterfaceItemOwner actor, String name, int localId, int idx) {
 			super(actor, name, localId, idx);
 			DebuggingService.getInstance().addPortInstance(this);
 		}
@@ -106,9 +106,9 @@ public class PTrafficLightInterface {
 	}
 	
 	// replicated port class
-	static public class PTrafficLightInterfaceReplPort extends ReplicatedPortBase {
+	static public class PGuiCommunicationInterfaceReplPort extends ReplicatedPortBase {
 	
-		public PTrafficLightInterfaceReplPort(IInterfaceItemOwner actor, String name, int localId) {
+		public PGuiCommunicationInterfaceReplPort(IInterfaceItemOwner actor, String name, int localId) {
 			super(actor, name, localId);
 		}
 	
@@ -120,50 +120,50 @@ public class PTrafficLightInterface {
 				return ifitem.getIdx();
 		}
 	
-		public PTrafficLightInterfacePort get(int idx) {
-			return (PTrafficLightInterfacePort) getInterfaceItem(idx);
+		public PGuiCommunicationInterfacePort get(int idx) {
+			return (PGuiCommunicationInterfacePort) getInterfaceItem(idx);
 		}
 	
 		protected InterfaceItemBase createInterfaceItem(IInterfaceItemOwner rcv, String name, int lid, int idx) {
-			return new PTrafficLightInterfacePort(rcv, name, lid, idx);
+			return new PGuiCommunicationInterfacePort(rcv, name, lid, idx);
 		}
 	
 		// outgoing messages
 		public void connected(){
 			for (InterfaceItemBase item : getItems()) {
-				((PTrafficLightInterfacePort)item).connected();
+				((PGuiCommunicationInterfacePort)item).connected();
 			}
 		}
 		public void setPumpFlow(double transitionData){
 			for (InterfaceItemBase item : getItems()) {
-				((PTrafficLightInterfacePort)item).setPumpFlow( transitionData);
+				((PGuiCommunicationInterfacePort)item).setPumpFlow( transitionData);
 			}
 		}
 		public void setWaterTenkFlow(double transitionData){
 			for (InterfaceItemBase item : getItems()) {
-				((PTrafficLightInterfacePort)item).setWaterTenkFlow( transitionData);
+				((PGuiCommunicationInterfacePort)item).setWaterTenkFlow( transitionData);
 			}
 		}
 		public void turnOnPump(){
 			for (InterfaceItemBase item : getItems()) {
-				((PTrafficLightInterfacePort)item).turnOnPump();
+				((PGuiCommunicationInterfacePort)item).turnOnPump();
 			}
 		}
 		public void turnOffPump(){
 			for (InterfaceItemBase item : getItems()) {
-				((PTrafficLightInterfacePort)item).turnOffPump();
+				((PGuiCommunicationInterfacePort)item).turnOffPump();
 			}
 		}
 	}
 	
 	
 	// port class
-	static public class PTrafficLightInterfaceConjPort extends PortBase {
+	static public class PGuiCommunicationInterfaceConjPort extends PortBase {
 		// constructors
-		public PTrafficLightInterfaceConjPort(IInterfaceItemOwner actor, String name, int localId) {
+		public PGuiCommunicationInterfaceConjPort(IInterfaceItemOwner actor, String name, int localId) {
 			this(actor, name, localId, 0);
 		}
-		public PTrafficLightInterfaceConjPort(IInterfaceItemOwner actor, String name, int localId, int idx) {
+		public PGuiCommunicationInterfaceConjPort(IInterfaceItemOwner actor, String name, int localId, int idx) {
 			super(actor, name, localId, idx);
 			DebuggingService.getInstance().addPortInstance(this);
 		}
@@ -242,9 +242,9 @@ public class PTrafficLightInterface {
 	}
 	
 	// replicated port class
-	static public class PTrafficLightInterfaceConjReplPort extends ReplicatedPortBase {
+	static public class PGuiCommunicationInterfaceConjReplPort extends ReplicatedPortBase {
 	
-		public PTrafficLightInterfaceConjReplPort(IInterfaceItemOwner actor, String name, int localId) {
+		public PGuiCommunicationInterfaceConjReplPort(IInterfaceItemOwner actor, String name, int localId) {
 			super(actor, name, localId);
 		}
 	
@@ -256,63 +256,63 @@ public class PTrafficLightInterface {
 				return ifitem.getIdx();
 		}
 	
-		public PTrafficLightInterfaceConjPort get(int idx) {
-			return (PTrafficLightInterfaceConjPort) getInterfaceItem(idx);
+		public PGuiCommunicationInterfaceConjPort get(int idx) {
+			return (PGuiCommunicationInterfaceConjPort) getInterfaceItem(idx);
 		}
 	
 		protected InterfaceItemBase createInterfaceItem(IInterfaceItemOwner rcv, String name, int lid, int idx) {
-			return new PTrafficLightInterfaceConjPort(rcv, name, lid, idx);
+			return new PGuiCommunicationInterfaceConjPort(rcv, name, lid, idx);
 		}
 	
 		// incoming messages
 		public void connect(int transitionData){
 			for (InterfaceItemBase item : getItems()) {
-				((PTrafficLightInterfaceConjPort)item).connect( transitionData);
+				((PGuiCommunicationInterfaceConjPort)item).connect( transitionData);
 			}
 		}
 		public void setPumpState(boolean transitionData){
 			for (InterfaceItemBase item : getItems()) {
-				((PTrafficLightInterfaceConjPort)item).setPumpState( transitionData);
+				((PGuiCommunicationInterfaceConjPort)item).setPumpState( transitionData);
 			}
 		}
 		public void setPumpFlow(double transitionData){
 			for (InterfaceItemBase item : getItems()) {
-				((PTrafficLightInterfaceConjPort)item).setPumpFlow( transitionData);
+				((PGuiCommunicationInterfaceConjPort)item).setPumpFlow( transitionData);
 			}
 		}
 		public void setAlarm(String transitionData){
 			for (InterfaceItemBase item : getItems()) {
-				((PTrafficLightInterfaceConjPort)item).setAlarm( transitionData);
+				((PGuiCommunicationInterfaceConjPort)item).setAlarm( transitionData);
 			}
 		}
 		public void setWaterLevel(double transitionData){
 			for (InterfaceItemBase item : getItems()) {
-				((PTrafficLightInterfaceConjPort)item).setWaterLevel( transitionData);
+				((PGuiCommunicationInterfaceConjPort)item).setWaterLevel( transitionData);
 			}
 		}
 		public void setMethaneLevel(boolean transitionData){
 			for (InterfaceItemBase item : getItems()) {
-				((PTrafficLightInterfaceConjPort)item).setMethaneLevel( transitionData);
+				((PGuiCommunicationInterfaceConjPort)item).setMethaneLevel( transitionData);
 			}
 		}
 		public void setCarbonLevel(boolean transitionData){
 			for (InterfaceItemBase item : getItems()) {
-				((PTrafficLightInterfaceConjPort)item).setCarbonLevel( transitionData);
+				((PGuiCommunicationInterfaceConjPort)item).setCarbonLevel( transitionData);
 			}
 		}
 		public void setAirFlowLevel(boolean transitionData){
 			for (InterfaceItemBase item : getItems()) {
-				((PTrafficLightInterfaceConjPort)item).setAirFlowLevel( transitionData);
+				((PGuiCommunicationInterfaceConjPort)item).setAirFlowLevel( transitionData);
 			}
 		}
 		public void setHighWaterLevel(boolean transitionData){
 			for (InterfaceItemBase item : getItems()) {
-				((PTrafficLightInterfaceConjPort)item).setHighWaterLevel( transitionData);
+				((PGuiCommunicationInterfaceConjPort)item).setHighWaterLevel( transitionData);
 			}
 		}
 		public void setLowWaterLevel(boolean transitionData){
 			for (InterfaceItemBase item : getItems()) {
-				((PTrafficLightInterfaceConjPort)item).setLowWaterLevel( transitionData);
+				((PGuiCommunicationInterfaceConjPort)item).setLowWaterLevel( transitionData);
 			}
 		}
 	}

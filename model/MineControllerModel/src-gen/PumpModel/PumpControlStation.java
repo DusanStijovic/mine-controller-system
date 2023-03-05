@@ -14,8 +14,8 @@ import TcpCommunication.*;
 import etrice.api.timer.*;
 import AlarmModel.AlarmSender.*;
 import InterrupSensorModel.EventHappened.*;
+import TcpCommunication.PGuiCommunicationInterface.*;
 import etrice.api.timer.PTimer.*;
-import TcpCommunication.PTrafficLightInterface.*;
 import PoolingSensorModel.PoolingSensorCommands.*;
 import PumpModel.PumpMotorControll.*;
 import EnvironmentModel.supstanceLevelEvent.*;
@@ -62,7 +62,7 @@ public class PumpControlStation extends ActorClassBase {
 	protected PoolingSensorCommandsPort waterFlowSensor = null;
 	protected supstanceLevelEventConjPort methaneLevel = null;
 	protected AlarmSenderConjPort alarmSender = null;
-	protected PTrafficLightInterfaceConjPort tcpPumpControll = null;
+	protected PGuiCommunicationInterfaceConjPort tcpPumpControll = null;
 
 	//--------------------- saps
 	protected PTimerConjPort timingService = null;
@@ -100,7 +100,7 @@ public class PumpControlStation extends ActorClassBase {
 		waterFlowSensor = new PoolingSensorCommandsPort(this, "waterFlowSensor", IFITEM_waterFlowSensor);
 		methaneLevel = new supstanceLevelEventConjPort(this, "methaneLevel", IFITEM_methaneLevel);
 		alarmSender = new AlarmSenderConjPort(this, "alarmSender", IFITEM_alarmSender);
-		tcpPumpControll = new PTrafficLightInterfaceConjPort(this, "tcpPumpControll", IFITEM_tcpPumpControll);
+		tcpPumpControll = new PGuiCommunicationInterfaceConjPort(this, "tcpPumpControll", IFITEM_tcpPumpControll);
 
 		// own saps
 		timingService = new PTimerConjPort(this, "timingService", IFITEM_timingService, 0);
@@ -138,7 +138,7 @@ public class PumpControlStation extends ActorClassBase {
 	public AlarmSenderConjPort getAlarmSender (){
 		return this.alarmSender;
 	}
-	public PTrafficLightInterfaceConjPort getTcpPumpControll (){
+	public PGuiCommunicationInterfaceConjPort getTcpPumpControll (){
 		return this.tcpPumpControll;
 	}
 	public PTimerConjPort getTimingService (){
@@ -188,11 +188,11 @@ public class PumpControlStation extends ActorClassBase {
 	public static final int TRIG_waterFlowSensor__sendErrorRegister = IFITEM_waterFlowSensor + EVT_SHIFT*PoolingSensorCommands.IN_sendErrorRegister;
 	public static final int TRIG_methaneLevel__highLevel = IFITEM_methaneLevel + EVT_SHIFT*supstanceLevelEvent.OUT_highLevel;
 	public static final int TRIG_methaneLevel__normalLevel = IFITEM_methaneLevel + EVT_SHIFT*supstanceLevelEvent.OUT_normalLevel;
-	public static final int TRIG_tcpPumpControll__connected = IFITEM_tcpPumpControll + EVT_SHIFT*PTrafficLightInterface.OUT_connected;
-	public static final int TRIG_tcpPumpControll__setPumpFlow = IFITEM_tcpPumpControll + EVT_SHIFT*PTrafficLightInterface.OUT_setPumpFlow;
-	public static final int TRIG_tcpPumpControll__setWaterTenkFlow = IFITEM_tcpPumpControll + EVT_SHIFT*PTrafficLightInterface.OUT_setWaterTenkFlow;
-	public static final int TRIG_tcpPumpControll__turnOnPump = IFITEM_tcpPumpControll + EVT_SHIFT*PTrafficLightInterface.OUT_turnOnPump;
-	public static final int TRIG_tcpPumpControll__turnOffPump = IFITEM_tcpPumpControll + EVT_SHIFT*PTrafficLightInterface.OUT_turnOffPump;
+	public static final int TRIG_tcpPumpControll__connected = IFITEM_tcpPumpControll + EVT_SHIFT*PGuiCommunicationInterface.OUT_connected;
+	public static final int TRIG_tcpPumpControll__setPumpFlow = IFITEM_tcpPumpControll + EVT_SHIFT*PGuiCommunicationInterface.OUT_setPumpFlow;
+	public static final int TRIG_tcpPumpControll__setWaterTenkFlow = IFITEM_tcpPumpControll + EVT_SHIFT*PGuiCommunicationInterface.OUT_setWaterTenkFlow;
+	public static final int TRIG_tcpPumpControll__turnOnPump = IFITEM_tcpPumpControll + EVT_SHIFT*PGuiCommunicationInterface.OUT_turnOnPump;
+	public static final int TRIG_tcpPumpControll__turnOffPump = IFITEM_tcpPumpControll + EVT_SHIFT*PGuiCommunicationInterface.OUT_turnOffPump;
 	public static final int TRIG_timingService__timeout = IFITEM_timingService + EVT_SHIFT*PTimer.OUT_timeout;
 	public static final int TRIG_timingService__internalTimer = IFITEM_timingService + EVT_SHIFT*PTimer.OUT_internalTimer;
 	public static final int TRIG_timingService__internalTimeout = IFITEM_timingService + EVT_SHIFT*PTimer.OUT_internalTimeout;

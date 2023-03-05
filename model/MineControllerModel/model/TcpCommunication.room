@@ -4,9 +4,9 @@ RoomModel TcpCommunication {
 	import etrice.api.tcp.PTcpControl
 	import etrice.api.tcp.PTcpPayload
 
-	ActorClass TrafficLightInterface {
+	ActorClass GuiCommuncitaion {
 		Interface {
-			Port fct: PTrafficLightInterface
+			Port fct: PGuiCommunicationInterface
 			conjugated Port ctrl: PTcpControl
 			conjugated Port payload: PTcpPayload
 		}
@@ -146,7 +146,7 @@ RoomModel TcpCommunication {
 		}
 	}
 
-	ProtocolClass PTrafficLightInterface {
+	ProtocolClass PGuiCommunicationInterface {
 		incoming {
 			Message connect(int32)
 			Message setPumpState(boolean)

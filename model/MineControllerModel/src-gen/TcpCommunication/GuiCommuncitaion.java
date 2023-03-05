@@ -7,17 +7,17 @@ import org.eclipse.etrice.runtime.java.debugging.*;
 import static org.eclipse.etrice.runtime.java.etunit.EtUnit.*;
 
 import etrice.api.tcp.*;
+import TcpCommunication.PGuiCommunicationInterface.*;
 import etrice.api.tcp.PTcpControl.*;
 import etrice.api.tcp.PTcpPayload.*;
-import TcpCommunication.PTrafficLightInterface.*;
 
 
 
-public class TrafficLightInterface extends ActorClassBase {
+public class GuiCommuncitaion extends ActorClassBase {
 
 
 	//--------------------- ports
-	protected PTrafficLightInterfacePort fct = null;
+	protected PGuiCommunicationInterfacePort fct = null;
 	protected PTcpControlConjPort ctrl = null;
 	protected PTcpPayloadConjPort payload = null;
 
@@ -60,14 +60,14 @@ public class TrafficLightInterface extends ActorClassBase {
 
 
 	//--------------------- construction
-	public TrafficLightInterface(IRTObject parent, String name) {
+	public GuiCommuncitaion(IRTObject parent, String name) {
 		super(parent, name);
-		setClassName("TrafficLightInterface");
+		setClassName("GuiCommuncitaion");
 
 		// initialize attributes
 
 		// own ports
-		fct = new PTrafficLightInterfacePort(this, "fct", IFITEM_fct);
+		fct = new PGuiCommunicationInterfacePort(this, "fct", IFITEM_fct);
 		ctrl = new PTcpControlConjPort(this, "ctrl", IFITEM_ctrl);
 		payload = new PTcpPayloadConjPort(this, "payload", IFITEM_payload);
 
@@ -88,7 +88,7 @@ public class TrafficLightInterface extends ActorClassBase {
 
 
 	//--------------------- port getters
-	public PTrafficLightInterfacePort getFct (){
+	public PGuiCommunicationInterfacePort getFct (){
 		return this.fct;
 	}
 	public PTcpControlConjPort getCtrl (){
@@ -133,16 +133,16 @@ public class TrafficLightInterface extends ActorClassBase {
 	
 	/* triggers */
 	public static final int POLLING = 0;
-	public static final int TRIG_fct__connect = IFITEM_fct + EVT_SHIFT*PTrafficLightInterface.IN_connect;
-	public static final int TRIG_fct__setPumpState = IFITEM_fct + EVT_SHIFT*PTrafficLightInterface.IN_setPumpState;
-	public static final int TRIG_fct__setPumpFlow = IFITEM_fct + EVT_SHIFT*PTrafficLightInterface.IN_setPumpFlow;
-	public static final int TRIG_fct__setAlarm = IFITEM_fct + EVT_SHIFT*PTrafficLightInterface.IN_setAlarm;
-	public static final int TRIG_fct__setWaterLevel = IFITEM_fct + EVT_SHIFT*PTrafficLightInterface.IN_setWaterLevel;
-	public static final int TRIG_fct__setMethaneLevel = IFITEM_fct + EVT_SHIFT*PTrafficLightInterface.IN_setMethaneLevel;
-	public static final int TRIG_fct__setCarbonLevel = IFITEM_fct + EVT_SHIFT*PTrafficLightInterface.IN_setCarbonLevel;
-	public static final int TRIG_fct__setAirFlowLevel = IFITEM_fct + EVT_SHIFT*PTrafficLightInterface.IN_setAirFlowLevel;
-	public static final int TRIG_fct__setHighWaterLevel = IFITEM_fct + EVT_SHIFT*PTrafficLightInterface.IN_setHighWaterLevel;
-	public static final int TRIG_fct__setLowWaterLevel = IFITEM_fct + EVT_SHIFT*PTrafficLightInterface.IN_setLowWaterLevel;
+	public static final int TRIG_fct__connect = IFITEM_fct + EVT_SHIFT*PGuiCommunicationInterface.IN_connect;
+	public static final int TRIG_fct__setPumpState = IFITEM_fct + EVT_SHIFT*PGuiCommunicationInterface.IN_setPumpState;
+	public static final int TRIG_fct__setPumpFlow = IFITEM_fct + EVT_SHIFT*PGuiCommunicationInterface.IN_setPumpFlow;
+	public static final int TRIG_fct__setAlarm = IFITEM_fct + EVT_SHIFT*PGuiCommunicationInterface.IN_setAlarm;
+	public static final int TRIG_fct__setWaterLevel = IFITEM_fct + EVT_SHIFT*PGuiCommunicationInterface.IN_setWaterLevel;
+	public static final int TRIG_fct__setMethaneLevel = IFITEM_fct + EVT_SHIFT*PGuiCommunicationInterface.IN_setMethaneLevel;
+	public static final int TRIG_fct__setCarbonLevel = IFITEM_fct + EVT_SHIFT*PGuiCommunicationInterface.IN_setCarbonLevel;
+	public static final int TRIG_fct__setAirFlowLevel = IFITEM_fct + EVT_SHIFT*PGuiCommunicationInterface.IN_setAirFlowLevel;
+	public static final int TRIG_fct__setHighWaterLevel = IFITEM_fct + EVT_SHIFT*PGuiCommunicationInterface.IN_setHighWaterLevel;
+	public static final int TRIG_fct__setLowWaterLevel = IFITEM_fct + EVT_SHIFT*PGuiCommunicationInterface.IN_setLowWaterLevel;
 	public static final int TRIG_ctrl__established = IFITEM_ctrl + EVT_SHIFT*PTcpControl.OUT_established;
 	public static final int TRIG_ctrl__error = IFITEM_ctrl + EVT_SHIFT*PTcpControl.OUT_error;
 	public static final int TRIG_payload__receive = IFITEM_payload + EVT_SHIFT*PTcpPayload.OUT_receive;
@@ -258,81 +258,81 @@ public class TrafficLightInterface extends ActorClassBase {
 	 */
 	private int executeTransitionChain(int chain__et, InterfaceItemBase ifitem, Object generic_data__et) {
 		switch (chain__et) {
-			case TrafficLightInterface.CHAIN_TRANS_INITIAL_TO__Disconnected:
+			case GuiCommuncitaion.CHAIN_TRANS_INITIAL_TO__Disconnected:
 			{
 				return STATE_Disconnected;
 			}
-			case TrafficLightInterface.CHAIN_TRANS_tr0_FROM_Connected_TO_Connected_BY_setPumpStatefct_tr0:
+			case GuiCommuncitaion.CHAIN_TRANS_tr0_FROM_Connected_TO_Connected_BY_setPumpStatefct_tr0:
 			{
 				boolean transitionData = (Boolean) generic_data__et;
 				action_TRANS_tr0_FROM_Connected_TO_Connected_BY_setPumpStatefct_tr0(ifitem, transitionData);
 				return STATE_Connected;
 			}
-			case TrafficLightInterface.CHAIN_TRANS_tr10_FROM_Connected_TO_Connected_BY_setLowWaterLevelfct_tr10:
+			case GuiCommuncitaion.CHAIN_TRANS_tr10_FROM_Connected_TO_Connected_BY_setLowWaterLevelfct_tr10:
 			{
 				boolean transitionData = (Boolean) generic_data__et;
 				action_TRANS_tr10_FROM_Connected_TO_Connected_BY_setLowWaterLevelfct_tr10(ifitem, transitionData);
 				return STATE_Connected;
 			}
-			case TrafficLightInterface.CHAIN_TRANS_tr11_FROM_Connected_TO_Connected_BY_setHighWaterLevelfct_tr11:
+			case GuiCommuncitaion.CHAIN_TRANS_tr11_FROM_Connected_TO_Connected_BY_setHighWaterLevelfct_tr11:
 			{
 				boolean transitionData = (Boolean) generic_data__et;
 				action_TRANS_tr11_FROM_Connected_TO_Connected_BY_setHighWaterLevelfct_tr11(ifitem, transitionData);
 				return STATE_Connected;
 			}
-			case TrafficLightInterface.CHAIN_TRANS_tr12_FROM_Connected_TO_Connected_BY_receivepayload_tr12:
+			case GuiCommuncitaion.CHAIN_TRANS_tr12_FROM_Connected_TO_Connected_BY_receivepayload_tr12:
 			{
 				DTcpPayload transitionData = (DTcpPayload) generic_data__et;
 				action_TRANS_tr12_FROM_Connected_TO_Connected_BY_receivepayload_tr12(ifitem, transitionData);
 				return STATE_Connected;
 			}
-			case TrafficLightInterface.CHAIN_TRANS_tr1_FROM_Connecting_TO_Connected_BY_establishedctrl:
+			case GuiCommuncitaion.CHAIN_TRANS_tr1_FROM_Connecting_TO_Connected_BY_establishedctrl:
 			{
 				action_TRANS_tr1_FROM_Connecting_TO_Connected_BY_establishedctrl(ifitem);
 				return STATE_Connected;
 			}
-			case TrafficLightInterface.CHAIN_TRANS_tr2_FROM_Disconnected_TO_Connecting_BY_connectfct:
+			case GuiCommuncitaion.CHAIN_TRANS_tr2_FROM_Disconnected_TO_Connecting_BY_connectfct:
 			{
 				int transitionData = (Integer) generic_data__et;
 				action_TRANS_tr2_FROM_Disconnected_TO_Connecting_BY_connectfct(ifitem, transitionData);
 				return STATE_Connecting;
 			}
-			case TrafficLightInterface.CHAIN_TRANS_tr3_FROM_Connected_TO_Connected_BY_setAlarmfct_tr3:
+			case GuiCommuncitaion.CHAIN_TRANS_tr3_FROM_Connected_TO_Connected_BY_setAlarmfct_tr3:
 			{
 				String transitionData = (String) generic_data__et;
 				action_TRANS_tr3_FROM_Connected_TO_Connected_BY_setAlarmfct_tr3(ifitem, transitionData);
 				return STATE_Connected;
 			}
-			case TrafficLightInterface.CHAIN_TRANS_tr4_FROM_Connected_TO_Connected_BY_setPumpFlowfct_tr4:
+			case GuiCommuncitaion.CHAIN_TRANS_tr4_FROM_Connected_TO_Connected_BY_setPumpFlowfct_tr4:
 			{
 				double transitionData = (Double) generic_data__et;
 				action_TRANS_tr4_FROM_Connected_TO_Connected_BY_setPumpFlowfct_tr4(ifitem, transitionData);
 				return STATE_Connected;
 			}
-			case TrafficLightInterface.CHAIN_TRANS_tr5_FROM_Connected_TO_Connected_BY_setWaterLevelfct_tr5:
+			case GuiCommuncitaion.CHAIN_TRANS_tr5_FROM_Connected_TO_Connected_BY_setWaterLevelfct_tr5:
 			{
 				double transitionData = (Double) generic_data__et;
 				action_TRANS_tr5_FROM_Connected_TO_Connected_BY_setWaterLevelfct_tr5(ifitem, transitionData);
 				return STATE_Connected;
 			}
-			case TrafficLightInterface.CHAIN_TRANS_tr6_FROM_Connected_TO_Connected_BY_errorctrl_tr6:
+			case GuiCommuncitaion.CHAIN_TRANS_tr6_FROM_Connected_TO_Connected_BY_errorctrl_tr6:
 			{
 				action_TRANS_tr6_FROM_Connected_TO_Connected_BY_errorctrl_tr6(ifitem);
 				return STATE_Connected;
 			}
-			case TrafficLightInterface.CHAIN_TRANS_tr7_FROM_Connected_TO_Connected_BY_setMethaneLevelfct_tr7:
+			case GuiCommuncitaion.CHAIN_TRANS_tr7_FROM_Connected_TO_Connected_BY_setMethaneLevelfct_tr7:
 			{
 				boolean transitionData = (Boolean) generic_data__et;
 				action_TRANS_tr7_FROM_Connected_TO_Connected_BY_setMethaneLevelfct_tr7(ifitem, transitionData);
 				return STATE_Connected;
 			}
-			case TrafficLightInterface.CHAIN_TRANS_tr8_FROM_Connected_TO_Connected_BY_setCarbonLevelfct_tr8:
+			case GuiCommuncitaion.CHAIN_TRANS_tr8_FROM_Connected_TO_Connected_BY_setCarbonLevelfct_tr8:
 			{
 				boolean transitionData = (Boolean) generic_data__et;
 				action_TRANS_tr8_FROM_Connected_TO_Connected_BY_setCarbonLevelfct_tr8(ifitem, transitionData);
 				return STATE_Connected;
 			}
-			case TrafficLightInterface.CHAIN_TRANS_tr9_FROM_Connected_TO_Connected_BY_setAirFlowLevelfct_tr9:
+			case GuiCommuncitaion.CHAIN_TRANS_tr9_FROM_Connected_TO_Connected_BY_setAirFlowLevelfct_tr9:
 			{
 				boolean transitionData = (Boolean) generic_data__et;
 				action_TRANS_tr9_FROM_Connected_TO_Connected_BY_setAirFlowLevelfct_tr9(ifitem, transitionData);
@@ -377,7 +377,7 @@ public class TrafficLightInterface extends ActorClassBase {
 	}
 	
 	public void executeInitTransition() {
-		int chain__et = TrafficLightInterface.CHAIN_TRANS_INITIAL_TO__Disconnected;
+		int chain__et = GuiCommuncitaion.CHAIN_TRANS_INITIAL_TO__Disconnected;
 		int next__et = executeTransitionChain(chain__et, null, null);
 		next__et = enterHistory(next__et);
 		setState(next__et);
@@ -395,67 +395,67 @@ public class TrafficLightInterface extends ActorClassBase {
 					switch(trigger__et) {
 						case TRIG_ctrl__error:
 							{
-								chain__et = TrafficLightInterface.CHAIN_TRANS_tr6_FROM_Connected_TO_Connected_BY_errorctrl_tr6;
+								chain__et = GuiCommuncitaion.CHAIN_TRANS_tr6_FROM_Connected_TO_Connected_BY_errorctrl_tr6;
 								catching_state__et = STATE_TOP;
 							}
 						break;
 						case TRIG_fct__setAirFlowLevel:
 							{
-								chain__et = TrafficLightInterface.CHAIN_TRANS_tr9_FROM_Connected_TO_Connected_BY_setAirFlowLevelfct_tr9;
+								chain__et = GuiCommuncitaion.CHAIN_TRANS_tr9_FROM_Connected_TO_Connected_BY_setAirFlowLevelfct_tr9;
 								catching_state__et = STATE_TOP;
 							}
 						break;
 						case TRIG_fct__setAlarm:
 							{
-								chain__et = TrafficLightInterface.CHAIN_TRANS_tr3_FROM_Connected_TO_Connected_BY_setAlarmfct_tr3;
+								chain__et = GuiCommuncitaion.CHAIN_TRANS_tr3_FROM_Connected_TO_Connected_BY_setAlarmfct_tr3;
 								catching_state__et = STATE_TOP;
 							}
 						break;
 						case TRIG_fct__setCarbonLevel:
 							{
-								chain__et = TrafficLightInterface.CHAIN_TRANS_tr8_FROM_Connected_TO_Connected_BY_setCarbonLevelfct_tr8;
+								chain__et = GuiCommuncitaion.CHAIN_TRANS_tr8_FROM_Connected_TO_Connected_BY_setCarbonLevelfct_tr8;
 								catching_state__et = STATE_TOP;
 							}
 						break;
 						case TRIG_fct__setHighWaterLevel:
 							{
-								chain__et = TrafficLightInterface.CHAIN_TRANS_tr11_FROM_Connected_TO_Connected_BY_setHighWaterLevelfct_tr11;
+								chain__et = GuiCommuncitaion.CHAIN_TRANS_tr11_FROM_Connected_TO_Connected_BY_setHighWaterLevelfct_tr11;
 								catching_state__et = STATE_TOP;
 							}
 						break;
 						case TRIG_fct__setLowWaterLevel:
 							{
-								chain__et = TrafficLightInterface.CHAIN_TRANS_tr10_FROM_Connected_TO_Connected_BY_setLowWaterLevelfct_tr10;
+								chain__et = GuiCommuncitaion.CHAIN_TRANS_tr10_FROM_Connected_TO_Connected_BY_setLowWaterLevelfct_tr10;
 								catching_state__et = STATE_TOP;
 							}
 						break;
 						case TRIG_fct__setMethaneLevel:
 							{
-								chain__et = TrafficLightInterface.CHAIN_TRANS_tr7_FROM_Connected_TO_Connected_BY_setMethaneLevelfct_tr7;
+								chain__et = GuiCommuncitaion.CHAIN_TRANS_tr7_FROM_Connected_TO_Connected_BY_setMethaneLevelfct_tr7;
 								catching_state__et = STATE_TOP;
 							}
 						break;
 						case TRIG_fct__setPumpFlow:
 							{
-								chain__et = TrafficLightInterface.CHAIN_TRANS_tr4_FROM_Connected_TO_Connected_BY_setPumpFlowfct_tr4;
+								chain__et = GuiCommuncitaion.CHAIN_TRANS_tr4_FROM_Connected_TO_Connected_BY_setPumpFlowfct_tr4;
 								catching_state__et = STATE_TOP;
 							}
 						break;
 						case TRIG_fct__setPumpState:
 							{
-								chain__et = TrafficLightInterface.CHAIN_TRANS_tr0_FROM_Connected_TO_Connected_BY_setPumpStatefct_tr0;
+								chain__et = GuiCommuncitaion.CHAIN_TRANS_tr0_FROM_Connected_TO_Connected_BY_setPumpStatefct_tr0;
 								catching_state__et = STATE_TOP;
 							}
 						break;
 						case TRIG_fct__setWaterLevel:
 							{
-								chain__et = TrafficLightInterface.CHAIN_TRANS_tr5_FROM_Connected_TO_Connected_BY_setWaterLevelfct_tr5;
+								chain__et = GuiCommuncitaion.CHAIN_TRANS_tr5_FROM_Connected_TO_Connected_BY_setWaterLevelfct_tr5;
 								catching_state__et = STATE_TOP;
 							}
 						break;
 						case TRIG_payload__receive:
 							{
-								chain__et = TrafficLightInterface.CHAIN_TRANS_tr12_FROM_Connected_TO_Connected_BY_receivepayload_tr12;
+								chain__et = GuiCommuncitaion.CHAIN_TRANS_tr12_FROM_Connected_TO_Connected_BY_receivepayload_tr12;
 								catching_state__et = STATE_TOP;
 							}
 						break;
@@ -468,7 +468,7 @@ public class TrafficLightInterface extends ActorClassBase {
 					switch(trigger__et) {
 						case TRIG_ctrl__established:
 							{
-								chain__et = TrafficLightInterface.CHAIN_TRANS_tr1_FROM_Connecting_TO_Connected_BY_establishedctrl;
+								chain__et = GuiCommuncitaion.CHAIN_TRANS_tr1_FROM_Connecting_TO_Connected_BY_establishedctrl;
 								catching_state__et = STATE_TOP;
 							}
 						break;
@@ -481,7 +481,7 @@ public class TrafficLightInterface extends ActorClassBase {
 					switch(trigger__et) {
 						case TRIG_fct__connect:
 							{
-								chain__et = TrafficLightInterface.CHAIN_TRANS_tr2_FROM_Disconnected_TO_Connecting_BY_connectfct;
+								chain__et = GuiCommuncitaion.CHAIN_TRANS_tr2_FROM_Disconnected_TO_Connecting_BY_connectfct;
 								catching_state__et = STATE_TOP;
 							}
 						break;

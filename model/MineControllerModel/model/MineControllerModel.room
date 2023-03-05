@@ -61,17 +61,17 @@ RoomModel MineControllerModel {
 			Binding environmentMonitoringStation.sendAlarm and Alarm.alarmReceiver
 			ActorRef Alarm: AlarmModel.Alarm
 
-			ActorRef waterTenk: TcpCommunication.TrafficLightInterface
+			ActorRef waterTenk: TcpCommunication.GuiCommuncitaion
 			ActorRef ref0: etrice.api.tcp.ATcpClient
 			Binding environmentMonitoringStation.supstanceLevel and pumpControlStation.methaneLevel
 			Binding ref0.ControlPort and waterTenk.ctrl
 			Binding ref0.PayloadPort and waterTenk.payload
-			ActorRef pumpTcp: TcpCommunication.TrafficLightInterface
+			ActorRef pumpTcp: TcpCommunication.GuiCommuncitaion
 			ActorRef ref1: etrice.api.tcp.ATcpClient
 			Binding waterTenk.fct and waterTank.tcpWaterTenk
 			Binding ref1.PayloadPort and pumpTcp.payload
 			Binding pumpTcp.ctrl and ref1.ControlPort
-			ActorRef alarmTcp: TcpCommunication.TrafficLightInterface
+			ActorRef alarmTcp: TcpCommunication.GuiCommuncitaion
 			ActorRef ref2: etrice.api.tcp.ATcpClient
 			Binding pumpMotor.pump and pumpTcp.fct
 			Binding ref2.ControlPort and alarmTcp.ctrl
@@ -79,18 +79,18 @@ RoomModel MineControllerModel {
 			Binding alarmTcp.fct and Alarm.p0
 			Binding ref3.ControlPort and environmentTcp.ctrl
 			Binding ref3.PayloadPort and environmentTcp.payload
-			ActorRef environmentTcp: TcpCommunication.TrafficLightInterface
+			ActorRef environmentTcp: TcpCommunication.GuiCommuncitaion
 			ActorRef ref3: etrice.api.tcp.ATcpClient
 			Binding environmentTcp.fct and environmentMonitoringStation.tcpEnvironmet
 			Binding tcpPumpControl.payload and ref4.PayloadPort
 			Binding tcpPumpControl.ctrl and ref4.ControlPort
-			ActorRef tcpPumpControl: TcpCommunication.TrafficLightInterface
+			ActorRef tcpPumpControl: TcpCommunication.GuiCommuncitaion
 			ActorRef ref4: etrice.api.tcp.ATcpClient
 			Binding pumpControlStation.tcpPumpControll and tcpPumpControl.fct
 			Binding tcpWaterTunel.payload and ref5.PayloadPort
 			Binding tcpWaterTunel.ctrl and ref5.ControlPort
 			ActorRef ref5: etrice.api.tcp.ATcpClient
-			ActorRef tcpWaterTunel: TcpCommunication.TrafficLightInterface
+			ActorRef tcpWaterTunel: TcpCommunication.GuiCommuncitaion
 			Binding waterPumpTunnel.tcpPumpTunel and tcpWaterTunel.fct
 		}
 	}

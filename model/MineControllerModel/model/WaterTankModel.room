@@ -11,7 +11,7 @@ RoomModel WaterTankModel {
 			Port highWaterLevel: EventHappened
 			Port lowWaterLevel: EventHappened
 			conjugated Port drainWater: DrainWater
-			conjugated Port tcpWaterTenk: TcpCommunication.PTrafficLightInterface
+			conjugated Port tcpWaterTenk: TcpCommunication.PGuiCommunicationInterface
 		}
 		Structure {
 			usercode2 '''
@@ -138,7 +138,7 @@ RoomModel WaterTankModel {
 			Port waterTenk: DrainWater
 			conjugated Port waterTenkPump: DrainWater
 			conjugated Port wateflowSensor: PoolingSensorSample
-			conjugated Port tcpPumpTunel: TcpCommunication.PTrafficLightInterface
+			conjugated Port tcpPumpTunel: TcpCommunication.PGuiCommunicationInterface
 		}
 		Structure {
 			usercode2 '''
